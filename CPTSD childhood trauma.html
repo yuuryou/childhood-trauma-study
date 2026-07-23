@@ -503,7 +503,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
-  .main { padding: 2rem 1.5rem 5rem 1.5rem; }
+  .main { max-width: 100%; padding: 2rem 1.5rem 5rem 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 4px; }
 }
 @media (max-width: 768px) {
@@ -517,6 +517,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
+  .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
   .glass-panel-blur, .glass-panel-static { padding: 1.25rem; border-radius: var(--radius-md); }
   section h2 { font-size: 1.4rem; }
   .floating-nav { padding: 5px 8px; gap: 1px; }
@@ -574,7 +575,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <a href="#healing-path" class="nav-pill" title="療癒之路">療癒</a>
   <a href="#toolkit" class="nav-pill" title="自助工具箱">工具箱</a>
   <a href="#references" class="nav-pill" title="參考文獻">文獻</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">🔊</button>
+  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
   <a href="cptsd-en.html" class="nav-pill lang-switch" title="English version">EN</a>
 </nav>
 
@@ -993,7 +994,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </script>
 
 <script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';}
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}
 </script>
 </body>
 </html>

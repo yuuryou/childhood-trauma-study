@@ -357,7 +357,7 @@ body {
 <nav class="floating-nav" aria-label="頁面導航">
   <span class="nav-title">童年創傷的發展路徑</span>
   <a href="CPTSD childhood trauma.html" class="nav-pill">← 返回主頁</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">🔊</button>
+  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
   <a href="development-en.html" class="nav-pill lang-switch" title="English version">EN</a>
 </nav>
 
@@ -459,7 +459,7 @@ body {
 </div><!-- /.main -->
 
 <script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';}
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}
 </script>
 </body>
 </html>

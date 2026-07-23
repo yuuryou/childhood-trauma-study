@@ -503,11 +503,11 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
-  .main { padding: 2rem 1.5rem 5rem 1.5rem; }
+  .main { max-width: 100%; padding: 2rem 1.5rem 5rem 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 4px; }
 }
 @media (max-width: 768px) {
-  .main { padding: 1.5rem 1rem 4rem 1rem; }
+  .main { max-width: 100%; padding: 1.5rem 1rem 4rem 1rem; }
   .hero { padding: 2rem 0 3.5rem 0; }
   .hero h1 { font-size: clamp(1.8rem, 8vw, 3rem); }
   .glass-panel-blur, .glass-panel-static { padding: 1.5rem; }
@@ -517,6 +517,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
+  .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
   .glass-panel-blur, .glass-panel-static { padding: 1.25rem; border-radius: var(--radius-md); }
   section h2 { font-size: 1.4rem; }
   .floating-nav { padding: 5px 8px; gap: 1px; }
@@ -994,7 +995,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </script>
 
 <script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.textContent=v.muted?'&#x1F507;':'&#x1F50A;';}
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}
 </script>
 </body>
 </html>

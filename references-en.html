@@ -280,7 +280,7 @@ section h4 {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .main { padding: 1.5rem 1rem 4rem 1rem; }
+  .main { max-width: 100%; padding: 1.5rem 1rem 4rem 1rem; }
   .glass-panel-blur { padding: 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 2px; }
   .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
@@ -288,6 +288,7 @@ section h4 {
   .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
+  .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
   .glass-panel-blur { padding: 1.25rem; border-radius: var(--radius-md); }
   section h2 { font-size: 1.4rem; }
   .floating-nav { padding: 5px 8px; gap: 1px; }
@@ -339,6 +340,7 @@ section h4 {
   <span class="nav-title">References</span>
   <a href="cptsd-en.html" class="nav-pill">← Back to Home</a>
   <a href="development-en.html" class="nav-pill">Developmental Path</a>
+  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
   <a href="references.html" class="nav-pill lang-switch" title="中文版">中文</a>
 </nav>
 
@@ -543,7 +545,7 @@ section h4 {
 </footer>
 
 <script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';}
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}
 </script>
 </body>
 </html>
