@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="支援 CPTSD 與童年創傷教育指南的可搜尋學術參考文獻。">
+<meta name="theme-color" content="#17120d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPTSD 與童年創傷參考文獻">
+<meta property="og:description" content="依研究主題整理的可搜尋學術參考文獻。">
+<link rel="alternate" hreflang="en" href="references-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="references.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>參考文獻 — CPTSD：童年創傷的理解與療癒</title>
 <style>
 /* ============================================
@@ -341,7 +349,7 @@ section h4 {
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -351,7 +359,7 @@ section h4 {
   <span class="nav-title">參考文獻</span>
   <a href="CPTSD childhood trauma.html" class="nav-pill">← 返回主頁</a>
   <a href="development.html" class="nav-pill">發展路徑</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已靜音" aria-pressed="false" title="背景音效已靜音">&#x1F507;</button>
   <a href="references-en.html" class="nav-pill lang-switch" title="English version">EN</a>
 </nav>
 
@@ -359,9 +367,9 @@ section h4 {
 <div class="main">
 
 <section id="references" class="glass-panel-blur">
-  <h2>參考文獻</h2>
+  <h1 class="reference-page-title">參考文獻</h1>
   <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-    以下文獻涵蓋童年創傷與 CPTSD 的核心研究領域，按主題分類整理。共收錄 200+ 筆學術論文，格式為 APA 第 7 版。
+    以下文獻涵蓋童年創傷與 CPTSD 的核心研究領域，並按主題分類整理。本頁目前收錄 155 筆參考資料，採接近 APA 格式呈現。
   </p>
 
     <h4>Foundational Works</h4>
@@ -525,7 +533,7 @@ section h4 {
     <p class="ref-entry"><span class="authors">Krause-Utz A, van Dijke A</span> <span class="year">(2026).</span> <span class="title-text">Absorption and Depersonalisation Derealisation Link Childhood Trauma to BPD Severity and Show Strong Independent Predictive Effects for Various BPD Symptom Domains.</span> <em>Journal of trauma & dissociation : the official journal of the International Society for the Study of Dissociation (ISSD).</em> https://doi.org/10.1080/15299732.2026.2695585</p>
 
     <h4>Recovery, Resilience &amp; Post-Traumatic Growth</h4>
-    <p class="ref-entry"><span class="authors">P. Frewen, Serena P. Wong, T. Bailey, C. Courtois, R. Lanius</span> <span class="year">(2023).</span> <span class="title-text">As简单 as possible, but not simpler: Revisiting the International Trauma Questionnaire (ITQ) complex PTSD items omitted in the shortened version.</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2023.106207</p>
+    <p class="ref-entry"><span class="authors">P. Frewen, Serena P. Wong, T. Bailey, C. Courtois, R. Lanius</span> <span class="year">(2023).</span> <span class="title-text">As simple as possible, but not simpler: Revisiting the International Trauma Questionnaire (ITQ) complex PTSD items omitted in the shortened version.</span> <em>Child abuse &amp; neglect.</em> https://doi.org/10.1016/j.chiabu.2023.106207</p>
     <p class="ref-entry"><span class="authors">G. Zerach</span> <span class="year">(2023).</span> <span class="title-text">The Contribution of Childhood Adversity and Potentially Traumatic Events During Military Service to PTSD and Complex PTSD Symptoms Among Israeli Women Veterans.</span> <em>European Psychiatry; pages=S179 - S179; volume=66.</em> https://doi.org/10.1192/j.eurpsy.2023.430</p>
     <p class="ref-entry"><span class="authors">Sujeong Shin</span> <span class="year">(2023).</span> <span class="title-text">A Case Study in Attachment Trauma Counseling: Focusing on the Integrative Applicability of Eye Movement Desensitization Reprocessing(EMDR) and Internal Family Systems(IFS) Therapy.</span> <em>Korean Association of Christian Counseling &amp; Psychology.</em> https://doi.org/10.23909/kjcc.2023.11.34.4.117</p>
     <p class="ref-entry"><span class="authors">Silvia Wetherell</span> <span class="year">(2022).</span> <span class="title-text">Investigating the impact of eye movement desensitization and reprocessing (EMDR) in reducing birth trauma symptoms.</span> <em>Annals of Psychophysiology.</em> https://doi.org/10.29052/2412-3188.v9.i2.2022.67-75</p>
@@ -559,5 +567,6 @@ section h4 {
 function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
 (function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
 </script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>

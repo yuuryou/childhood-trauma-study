@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="以創傷知情方式介紹複雜性創傷後壓力症、童年創傷、神經系統反應、人際關係、療癒方法與自助工具。">
+<meta name="theme-color" content="#17120d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CPTSD：童年創傷的理解與療癒">
+<meta property="og:description" content="關於 CPTSD 與療癒路徑的創傷知情教育指南。">
+<link rel="alternate" hreflang="en" href="cptsd-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="CPTSD childhood trauma.html">
+<link rel="alternate" hreflang="zh-Hans" href="CPTSD childhood trauma-cn.html">
+<link rel="alternate" hreflang="x-default" href="index.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>複雜性創傷後壓力症（CPTSD）：童年創傷的理解與療癒 | Understanding &amp; Healing Childhood Trauma</title>
 <style>
 /* ============================================
@@ -564,7 +574,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -582,7 +592,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <a href="#toolkit" class="nav-pill" title="自助工具箱">工具箱</a>
   <a href="#references" class="nav-pill" title="參考文獻">文獻</a>
   <a href="development.html" class="nav-pill" title="童年創傷的發展路徑">發展</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已靜音" aria-pressed="false" title="背景音效已靜音">&#x1F507;</button>
   <a href="cptsd-en.html" class="nav-pill lang-switch" title="English version">EN</a>
   <a href="CPTSD childhood trauma-cn.html" class="nav-pill lang-switch" title="简体版">简</a>
 </nav>
@@ -973,7 +983,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </div><!-- /.main -->
 
 <!-- Back to Top -->
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回頁首">↑</button>
 
 <!-- Footer -->
 <footer class="site-footer">
@@ -1005,5 +1015,6 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
 (function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
 </script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>

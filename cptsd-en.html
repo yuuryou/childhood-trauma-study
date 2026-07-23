@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A trauma-informed educational guide to complex PTSD, childhood trauma, nervous-system responses, relationships, healing approaches, and self-help tools.">
+<meta name="theme-color" content="#17120d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Understanding and Healing Childhood Trauma">
+<meta property="og:description" content="An educational, trauma-informed guide to CPTSD and paths toward healing.">
+<link rel="alternate" hreflang="en" href="cptsd-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="CPTSD childhood trauma.html">
+<link rel="alternate" hreflang="zh-Hans" href="CPTSD childhood trauma-cn.html">
+<link rel="alternate" hreflang="x-default" href="index.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>Complex Post-Traumatic Stress Disorder (CPTSD): Understanding &amp; Healing Childhood Trauma</title>
 <style>
 /* ============================================
@@ -564,7 +574,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -582,7 +592,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <a href="#toolkit" class="nav-pill" title="Self-Help Toolkit">Toolkit</a>
   <a href="#references" class="nav-pill" title="References">Refs</a>
   <a href="development-en.html" class="nav-pill" title="Developmental Pathways">Dev</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+<button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="Background audio is muted" aria-pressed="false" title="Background audio is muted">&#x1F507;</button>
   <a href="CPTSD childhood trauma.html" class="nav-pill lang-switch" title="中文版">中文</a>
 </nav>
 
@@ -1005,5 +1015,6 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
 (function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
 </script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>

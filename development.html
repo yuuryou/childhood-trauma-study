@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="介紹童年創傷從產前至成年可能影響發展的路徑，並以適應與復原為核心。">
+<meta name="theme-color" content="#17120d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="童年創傷的發展路徑">
+<meta property="og:description" content="創傷可能如何影響發展，以及復原為何仍然可能。">
+<link rel="alternate" hreflang="en" href="development-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="development.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>童年創傷的發展路徑 | Developmental Pathways of Childhood Trauma</title>
 <style>
 /* ============================================
@@ -361,7 +369,7 @@ body {
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -370,7 +378,7 @@ body {
 <nav class="floating-nav" aria-label="頁面導航">
   <span class="nav-title">童年創傷的發展路徑</span>
   <a href="CPTSD childhood trauma.html" class="nav-pill">← 返回主頁</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已靜音" aria-pressed="false" title="背景音效已靜音">&#x1F507;</button>
   <a href="development-en.html" class="nav-pill lang-switch" title="English version">EN</a>
 </nav>
 
@@ -475,5 +483,6 @@ body {
 function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
 (function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
 </script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>

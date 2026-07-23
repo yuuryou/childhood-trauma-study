@@ -2,10 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=cptsd-en.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Choose English, Traditional Chinese, or Simplified Chinese to explore the CPTSD and childhood-trauma educational guide.">
+  <meta name="theme-color" content="#17120d">
   <title>CPTSD — Understanding and Healing Childhood Trauma</title>
+  <link rel="alternate" hreflang="en" href="cptsd-en.html">
+  <link rel="alternate" hreflang="zh-Hant" href="CPTSD childhood trauma.html">
+  <link rel="alternate" hreflang="zh-Hans" href="CPTSD childhood trauma-cn.html">
+  <link rel="alternate" hreflang="x-default" href="index.html">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+      color: #fff7ed;
+      background: radial-gradient(circle at 50% 20%, #49301a, #17120d 55%);
+      font: 17px/1.6 system-ui, sans-serif;
+    }
+    main {
+      width: min(680px, 100%);
+      padding: clamp(1.5rem, 5vw, 3.5rem);
+      border: 1px solid rgba(240,160,64,.4);
+      border-radius: 28px;
+      text-align: center;
+      background: rgba(20,17,14,.82);
+      box-shadow: 0 24px 80px rgba(0,0,0,.45);
+    }
+    h1 { margin: 0; color: #ffb84d; font-size: clamp(2rem, 7vw, 4rem); line-height: 1.08; }
+    p { color: #ddd3c7; }
+    nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 2rem; }
+    a {
+      min-height: 52px;
+      display: grid;
+      place-items: center;
+      padding: .8rem;
+      border: 1px solid rgba(240,160,64,.5);
+      border-radius: 999px;
+      color: #fff7ed;
+      text-decoration: none;
+      background: rgba(240,160,64,.12);
+    }
+    a:hover, a:focus-visible { background: #f0a040; color: #17120d; outline: 3px solid #ffd08a; outline-offset: 3px; }
+    @media (max-width: 520px) { nav { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="cptsd-en.html">English version</a>...</p>
+  <main>
+    <h1>CPTSD</h1>
+    <p>Understanding childhood trauma and pathways toward healing</p>
+    <p>Choose your language · 選擇語言 · 选择语言</p>
+    <nav aria-label="Choose language">
+      <a href="cptsd-en.html" lang="en">English</a>
+      <a href="CPTSD childhood trauma.html" lang="zh-Hant">繁體中文</a>
+      <a href="CPTSD childhood trauma-cn.html" lang="zh-Hans">简体中文</a>
+    </nav>
+  </main>
 </body>
 </html>
