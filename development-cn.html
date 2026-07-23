@@ -5,9 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="介绍童年创伤从产前至成年可能影响发展的路径，并以适应与复原为核心。">
 <meta name="theme-color" content="#17120d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CPTSD 指南">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="article">
 <meta property="og:title" content="童年创伤的发展路径">
 <meta property="og:description" content="创伤可能如何影响发展，以及复原为何仍然可能。">
+<meta property="og:image" content="https://yuuryou.github.io/childhood-trauma-study/og-image.png">
 <link rel="alternate" hreflang="en" href="development-en.html">
 <link rel="alternate" hreflang="zh-Hant" href="development.html">
 <link rel="alternate" hreflang="zh-Hans" href="development-cn.html">
@@ -54,7 +60,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   z-index: -9999;
   opacity: 1;
   filter: brightness(0.45);
@@ -346,12 +352,12 @@ body {
 }
 
 .hero { animation: fadeInUp 0.6s ease both; }
-.timeline-stage:nth-child(1) { animation: fadeInUp 0.6s ease both 0.1s; }
-.timeline-stage:nth-child(2) { animation: fadeInUp 0.6s ease both 0.18s; }
-.timeline-stage:nth-child(3) { animation: fadeInUp 0.6s ease both 0.26s; }
-.timeline-stage:nth-child(4) { animation: fadeInUp 0.6s ease both 0.34s; }
-.timeline-stage:nth-child(5) { animation: fadeInUp 0.6s ease both 0.42s; }
-.timeline-stage:nth-child(6) { animation: fadeInUp 0.6s ease both 0.50s; }
+.timeline-stage:nth-child(1) .timeline-card { animation: fadeInUp 0.6s ease both 0.1s; }
+.timeline-stage:nth-child(2) .timeline-card { animation: fadeInUp 0.6s ease both 0.18s; }
+.timeline-stage:nth-child(3) .timeline-card { animation: fadeInUp 0.6s ease both 0.26s; }
+.timeline-stage:nth-child(4) .timeline-card { animation: fadeInUp 0.6s ease both 0.34s; }
+.timeline-stage:nth-child(5) .timeline-card { animation: fadeInUp 0.6s ease both 0.42s; }
+.timeline-stage:nth-child(6) .timeline-card { animation: fadeInUp 0.6s ease both 0.50s; }
 .conclusion { animation: fadeInUp 0.6s ease both 0.58s; }
 
 /* ===== Responsive ===== */
@@ -362,7 +368,7 @@ body {
   .main { max-width: 60rem; }
 }
 @media (max-width: 768px) {
-  .main { padding: 2.5rem 1rem 7rem 1rem; max-width: 100%; }
+  .main { padding: 4.5rem 1rem 7rem 1rem; max-width: 100%; }
   .hero { margin-bottom: 3rem; }
   .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   .timeline { padding-left: 2rem; }
@@ -403,7 +409,7 @@ body {
 @media print {
   body::before, .floating-nav, .care-controls { display: none !important; }
   body { background: #fff; color: #1a1a2e; }
-  .main { padding-top: 1rem; }
+  .main { padding-top: 3rem; }
   .timeline-card, .conclusion, .medical-note {
     background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
     border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
@@ -412,6 +418,21 @@ body {
   .site-footer { border-color: #ddd; }
 }
 </style>
+<link rel="preload" href="site-enhancements.css" as="style">
+<link rel="preload" href="site-enhancements.js" as="script">
+<link rel="preload" href="background-poster.jpg" as="image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "童年创伤的发展路径",
+  "description": "介绍童年创伤从产前至成年可能影响发展的路径，并以适应与复原为核心。",
+  "url": "https://yuuryou.github.io/childhood-trauma-study/development-cn.html",
+  "inLanguage": "zh-Hans",
+  "about": { "@type": "MedicalCondition", "name": "Complex Post-Traumatic Stress Disorder", "alternateName": "CPTSD" },
+  "isPartOf": { "@type": "WebSite", "name": "CPTSD — 理解童年创伤", "url": "https://yuuryou.github.io/childhood-trauma-study/" }
+}
+</script>
 </head>
 <body>
 
