@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复杂性创伤后压力症（CPTSD）：童年创伤的理解与疗愈 | Understanding &amp; Healing Childhood Trauma</title>
+<style>
+/* ============================================
+   Apple Liquid Glass — CPTSD
+   Dark Theme + Amber Accent
+   Strict blur budget: nav + §1 + §6 only
+   ============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== Tokens ===== */
+:root {
+  --amber: #f0a040;
+  --amber-light: #ffb84d;
+  --amber-lighter: #ffc973;
+  --amber-glow: rgba(240, 160, 64, 0.12);
+  --amber-glow-strong: rgba(240, 160, 64, 0.2);
+  --amber-border: rgba(240, 160, 64, 0.3);
+  --amber-border-hover: rgba(240, 160, 64, 0.5);
+
+  --text-primary: #ffffff;
+  --text-body: rgba(255, 255, 255, 0.82);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.35);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-normal: rgba(255, 255, 255, 0.12);
+
+  --glass-bg-blur: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  --glass-bg-static: rgba(255, 255, 255, 0.04);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; background: transparent; min-height: 100vh; }
+
+/* ===== Body: deep multi-layer radial gradient ===== */
+body {
+  font-family: var(--font-sans);
+  background: transparent !important;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== Body background video — lowest layer ===== */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -9999;
+  opacity: 1;
+  filter: brightness(0.45);
+  pointer-events: none;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -9998;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* ===== Overflow protection ===== */
+p, li, td, th, blockquote { overflow-wrap: break-word; word-break: break-word; }
+img, iframe, table, pre, code { max-width: 100%; height: auto; }
+
+/* ===== Skip to content ===== */
+.skip-to-content {
+  position: absolute; top: -100%; left: 16px;
+  background: var(--amber); color: #0a0f1a;
+  padding: 8px 16px; border-radius: var(--radius-sm);
+  font-weight: 600; z-index: 1000;
+  transition: top 0.15s var(--ease-standard);
+}
+.skip-to-content:focus { top: 12px; }
+
+/* ===== Floating Nav — iOS Liquid Glass pill buttons (blur #1) ===== */
+.floating-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  animation: navFloatIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.2s;
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: 
+    color 0.2s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(240, 160, 64, 0.3);
+  transform: scale(1.05);
+}
+
+.nav-pill:active {
+  transform: scale(0.95);
+}
+
+.nav-pill.active {
+  color: var(--amber-light);
+  background: rgba(240, 160, 64, 0.15);
+  border-color: rgba(240, 160, 64, 0.4);
+}
+
+/* ===== Main container ===== */
+.main {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Hero (no backdrop-filter) ===== */
+.hero {
+  text-align: center;
+  padding: 3rem 0 5rem 0;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.12;
+}
+
+.hero .hero-sub {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  color: var(--text-body);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.hero .hero-intro {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 38rem;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+
+.hero .hero-cta {
+  display: inline-block;
+  color: var(--amber-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.625rem 1.75rem;
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-full);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease-spring);
+}
+
+.hero .hero-cta:hover {
+  background: rgba(240, 160, 64, 0.1);
+  border-color: var(--amber-border-hover);
+  transform: scale(1.04);
+}
+
+/* ===== Glass panel with backdrop-filter (blur #2 & #3: §1 & §6) ===== */
+.glass-panel-blur {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+.glass-panel-blur:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* ===== Glass panel without backdrop-filter (static) ===== */
+.glass-panel-static {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+.glass-panel-static:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.glass-panel-static:active { transform: scale(0.98); }
+.glass-panel-blur:active { transform: scale(0.98); }
+
+/* ===== Section headings ===== */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--amber-light);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--amber-glow-strong);
+}
+
+section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--amber);
+  margin: 1rem 0 0.5rem 0;
+}
+
+section p {
+  margin-bottom: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.75;
+}
+
+section ul, section ol {
+  margin: 0.75rem 0 1rem 1.5rem;
+  color: var(--text-body);
+}
+section li { margin-bottom: 0.4rem; }
+section li::marker { color: var(--amber); }
+
+/* ===== Concept box ===== */
+.concept-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+}
+.concept-box strong { color: var(--amber-light); }
+
+.highlight-box {
+  border-left-color: var(--amber-light);
+  background: rgba(240, 160, 64, 0.05);
+}
+
+/* ===== Table ===== */
+.table-wrap { overflow-x: auto; margin: 1.25rem 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: var(--text-body);
+}
+thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--amber-border);
+  color: var(--amber-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+tbody td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: top;
+  line-height: 1.55;
+}
+tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+/* ===== Toolkit grid ===== */
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.toolkit-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+.toolkit-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.toolkit-card h4 {
+  color: var(--amber-light);
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+.toolkit-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ===== References section ===== */
+.ref-category-badge {
+  display: inline-block;
+  background: var(--amber-glow-strong);
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--amber-light);
+  margin-bottom: 0.75rem;
+}
+
+.ref-teaser {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+.ref-teaser p { color: var(--text-secondary); }
+.ref-teaser .ref-link-btn {
+  display: inline-block;
+  background: var(--amber-glow-strong);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+}
+.ref-teaser .ref-link-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px var(--amber-glow-strong);
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+.site-footer .footer-sub-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--amber-light);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-full);
+  transition: background 0.2s, transform 0.2s var(--ease-spring);
+}
+.site-footer .footer-sub-link:hover {
+  background: rgba(240, 160, 64, 0.1);
+  transform: scale(1.04);
+}
+
+/* ===== Entry animation ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Nav float-in animation ===== */
+@keyframes navFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.hero                         { animation: fadeInUp 0.6s ease both; }
+#what-is-cptsd               { animation: fadeInUp 0.6s ease both 0.08s; }
+#trauma-in-body              { animation: fadeInUp 0.6s ease both 0.16s; }
+#reshaped-self               { animation: fadeInUp 0.6s ease both 0.24s; }
+#trauma-relationships        { animation: fadeInUp 0.6s ease both 0.32s; }
+#trauma-brain                { animation: fadeInUp 0.6s ease both 0.40s; }
+#healing-path                { animation: fadeInUp 0.6s ease both 0.48s; }
+#toolkit                     { animation: fadeInUp 0.6s ease both 0.56s; }
+#references                  { animation: fadeInUp 0.6s ease both 0.64s; }
+
+/* ===== Back to top ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  color: var(--amber-light);
+  font-size: 1.25rem;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  z-index: 85;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  will-change: transform;
+}
+.back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 1400px) {
+  .main { max-width: 90rem; }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main { max-width: 68rem; }
+}
+@media (max-width: 1024px) {
+  .main { max-width: 100%; padding: 2rem 1.5rem 5rem 1.5rem; }
+  .floating-nav { padding: 6px 10px; gap: 4px; }
+}
+@media (max-width: 768px) {
+  .main { padding: 1.5rem 1rem 4rem 1rem; }
+  .hero { padding: 2rem 0 3.5rem 0; }
+  .hero h1 { font-size: clamp(1.8rem, 8vw, 3rem); }
+  .glass-panel-blur, .glass-panel-static { padding: 1.5rem; }
+  .floating-nav { padding: 6px 10px; gap: 2px; }
+  .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
+  .toolkit-grid { grid-template-columns: 1fr; }
+  .back-to-top { bottom: 1.5rem; right: 1rem; }
+}
+@media (max-width: 480px) {
+  .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
+  .glass-panel-blur, .glass-panel-static { padding: 1.25rem; border-radius: var(--radius-md); }
+  section h2 { font-size: 1.4rem; }
+  .floating-nav { padding: 5px 8px; gap: 1px; }
+  .nav-pill { font-size: 0.62rem; padding: 5px 8px; }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bg-video { display: none; }
+  .bg-overlay { display: none; }
+  body { background: #0a0e1a; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-panel-blur, .glass-panel-static, .floating-nav, .toolkit-card {
+    background: rgba(20, 20, 35, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ===== Print ===== */
+@media print {
+  body::before, .back-to-top, .floating-nav { display: none !important; }
+  body { background: #fff; color: #1a1a2e; }
+  .main { padding-top: 1rem; }
+  .glass-panel-blur, .glass-panel-static, .toolkit-card {
+    background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
+    border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
+  }
+  section h2 { color: #c87a28; border-bottom-color: #ddd; }
+}
+</style>
+</head>
+<body>
+
+<video class="bg-video" autoplay loop playsinline>
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+
+<a href="#main-content" class="skip-to-content">跳至主要内容</a>
+
+<!-- ===== Floating Nav — iOS Liquid Glass pill buttons ===== -->
+<nav class="floating-nav" aria-label="章节导航">
+  <a href="#what-is-cptsd" class="nav-pill" title="认识 CPTSD">CPTSD</a>
+  <a href="#trauma-in-body" class="nav-pill" title="创伤与身体">身体</a>
+  <a href="#reshaped-self" class="nav-pill" title="创伤重塑的自我">自我</a>
+  <a href="#trauma-relationships" class="nav-pill" title="创伤中的关系">关系</a>
+  <a href="#trauma-brain" class="nav-pill" title="创伤的大脑">大脑</a>
+  <a href="#healing-path" class="nav-pill" title="疗愈之路">疗愈</a>
+  <a href="#toolkit" class="nav-pill" title="自助工具箱">工具箱</a>
+  <a href="#references" class="nav-pill" title="参考文献">文献</a>
+  <a href="development.html" class="nav-pill" title="童年创伤的发展路径">发展</a>
+  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+  <a href="cptsd-en.html" class="nav-pill lang-switch" title="English version">EN</a>
+  <a href="CPTSD childhood trauma.html" class="nav-pill lang-switch" title="繁體版">繁</a>
+</nav>
+
+<!-- ===== Main Content ===== -->
+<div class="main" id="main-content">
+
+<!-- ===== Hero (no blur) ===== -->
+<div class="hero">
+  <h1>复杂性创伤后压力症（CPTSD）</h1>
+  <p class="hero-sub">童年创伤的理解与疗愈</p>
+  <p class="hero-intro">
+    你并不是「坏掉了」。你的神经系统在极端环境中学会了生存——那些反应曾经保护了你。理解它们从何而来，是找回自己的第一步。
+  </p>
+  <a href="#what-is-cptsd" class="hero-cta">开始探索</a>
+</div>
+
+<!-- ========== §1 什么是 CPTSD (blur #2) ========== -->
+<section id="what-is-cptsd" class="glass-panel-blur">
+  <h2>什么是 CPTSD？</h2>
+
+  <p>你并不是「坏掉了」。你的神经系统在极端环境中学会了生存——那些反应曾经保护了你。理解它们从何而来，是找回自己的第一步。</p>
+
+  <h3>CPTSD 的核心定义</h3>
+
+  <div class="concept-box">
+    <h4>ICD-11 诊断框架</h4>
+    <p>世界卫生组织在 ICD-11 中首次将 CPTSD 列为独立诊断。它包含两大核心：<strong>PTSD 核心症状</strong>（再体验、回避、过度警觉）加上<strong>自我组织障碍（DSO）</strong>——情感调节困难、负面自我概念、人际关系困扰。这不是「更严重的 PTSD」，而是长期重复创伤在人格层面留下的深刻印记。</p>
+  </div>
+
+  <h3>CPTSD 与 PTSD 的关键差异</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>PTSD</th><th>CPTSD</th></tr></thead>
+      <tbody>
+        <tr><td>创伤本质</td><td>单次事件（车祸、天灾、袭击）</td><td>长期重复创伤（童年虐待、家庭暴力、长期囚禁）</td></tr>
+        <tr><td>核心损伤</td><td>威胁感、恐惧记忆的过度激活</td><td>自我认同、情感调节与关系能力的系统性瓦解</td></tr>
+        <tr><td>对自我的影响</td><td>相对有限——「这件事发生在我身上」</td><td>深远——「我就是有问题的人」</td></tr>
+        <tr><td>关系影响</td><td>可能回避触发情境</td><td>难以建立或维持信任、亲密；反复陷入创伤性关系模式</td></tr>
+        <tr><td>治疗重点</td><td>处理特定创伤记忆</td><td>需分阶段：先建立安全与稳定，再处理记忆，最后整合</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>CPTSD 与 BPD（边缘型人格）的鉴别</h3>
+
+  <div class="concept-box">
+    <p>两者有重叠（情感不稳、关系困难），但本质不同。CPTSD 的核心是<strong>创伤后压力反应的延伸</strong>，有明确的创伤脉络；BPD 的核心是<strong>认同混乱与对被抛弃的极度敏感</strong>。CPTSD 较少出现「分裂」的防卫机制（将人极端分为全好或全坏）。关键区分点：CPTSD 患者害怕触发情境，BPD 患者害怕被遗弃。准确鉴别影响治疗方向——BPD 对应 DBT，CPTSD 需要分阶段创伤治疗。</p>
+  </div>
+
+  <h3>不是「缺陷」，而是「适应」</h3>
+
+  <div class="concept-box highlight-box">
+    <p>你的过度警觉不是「想太多」——它是那个曾经的你用来预测危险、提前逃离的精密预警系统。你的情感麻木不是「冷漠」——它是你的大脑在你无法承受时为你关上的安全闸门。你的内在批判者不是「真实的评价」——它是那些伤害过你的人留下的回音。创伤反应是神经系统在最恶劣条件下演化出的<strong>生存策略</strong>。问题不在于「你有什么毛病」，而在于「你经历了什么」。</p>
+  </div>
+</section>
+
+<!-- ========== §2 创伤如何活在身体里 (static) ========== -->
+<section id="trauma-in-body" class="glass-panel-blur">
+  <h2>创伤如何活在身体里</h2>
+
+  <p>创伤不只是「发生过的事」——它在你的神经系统、肌肉张力、呼吸模式甚至基因表现里留下了足迹。这就是为什么单纯「谈一谈」往往不够：身体也需要参与疗愈。</p>
+
+  <h3>多迷走神经理论：自律神经的三层级</h3>
+
+  <div class="concept-box">
+    <h4>Porges 的多迷走神经理论与 4F 反应</h4>
+    <p>根据 Stephen Porges 提出的多迷走神经理论，自律神经不只是「交感 vs 副交感」二元对立，而是三层级结构：</p>
+    <ul>
+      <li><strong>腹侧迷走神经（Ventral Vagal）</strong>：社会参与系统。安全时启动——你能够放松、连结、微笑。这是「休息与消化」的真正生理基础。</li>
+      <li><strong>交感神经系统（Sympathetic）</strong>：动员系统。威胁出现时启动——战斗（Fight）或逃跑（Flight）。心跳加速、瞳孔扩张、血液流向四肢。</li>
+      <li><strong>背侧迷走神经（Dorsal Vagal）</strong>：瘫痪系统。生命威胁时启动——僵住（Freeze）或讨好（Fawn）。极度降低代谢、解离、麻木。</li>
+    </ul>
+    <p>在反复的童年创伤中，这三个系统被过度训练：交感系统长期在「开」的状态（慢性过度警觉），而背侧系统在无助情境中被反复触发（解离）。疗愈的核心是重建<strong>腹侧迷走神经的安全信号</strong>——让身体知道：现在是安全的。</p>
+  </div>
+
+  <h3>神经觉（Neuroception）：无意识的危险侦测</h3>
+
+  <div class="concept-box">
+    <p>Porges 提出「神经觉」这个概念：你的神经系统在<strong>意识层面之下</strong>持续扫描环境中的安全/危险信号——比大脑皮质的判断更快、更古老。这解释了为什么即使在客观安全的环境中，创伤幸存者仍感到威胁：神经觉被校准为<strong>预设危险模式</strong>。你的身体比你的理性更早做出反应——那并不是你的错，而是你的神经系统在尽它的职责。</p>
+  </div>
+
+  <h3>身体记忆：创伤储存在感觉动作系统</h3>
+
+  <div class="concept-box">
+    <p>Bessel van der Kolk 在其经典著作《心灵的伤，身体会记住》中指出：创伤记忆储存在<strong>感觉动作系统</strong>（身体感觉、肌肉张力、姿势、呼吸模式），而非语言系统。这就是为什么创伤幸存者常「说不出来」或无法建立前后一致的叙事——创伤时布洛卡区（语言中枢）活性下降。身体记得那些大脑无法说出的事。疗愈需要让身体也参与进来——透过身体体验疗法（SE）、舞蹈治疗、瑜伽、眼动脱敏（EMDR）等。</p>
+  </div>
+
+  <h3>表观遗传：创伤的跨代传递</h3>
+
+  <div class="concept-box">
+    <p>Rachel Yehuda 的研究显示：创伤不只是心理层面的传递，更可能在<strong>DNA 甲基化</strong>层面留下标记。她在大屠杀幸存者的后代中发现 FKBP5 和 NR3C1 基因的甲基化改变——这些基因调控压力荷尔蒙受体的敏感度。更惊人的是：这些表观遗传标记并非不可逆——Weaver 等人（2004）的动物研究证明，丰富环境和积极照护可以逆转甲基化模式。此外，荷兰饥荒冬季（Dutch Hunger Winter）的研究亦发现：孕期饥饿暴露的后代，在成年后有更高的代谢疾病和心理健康风险——跨代效应不仅影响心理，还影响整个生理系统。</p>
+  </div>
+</section>
+
+<!-- ========== §3 被创伤重塑的自我 (static) ========== -->
+<section id="reshaped-self" class="glass-panel-blur">
+  <h2>被创伤重塑的自我</h2>
+
+  <p>如果在成长过程中，你学到的是「我不够好」「我的感受不重要」「亲密等于危险」——那这些信念并非你的「本质」，而是创伤在你心里留下的痕迹。它们可以被辨认，也可以被改写。</p>
+
+  <h3>内在批判者：借来的声音</h3>
+
+  <div class="concept-box">
+    <h4>Pete Walker 的内在批判者理论</h4>
+    <p>许多 CPTSD 幸存者的脑海中有一个残酷的内在声音——不断批评、羞辱、恐吓自己。Pete Walker（《复杂性创伤后压力症》作者）指出：这个内在批判者并非你天生的自我，而是<strong>借来的声音</strong>——它内化了童年时期照顾者的批评、忽视或虐待。当孩子在一个无法逃离的环境中反复接收到「你不够好」的讯息时，为了维持对照顾者的依恋（这是生存所需），孩子的大脑会选择<strong>责怪自己而非照顾者</strong>——「是我不好，所以他们才这样对我。」这种自责在童年是适应性的，但在成年后却成为自我攻击的根源。</p>
+  </div>
+
+  <h3>结构性解离：ANP 与 EP</h3>
+
+  <div class="concept-box">
+    <h4>van der Hart 的结构性解离理论</h4>
+    <p>持续的童年创伤可能导致人格结构出现<strong>结构性解离</strong>——人格分裂成两类基本部分：</p>
+    <ul>
+      <li><strong>ANP（Apparently Normal Part，日常人格）</strong>：负责日常生活，努力「看起来正常」。压抑创伤记忆，情感范围受限（经常麻木）。</li>
+      <li><strong>EP（Emotional Part，情感人格）</strong>：携带创伤记忆和强烈情感，包含当时的痛苦、恐惧、愤怒。在触发时「接管」意识。</li>
+    </ul>
+    <p>在儿童期，这些部分尚未完全整合——创伤破坏了正常的自我整合过程。ANP 发展为「表面上正常地去上学/工作」，EP 冻结在创伤时刻。这不是「多重人格」，而是创伤后人格整合失败的结果。理解这一点可以帮助幸存者不再因「情绪突然失控」或「感觉不像自己」而感到羞耻——那是大脑在试图管理无法承受的经验。</p>
+  </div>
+
+  <h3>紊乱型依恋与解离的关联</h3>
+
+  <div class="concept-box">
+    <p>Main 和 Hesse 的研究发现：当照顾者既是安全来源又是威胁来源时（例如虐待的家长），婴儿陷入无法解决的两难——本能驱使他们靠近照顾者求安全，但靠近又带来危险。这种「恐惧而无解」的状态是<strong>紊乱型依恋</strong>的根源，也是成年后解离症状的最强预测因子之一。Lyons-Ruth 进一步发现，照顾者的「失调的母性行为」（如突然的敌意或退缩、角色反转、混乱的情感沟通）对婴儿的影响比明显的虐待更难被察觉，但同样具有破坏性。</p>
+  </div>
+
+  <h3>自我关怀：修复的起点</h3>
+
+  <div class="concept-box">
+    <p>Kristin Neff 的自我关怀研究提供了重要框架。自我关怀包含三个成分：<strong>自我友善</strong>（对自己温和而非严厉）、<strong>共同人性</strong>（认识到痛苦是普遍的人类经验，而非孤立）、<strong>正念</strong>（对当下经验的非评判觉察）。研究发现，自我关怀可以预测创伤后的复原轨迹——自我关怀越高，创伤后压力症状越低，创伤后成长越高。这不是「自我可怜」，而是<strong>给自己曾经没有得到的温和对待</strong>。</p>
+  </div>
+
+  <h3>DSO 自我组织障碍的三个维度</h3>
+
+  <div class="concept-box">
+    <p>ICD-11 定义的 DSO 包含三个互相关联的维度：</p>
+    <ol>
+      <li><strong>情感调节困难</strong>：情绪反应过度敏感、难以平静、或长期情感麻木——因为童年时没有人教你如何调节情绪，也没有人在旁共同调节。</li>
+      <li><strong>负面自我概念</strong>：深层的无价值感、羞耻感、失败感——根植于「被对待的方式＝你的价值」的童年等式。你被对待得不好，所以你以为自己不好。</li>
+      <li><strong>人际关系困扰</strong>：难以维持关系、感到与他人隔绝、或反复陷入有害的关系模式——因为你在不安全的人际环境中长大，从未体会过安全依恋的感觉。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== §4 创伤中的关系 (static) ========== -->
+<section id="trauma-relationships" class="glass-panel-blur">
+  <h2>创伤中的关系</h2>
+
+  <p>创伤发生在关系中，疗愈也需要发生在关系中。理解你在关系中重复的模式，不是为了责备自己，而是为了打破看不见的链条。</p>
+
+  <h3>依恋理论：从 Bowlby 到心智化</h3>
+
+  <div class="concept-box">
+    <p>John Bowlby 奠定了依恋理论的基础：婴儿与照顾者之间的情感连结是生存所必需的，而这种早期关系的品质决定了孩子对自己、他人与关系的「内在运作模式」。Mary Ainsworth 透过「陌生情境」实验辨识出安全型、回避型、矛盾型三种依恋模式，Main 和 Solomon 后来加入<strong>紊乱型</strong>——最与创伤相关的模式。</p>
+    <p>Peter Fonagy 将依恋理论推进到当代：提出<strong>心智化（Mentalization）</strong>——理解自己和他人的心理状态（想法、感受、意图）的能力。心智化不是天生的，而是在安全依恋关系中透过照顾者的「镜映」（marking &amp; mirroring）发展出来的。当照顾者无法准确镜映孩子的情感——或因自身创伤而扭曲镜映——孩子的心智化能力受损，成年后难以区分「我感受到的」和「真实发生的」，也更难理解他人的意图。</p>
+  </div>
+
+  <h3>紊乱型依恋的形成与影响</h3>
+
+  <div class="concept-box">
+    <p>当照顾者本身是创伤来源时，孩子面对一个无法解决的悖论：求生存的本能驱使他靠近照顾者，但靠近又带来恐惧。Main 和 Hesse 将此描述为<strong>「恐惧而无解」</strong>（fright without solution）。这种早期经验导致成年后的人际关系中出现：无法信任他人但同时渴望连结、在亲密关系中反复感到恐惧、或者完全回避情感亲密。Cooke 等人（2026）的纵向研究证实，社会人口风险和母亲的失调照顾行为是紊乱型依恋的长期预测因子。</p>
+  </div>
+
+  <h3>创伤中的关系模式</h3>
+
+  <div class="concept-box">
+    <p>创伤幸存者在关系中常出现以下模式——这些不是「人格缺陷」，而是神经系统在保护你：</p>
+    <ul>
+      <li><strong>重演（Reenactment）</strong>：无意识地重复童年的关系模式——选择冷漠的伴侣、忍受虐待、或在关系中扮演照顾者角色。大脑倾向于重复熟悉的模式，即使它是痛苦的——因为熟悉感被神经系统误认为「可预测」。</li>
+      <li><strong>回避（Avoidance）</strong>：无法信任任何人、害怕亲密、在关系变得深入之前逃离——因为早期的亲密伴随著伤害。</li>
+      <li><strong>依赖（Dependency）</strong>：过度依附于伴侣，害怕被抛弃，牺牲自我以维持关系——因为童年时从未获得稳定的安全基础。</li>
+    </ul>
+  </div>
+
+  <h3>安全关系作为疗愈基础</h3>
+
+  <div class="concept-box highlight-box">
+    <p>神经科学研究一再证明：<strong>安全关系本身就是最强大的神经调节器</strong>。当一个人在安全关系中被看见、被理解、被接纳时，腹侧迷走神经被激活，大脑的可塑性窗口被打开——这使得治疗性关系本身成为最有效的「药物」。疗愈不一定需要治疗师——稳定的友谊、支持的社群、与宠物的连结，都可以成为修复性关系。研究发现社会支持是防止解离症状的最强保护因子之一（Fung et al., 2026）。<strong>你不需要独自走完这条路。</strong></p>
+  </div>
+
+  <h3>社会文化与结构性创伤</h3>
+
+  <div class="concept-box">
+    <p>创伤不仅仅发生在家庭内部。贫困、种族歧视、制度暴力、战争、被迫迁徙——这些<strong>结构性创伤</strong>造成的影响与童年创伤同样深远。费城 ACE 扩展研究将社区暴力、种族歧视、寄养系统经历、邻里不安全纳入创伤评估——因为创伤不能脱离社会脉络来理解。一个在贫困社区长大的孩子，即使家庭功能良好，仍暴露在更多的毒性压力之中。理解这一点至关重要：<strong>疗愈不仅是个人的责任，也需要社会结构的改变。</strong></p>
+  </div>
+</section>
+
+<!-- ========== §5 创伤的大脑与神经系统 (static) ========== -->
+<section id="trauma-brain" class="glass-panel-blur">
+  <h2>创伤的大脑与神经系统</h2>
+
+  <p>创伤不是「意志软弱」——它在你大脑的结构和功能中留下了可量测的变化。好消息是：大脑具有神经可塑性——它可以改变、可以复原。</p>
+
+  <h3>童年创伤对脑区的影响</h3>
+
+  <div class="concept-box">
+    <p>童年创伤对三个关键脑区有显著影响：</p>
+    <ul>
+      <li><strong>海马回（Hippocampus）</strong>：负责记忆整合与情境化。长期毒性压力导致海马回体积缩小——这解释了为什么创伤记忆常是碎片化、失去时间脉络的。</li>
+      <li><strong>杏仁核（Amygdala）</strong>：负责恐惧侦测与情绪反应。创伤后杏仁核过度活跃——你对潜在威胁的反应比非创伤者更强烈、更快速。</li>
+      <li><strong>前额叶皮质（Prefrontal Cortex）</strong>：负责理性判断、冲动控制和情绪调节。创伤削弱了前额叶对杏仁核的「自上而下」调控——你很难「理性地说服自己冷静下来」。</li>
+    </ul>
+    <p>这些变化不是「脑损伤」——它们是大脑在毒性环境中做出的适应性调整。问题是，这些调整在创伤结束后仍然持续。</p>
+  </div>
+
+  <h3>ACE 研究与扩展</h3>
+
+  <div class="concept-box">
+    <h4>Felitti 的 ACE 研究及其当代扩展</h4>
+    <p>Felitti 和 Anda 在 1998 年的 ACE（Adverse Childhood Experiences）研究彻底改变了我们对童年创伤的理解。他们发现 10 类童年逆境（虐待、忽视、家庭功能障碍）与成年后几乎所有主要健康问题——心脏病、癌症、糖尿病、自杀、药物滥用——有剂量效应关系。ACE 分数 ≥4 者相较于 ACE=0 者，自杀风险增加 12 倍，酒精成瘾增加 7 倍。</p>
+    <p><strong>费城 ACE 扩展版</strong>更进一步，纳入了传统 ACE 未涵盖的结构性创伤：社区暴力、种族歧视经历、寄养系统、邻里不安全、霸凌。研究发现这些扩展 ACE 对健康的预测力不亚于原始 ACE。</p>
+    <p>但 ACE 也有方法学限制：它只计数事件种类，不考虑严重性、频率、发生年龄或持续时间——两个同样 ACE=4 的人可能有完全不同的创伤负荷。</p>
+  </div>
+
+  <h3>PACEs：正向童年经验的保护作用</h3>
+
+  <div class="concept-box">
+    <p>创伤研究的最新趋势从单一的「风险因子」转向同时关注<strong>保护因子</strong>。PACEs（Positive Childhood Experiences，正向童年经验）研究发现：正向经验——如同家人一起吃饭、感觉在学校被关心、有至少一位非父母的支持性成人——即使在 ACE 分数高的情况下，也能显著降低成年后的心理健康问题。这带来了重要的临床应用：<strong>疗愈不只是处理创伤，也是建立正向经验</strong>。</p>
+  </div>
+
+  <h3>神经可塑性：大脑可以复原</h3>
+
+  <div class="concept-box highlight-box">
+    <p>这可能是创伤神经科学中最带来希望的研究发现：<strong>大脑具有终身可塑性</strong>。多项研究证实了以下复原证据：</p>
+    <ul>
+      <li><strong>正念冥想</strong>：8 周正念减压（MBSR）课程后，杏仁核灰质密度下降，海马回和前额叶灰质增加——与压力反应减弱和情绪调节改善相关。</li>
+      <li><strong>心理治疗</strong>：有效的创伤治疗（如 EMDR、TF-CBT）不仅改变心理症状，还能改变大脑结构——治疗后海马回体积增加、前额叶-杏仁核的功能连结改善。</li>
+      <li><strong>身体运动</strong>：有氧运动促进 BDNF（脑源性神经营养因子）分泌，促进海马回神经新生；瑜伽和身体导向治疗可改善 HRV（心率变异性），反映自律神经调节的改善。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== §6 疗愈之路 (blur #3) ========== -->
+<section id="healing-path" class="glass-panel-blur">
+  <h2>疗愈之路</h2>
+
+  <p>疗愈不是「回到从前」——因为那个「从前」可能本来就是伤痕累累的。疗愈是找到一种新的活著的方式：更整合、更柔软、更自由。</p>
+
+  <h3>循证治疗概述</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>治疗方法</th><th>核心机制</th><th>适用范围</th><th>效应量</th></tr></thead>
+      <tbody>
+        <tr><td><strong>EMDR</strong>（眼动脱敏与再处理）</td><td>双侧刺激促进创伤记忆的适应性处理</td><td>PTSD、CPTSD 创伤记忆处理</td><td>大效应量 (g &gt; 1.0)</td></tr>
+        <tr><td><strong>TF-CBT</strong>（创伤聚焦认知行为治疗）</td><td>认知重建 + 暴露 + 照顾者参与</td><td>儿童与青少年创伤，有强大实证基础</td><td>中至大效应量</td></tr>
+        <tr><td><strong>DBT-PTSD</strong></td><td>DBT 技能 + 创伤处理</td><td>CPTSD 合并严重情绪调节困难</td><td>中效应量，改善 PTSD 和 BPD 症状</td></tr>
+        <tr><td><strong>STAIR</strong>（情感与人际调节技能训练）</td><td>先建立情感调节与关系技能，再处理创伤</td><td>CPTSD 的情感与人际层面</td><td>改善情感调节和人际功能</td></tr>
+        <tr><td><strong>MBT</strong>（心智化治疗）</td><td>提升理解自我与他人心理状态的能力</td><td>解离、依恋困难、紊乱型依恋</td><td>中效应量</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>身体导向治疗</h3>
+
+  <div class="concept-box">
+    <p>如果创伤储存在身体里，那么疗愈也需要身体的参与：</p>
+    <ul>
+      <li><strong>SE 身体体验（Somatic Experiencing）</strong>：Peter Levine 开发，透过引导觉察身体感觉来释放冻结在神经系统中的创伤能量。不强调叙事，而聚焦于完成身体未完成的防卫反应。</li>
+      <li><strong>NMT 神经序列治疗（Neurosequential Model of Therapeutics）</strong>：Bruce Perry 开发，按照大脑发展顺序进行治疗——先调节脑干（身体节奏、感觉），再处理边缘系统（关系、情感），最后处理皮质功能（认知、反思）。对于发展性创伤尤其适用。</li>
+    </ul>
+  </div>
+
+  <h3>药物辅助治疗</h3>
+
+  <div class="concept-box">
+    <p>药物可以作为辅助，但不应被视为唯一解方：</p>
+    <ul>
+      <li><strong>SSRI</strong>：选择性血清素再回收抑制剂（如舍曲林、帕罗西汀）对 PTSD 症状有一定效果，但对 CPTSD 的 DSO 维度（负面自我、关系困难）效果有限。</li>
+      <li><strong>MDMA 辅助心理治疗</strong>：研究显示在专业治疗师的陪同下，MDMA 可以降低恐惧反应、增加信任与情感开放度，使创伤处理更深入。FDA 已授予突破性疗法资格，但仍在试验阶段。</li>
+      <li><strong>氯胺酮（Ketamine）</strong>：在治疗难治型 PTSD 中显示快速抗忧郁效果，但对 CPTSD 的研究仍在早期阶段。</li>
+    </ul>
+  </div>
+
+  <h3>创伤后成长（PTG）：不只是复原</h3>
+
+  <div class="concept-box highlight-box">
+    <p>Tedeschi 和 Calhoun 提出的创伤后成长模型揭示了一个重要事实：创伤不只是损伤，也可能成为<strong>蜕变的催化剂</strong>。PTG 包含五个维度：</p>
+    <ol>
+      <li><strong>个人力量</strong>：「我比自己以为的更强大」</li>
+      <li><strong>新的可能性</strong>：创伤打开了新的人生方向和价值观</li>
+      <li><strong>与他人的关系</strong>：更深、更真实的连结</li>
+      <li><strong>对生命的欣赏</strong>：对微小事物的感激更敏锐</li>
+      <li><strong>灵性与存在性成长</strong>：对生命意义的重新理解</li>
+    </ol>
+    <p>PTG 不是强制乐观——它不否定痛苦的真实性，也不要求你「感恩」。它只是说：在极端的破碎中，有些人重建了比从前更完整的自己。</p>
+  </div>
+
+  <h3>韧性因子：保护你的东西</h3>
+
+  <div class="concept-box">
+    <p>不是所有经历创伤的人都会发展成 CPTSD。韧性（Resilience）的科学帮助我们理解哪些因素提供了保护：</p>
+    <ul>
+      <li><strong>高 HRV（心率变异性）</strong>：反映自律神经灵活性——腹侧迷走神经张力强，能够在压力后快速恢复。</li>
+      <li><strong>社会支持</strong>：至少有一位安全、稳定、可依靠的关系——无论是家人、伴侣、朋友或治疗师。</li>
+      <li><strong>安全依恋</strong>：即使童年没有安全依恋，成年后建立的矫正性情绪经验仍然能够重塑内在运作模式。</li>
+      <li><strong>意义建构</strong>：能够为经历找到个人意义——不是合理化创伤，而是在痛苦中找到属于自己的理解框架。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== §7 自助工具箱 (static) ========== -->
+<section id="toolkit" class="glass-panel-blur">
+  <h2>自助工具箱</h2>
+
+  <p>这些工具无法取代专业治疗，但可以在日常生活中帮助你稳定神经系统、觉察内在状态、建立自我关怀。选择适合你的，慢慢练习——这不是考试，不需要一次做完。</p>
+
+  <div class="toolkit-grid">
+
+    <div class="toolkit-card">
+      <h4>自我再抚育微行动</h4>
+      <p>每天做一件你童年需要但没得到的事：给自己准备一顿温暖的早餐、允许自己休息、对自己说「你今天已经做得很好了」、给自己一个柔软的毯子。这些看似微小的行动，实质上在重新训练你的神经系统——<strong>你在向自己证明：这一次，有人在乎你。</strong></p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>情绪闪回管理</h4>
+      <p>Pete Walker 的 13 步骤是管理情绪闪回的核心工具。情绪闪回是 CPTSD 最常见的症状之一——你突然被童年时期的恐惧、羞耻、无助感淹没，却意识不到自己在「闪回」中。关键第一步：<strong>辨认</strong>——告诉自己「我正在经历情绪闪回」。这一步本身就已经启动了前额叶的调节功能。然后使用接地技术、自我安抚、寻求安全连结来慢慢回到当下。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>缩小内在批判者</h4>
+      <p>当内在批判者出现时，不要与它争辩（它永远不会被说服），而是：①辨认它——「这是我内在批判者的声音，不是我」；②将它的话写下来，看著纸上的文字，问自己「我会对一个受了伤的朋友说这些吗？」③用自我关怀的话语替换——「我知道你害怕做错，但这次没关系的。」这需要反复练习——内在批判者花了多年建立，不会一夜消失。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>4F 反应觉察</h4>
+      <p>在一天中多次问自己：「我现在处在哪个状态？」<strong>战斗（Fight）</strong>：烦躁、想争辩、控制；<strong>逃跑（Flight）</strong>：焦虑、忙个不停、完美主义；<strong>僵住（Freeze）</strong>：麻木、拖延、与外界隔绝；<strong>讨好（Fawn）</strong>：过度顺从、无法说不、迎合他人。不需要改变，只需觉察。觉察本身就是调节的开始。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>身体接地技术</h4>
+      <p>当你感到解离或被情绪淹没时：①5-4-3-2-1：说出 5 样你看到的、4 样你触碰到的、3 样听到的、2 样闻到的、1 样尝到的；②双脚平放地面，感受脚底的压力；③握住冰块或温热的杯子——强烈的感官刺激可以将你「拉回」身体。这些技术的原理是：<strong>将注意力从内部威胁（情绪）转移到外部现实（感官）</strong>。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>多迷走神经调节练习</h4>
+      <p>基于 Porges 理论和 Deb Dana 的临床应用：①<strong>腹侧迷走神经激活</strong>：缓慢呼气（吐气比吸气长）、哼唱、发出低频「Voo」声——这些刺激喉部肌肉，启动腹侧迷走神经；②<strong>定向（Orienting）</strong>：转头环顾房间，让眼睛和颈部肌肉进行缓慢的环境扫描——这向神经系统发送「环境安全」的信号；③<strong>社交参与信号</strong>：与一个安全的人进行温和的眼神接触、微笑、使用柔和的语调——即使只是想像也可以。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>心智化练习</h4>
+      <p>基于 Fonagy 的 MBT 理论：①当你对某人的行为感到强烈反应时，停下来问自己「他/她可能在想什么？可能有什么感受是我不知道的？」——这帮助你<strong>区分你对他人的解读和实际发生的事</strong>；②当你被情绪淹没时，对自己说「我现在有这个感受，但这个感受不等于事实」；③练习「第三人称视角」——想像你是一个友善的观察者，从外部看这场互动。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>Safe and Sound Protocol（SSP）</h4>
+      <p>SSP 是由 Porges 博士开发的五小时听觉介入，使用经过特殊滤波处理的音乐来刺激中耳肌肉，进而调节腹侧迷走神经功能。它帮助神经系统从防卫状态转向社会参与状态。SSP 需要由经过培训的专业人员提供，但许多使用者报告在完成后：社交互动变得较不费力、对声音的敏感度降低、感觉「更像自己」。目前的研究证据在累积中。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>脑-心-腹下降练习</h4>
+      <p>这是一个简单但强大的整合练习：从头顶开始，缓慢地将注意力「下降」穿过大脑（觉察思绪）、喉咙（觉察未说出的话）、心脏区域（觉察情感）、太阳神经丛（觉察身体紧张）、腹部（觉察深层感受）。每次停留 30 秒。这个练习整合了认知、情感和身体层面的觉察，特别适合在感到「碎片化」或「不连接」时使用。</p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>创伤后成长引导</h4>
+      <p>基于 Tedeschi 和 Calhoun 的 PTG 模型：①<strong>成长叙事练习</strong>：写下创伤经历后三个「你从中学到或发现的关于自己的力量」——不是美化创伤，而是承认你如何与之搏斗；②<strong>关系深度扫描</strong>：列出创伤后变得更深厚的关系，反思是什么让这些关系「更深」；③<strong>存在性反思</strong>：每周用 5 分钟回答「今天什么让我感到活著或真实？」无需宏大答案，微小的瞬间也足够。<em>PTG 不是强制乐观，而是允许自己承认：我在被摧毁的过程中，也重新建造了一些东西。</em></p>
+    </div>
+
+    <div class="toolkit-card">
+      <h4>结构性解离的自我觉察</h4>
+      <p>来自结构性解离理论的日常应用：①<strong>部分日志</strong>：当你注意到「我好像不是平常的自己」（如突然麻木、暴怒、退缩），记录触发情境、当下感受与身体感觉、这种状态与童年哪个时期相似；②<strong>部分对话</strong>：对情绪部分说「我看到你了，现在是 2026 年，我是安全的」，而非压抑或恐惧；③<strong>锚定技术</strong>：当感到「切换」发生时，握住一个有特定质感的物品（如光滑石头、毛绒玩具），它在不同状态中提供连续感。<em>这是进阶工具——若尚未建立足够的安全感，先从身体接地和正念练习开始。</em></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== §8 参考文献 (static) ========== -->
+<section id="references" class="glass-panel-blur">
+  <h2>参考文献</h2>
+
+  <div class="ref-teaser">
+    <p style="font-size: 3rem; margin: 0 0 0.5rem; color: var(--amber-light);">📚</p>
+    <h3 style="color: var(--text-primary); margin: 0 0 0.5rem; font-size: 1.15rem;">258 篇研究引用</h3>
+    <p style="color: var(--text-secondary); margin: 0 0 1.5rem; font-size: 0.9rem; line-height: 1.6;">
+      涵盖依恋理论、神经科学、表观遗传学、ACE 研究、ICD-11 复杂 PTSD 诊断、<br>
+      临床干预、解离理论、恢复与复原力、跨代传递等 10 个研究主题
+    </p>
+    <a href="references.html" class="ref-link-btn">查看完整参考文献 →</a>
+  </div>
+
+  <p style="text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 1rem;">
+    共 275 篇 · 更新于 2026-07
+  </p>
+</section>
+
+</div><!-- /.main -->
+
+<!-- Back to Top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>复杂性创伤后压力症（CPTSD）：童年创伤的理解与疗愈 | Understanding &amp; Healing Childhood Trauma</p>
+  <p>内容基于 Pete Walker、Bessel van der Kolk、Judith Herman、John Bowlby、Stephen Porges、Peter Fonagy、Rachel Yehuda 等学者研究</p>
+  <p>© 2026 个人学习用途 — 仅供参考，不构成临床建议</p>
+  <a href="development.html" class="footer-sub-link">依年龄发展路径 →</a>
+</footer>
+
+<!-- ===== JavaScript ===== -->
+<script>
+(function() {
+  var sections = document.querySelectorAll('section[id]');
+  var pills = document.querySelectorAll('.nav-pill');
+
+  window.addEventListener('scroll', function() {
+    var current = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    pills.forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<script>
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
+(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
+</script>
+</body>
+</html>
