@@ -11,6 +11,7 @@
     pause: '暫停動態',
     resume: '恢復動態',
     exit: '快速離開',
+    backToTop: '返回頂部',
     muted: '背景音效已靜音',
     unmuted: '背景音效已開啟',
     search: '搜尋作者、標題、年份或 DOI',
@@ -23,6 +24,7 @@
     pause: 'Pause motion',
     resume: 'Resume motion',
     exit: 'Quick exit',
+    backToTop: 'Back to top',
     muted: 'Background audio is muted',
     unmuted: 'Background audio is on',
     search: 'Search author, title, year, or DOI',
@@ -32,6 +34,25 @@
 
   const video = document.querySelector('.bg-video');
   const muteButton = document.querySelector('.mute-btn');
+  let videoPlaybackPromise = null;
+  let userSelectedAudio = false;
+
+  function startBackgroundVideo() {
+    if (!video || document.body.classList.contains('motion-paused')) return;
+    if (!userSelectedAudio) video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    renderMuteState();
+
+    videoPlaybackPromise = video.play();
+    if (videoPlaybackPromise && typeof videoPlaybackPromise.catch === 'function') {
+      videoPlaybackPromise.catch(function () {
+        document.body.classList.add('video-fallback-active');
+      });
+    }
+  }
 
   function renderMuteState() {
     if (!video || !muteButton) return;
@@ -44,22 +65,42 @@
 
   window.toggleMute = function () {
     if (!video) return;
+    userSelectedAudio = true;
     video.muted = !video.muted;
     localStorage.setItem('bgMuted', String(video.muted));
     renderMuteState();
-    if (video.paused) video.play().catch(function () {});
+    if (video.paused) {
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(function () {
+          video.muted = true;
+          renderMuteState();
+          startBackgroundVideo();
+        });
+      }
+    }
   };
 
   if (video) {
-    const saved = localStorage.getItem('bgMuted');
-    video.muted = saved === null ? true : saved === 'true';
-    video.defaultMuted = true;
-    renderMuteState();
-    video.play().catch(function () {
+    const storedMuted = localStorage.getItem('bgMuted');
+    if (storedMuted === 'false') {
+      video.muted = false;
+      userSelectedAudio = true;
+    } else {
       video.muted = true;
-      renderMuteState();
-      video.play().catch(function () {});
+      video.defaultMuted = true;
+      video.setAttribute('muted', '');
+    }
+    renderMuteState();
+    video.addEventListener('playing', function () {
+      document.body.classList.remove('video-fallback-active');
     });
+    video.addEventListener('canplay', startBackgroundVideo, { once: true });
+    window.addEventListener('pageshow', startBackgroundVideo);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) startBackgroundVideo();
+    });
+    startBackgroundVideo();
   }
 
   const main = document.querySelector('.main');
@@ -84,11 +125,22 @@
 
   const controls = document.createElement('div');
   controls.className = 'care-controls';
-  controls.setAttribute('aria-label', isZh ? '閱讀安全控制' : 'Reading safety controls');
+  controls.setAttribute('aria-label', isZh ? '媒體與閱讀安全控制' : 'Media and reading safety controls');
   controls.innerHTML =
     '<button type="button" class="care-control motion-toggle">' + text.pause + '</button>' +
-    '<button type="button" class="care-control quick-exit">' + text.exit + '</button>';
+    '<button type="button" class="care-control quick-exit">' + text.exit + '</button>' +
+    '<button type="button" class="care-control bottom-back-to-top" aria-label="' +
+      text.backToTop + '" title="' + text.backToTop + '">&uarr;</button>';
+  if (muteButton) {
+    muteButton.classList.remove('nav-pill');
+    muteButton.classList.add('care-control', 'bottom-audio-control');
+    controls.insertBefore(muteButton, controls.firstChild);
+  }
   document.body.appendChild(controls);
+
+  controls.addEventListener('animationend', function () {
+    controls.style.animation = 'none';
+  });
 
   const motionButton = controls.querySelector('.motion-toggle');
   motionButton.addEventListener('click', function () {
@@ -171,6 +223,13 @@
 
   const sectionLinks = Array.from(document.querySelectorAll('.floating-nav a[href^="#"]'));
   const floatingNavs = Array.from(document.querySelectorAll('.floating-nav'));
+  floatingNavs.forEach(function (nav) {
+    const finishEntranceAnimation = function () {
+      nav.classList.add('floating-direction-managed');
+    };
+    nav.addEventListener('animationend', finishEntranceAnimation, { once: true });
+    setTimeout(finishEntranceAnimation, 1400);
+  });
 
   function updateNavScrollState(nav) {
     const maxScroll = Math.max(0, nav.scrollWidth - nav.clientWidth);
@@ -221,7 +280,64 @@
     floatingNavs.forEach(updateNavScrollState);
   });
 
-  document.querySelectorAll('.back-to-top').forEach(function (button) {
+  let lastPageScrollY = Math.max(0, window.scrollY);
+  let directionDistance = 0;
+  let previousDirection = 0;
+  let scrollFramePending = false;
+  const directionThreshold = 18;
+  const alwaysVisibleZone = 72;
+
+  function setFloatingUiHidden(hidden) {
+    if (document.activeElement && document.activeElement.closest &&
+        document.activeElement.closest('.floating-nav, .care-controls, .back-to-top, .reference-tools')) {
+      hidden = false;
+    }
+    if (hidden) {
+      floatingNavs.forEach(function (nav) {
+        nav.classList.add('floating-direction-managed');
+      });
+    }
+    document.body.classList.toggle('floating-ui-hidden', hidden);
+  }
+
+  function updateFloatingUiForScroll() {
+    const currentY = Math.max(0, window.scrollY);
+    const delta = currentY - lastPageScrollY;
+    const direction = delta > 0 ? 1 : delta < 0 ? -1 : 0;
+
+    if (currentY <= alwaysVisibleZone) {
+      directionDistance = 0;
+      previousDirection = 0;
+      setFloatingUiHidden(false);
+    } else if (direction !== 0) {
+      if (direction !== previousDirection) directionDistance = 0;
+      directionDistance += Math.abs(delta);
+      previousDirection = direction;
+
+      if (directionDistance >= directionThreshold) {
+        setFloatingUiHidden(direction > 0);
+        directionDistance = 0;
+      }
+    }
+
+    lastPageScrollY = currentY;
+    scrollFramePending = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (scrollFramePending) return;
+    scrollFramePending = true;
+    requestAnimationFrame(updateFloatingUiForScroll);
+  }, { passive: true });
+
+  document.addEventListener('focusin', function (event) {
+    if (event.target.closest &&
+        event.target.closest('.floating-nav, .care-controls, .back-to-top, .reference-tools')) {
+      setFloatingUiHidden(false);
+    }
+  });
+
+  document.querySelectorAll('.back-to-top, .bottom-back-to-top').forEach(function (button) {
     button.onclick = function () {
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });

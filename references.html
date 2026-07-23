@@ -9,6 +9,7 @@
 <meta property="og:title" content="CPTSD 與童年創傷參考文獻">
 <meta property="og:description" content="依研究主題整理的可搜尋學術參考文獻。">
 <link rel="alternate" hreflang="en" href="references-en.html">
+<link rel="alternate" hreflang="zh-Hans" href="references-cn.html">
 <link rel="alternate" hreflang="zh-Hant" href="references.html">
 <link rel="stylesheet" href="site-enhancements.css">
 <title>參考文獻 — CPTSD：童年創傷的理解與療癒</title>
@@ -256,29 +257,6 @@ section h4 {
   transform: scale(1.04);
 }
 
-/* ===== Back to top ===== */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem; right: 1.5rem;
-  width: 44px; height: 44px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  color: var(--amber-light);
-  font-size: 1.25rem;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  z-index: 85;
-  cursor: pointer;
-  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
-  will-change: transform;
-}
-.back-to-top:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-
 /* ===== Animations ===== */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -290,6 +268,21 @@ section h4 {
   60%  { opacity: 1; transform: translateX(-50%) translateY(4px); }
   100% { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
+@keyframes navFloatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 
 /* ===== Responsive ===== */
 @media (min-width: 1400px) {
@@ -304,7 +297,6 @@ section h4 {
   .floating-nav { padding: 6px 10px; gap: 2px; }
   .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
   .nav-title { font-size: 0.68rem; padding: 6px 10px; }
-  .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
   .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
@@ -336,7 +328,7 @@ section h4 {
 
 /* ===== Print ===== */
 @media print {
-  body::before, .back-to-top, .floating-nav { display: none !important; }
+  body::before, .care-controls, .floating-nav { display: none !important; }
   body { background: #fff; color: #1a1a2e; }
   .main { padding-top: 1rem; }
   .glass-panel-blur {
@@ -349,7 +341,7 @@ section h4 {
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline muted aria-hidden="true">
+<video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -361,6 +353,7 @@ section h4 {
   <a href="development.html" class="nav-pill">發展路徑</a>
   <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已靜音" aria-pressed="false" title="背景音效已靜音">&#x1F507;</button>
   <a href="references-en.html" class="nav-pill lang-switch" title="English version">EN</a>
+  <a href="references-cn.html" class="nav-pill lang-switch" title="简体版">简</a>
 </nav>
 
 <!-- Main Content -->
@@ -553,9 +546,6 @@ section h4 {
 
 </div><!-- /.main -->
 
-<!-- Back to Top -->
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
-
 <!-- Footer -->
 <footer class="site-footer">
   <p>複雜性創傷後壓力症（CPTSD）：童年創傷的理解與療癒 | Understanding &amp; Healing Childhood Trauma</p>
@@ -563,10 +553,6 @@ section h4 {
   <a href="CPTSD childhood trauma.html" class="footer-sub-link">← 返回主頁</a>
 </footer>
 
-<script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
-(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
-</script>
 <script src="site-enhancements.js"></script>
 </body>
 </html>

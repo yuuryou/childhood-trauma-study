@@ -183,31 +183,31 @@ img, iframe, table, pre, code { max-width: 100%; height: auto; }
 /* ===== Hero (no backdrop-filter) ===== */
 .hero {
   text-align: center;
-  padding: 3rem 0 5rem 0;
+  padding: 8rem 0 5rem 0;
   animation: fadeInUp 0.6s ease both;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   line-height: 1.12;
 }
 
 .hero .hero-sub {
-  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-size: clamp(1.15rem, 3.5vw, 1.5rem);
   color: var(--text-body);
   font-weight: 400;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .hero .hero-intro {
   font-size: 1.0625rem;
   color: var(--text-secondary);
-  max-width: 38rem;
-  margin: 0 auto 2rem;
+  max-width: 44rem;
+  margin: 0 auto 2.5rem;
   line-height: 1.8;
 }
 
@@ -476,6 +476,21 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
     transform: translateX(-50%) translateY(0);
   }
 }
+@keyframes navFloatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 
 .hero                         { animation: fadeInUp 0.6s ease both; }
 #what-is-cptsd               { animation: fadeInUp 0.6s ease both 0.08s; }
@@ -486,30 +501,6 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 #healing-path                { animation: fadeInUp 0.6s ease both 0.48s; }
 #toolkit                     { animation: fadeInUp 0.6s ease both 0.56s; }
 #references                  { animation: fadeInUp 0.6s ease both 0.64s; }
-
-/* ===== Back to top ===== */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 1.5rem;
-  width: 44px; height: 44px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  color: var(--amber-light);
-  font-size: 1.25rem;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  z-index: 85;
-  cursor: pointer;
-  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
-  will-change: transform;
-}
-.back-to-top:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
 
 /* ===== Responsive ===== */
 @media (min-width: 1400px) {
@@ -524,13 +515,12 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 }
 @media (max-width: 768px) {
   .main { padding: 1.5rem 1rem 4rem 1rem; }
-  .hero { padding: 2rem 0 3.5rem 0; }
+  .hero { padding: 4rem 0 3.5rem 0; }
   .hero h1 { font-size: clamp(1.8rem, 8vw, 3rem); }
   .glass-panel-blur, .glass-panel-static { padding: 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 2px; }
   .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
   .toolkit-grid { grid-template-columns: 1fr; }
-  .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
   .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
@@ -561,7 +551,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
 /* ===== Print ===== */
 @media print {
-  body::before, .back-to-top, .floating-nav { display: none !important; }
+  body::before, .care-controls, .floating-nav { display: none !important; }
   body { background: #fff; color: #1a1a2e; }
   .main { padding-top: 1rem; }
   .glass-panel-blur, .glass-panel-static, .toolkit-card {
@@ -574,7 +564,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline muted aria-hidden="true">
+<video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -591,7 +581,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <a href="#healing-path" class="nav-pill" title="疗愈之路">疗愈</a>
   <a href="#toolkit" class="nav-pill" title="自助工具箱">工具箱</a>
   <a href="#references" class="nav-pill" title="参考文献">文献</a>
-  <a href="development.html" class="nav-pill" title="童年创伤的发展路径">发展</a>
+  <a href="development-cn.html" class="nav-pill" title="童年创伤的发展路径">发展</a>
   <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已静音" aria-pressed="false" title="背景音效已静音">&#x1F507;</button>
   <a href="cptsd-en.html" class="nav-pill lang-switch" title="English version">EN</a>
   <a href="CPTSD childhood trauma.html" class="nav-pill lang-switch" title="繁體版">繁</a>
@@ -972,7 +962,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
       涵盖依恋理论、神经科学、表观遗传学、ACE 研究、ICD-11 复杂 PTSD 诊断、<br>
       临床干预、解离理论、恢复与复原力、跨代传递等 10 个研究主题
     </p>
-    <a href="references.html" class="ref-link-btn">查看完整参考文献 →</a>
+    <a href="references-cn.html" class="ref-link-btn">查看完整参考文献 →</a>
   </div>
 
   <p style="text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 1rem;">
@@ -982,15 +972,12 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
 </div><!-- /.main -->
 
-<!-- Back to Top -->
-<button class="back-to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回页首">↑</button>
-
 <!-- Footer -->
 <footer class="site-footer">
   <p>复杂性创伤后压力症（CPTSD）：童年创伤的理解与疗愈 | Understanding &amp; Healing Childhood Trauma</p>
   <p>内容基于 Pete Walker、Bessel van der Kolk、Judith Herman、John Bowlby、Stephen Porges、Peter Fonagy、Rachel Yehuda 等学者研究</p>
   <p>© 2026 个人学习用途 — 仅供参考，不构成临床建议</p>
-  <a href="development.html" class="footer-sub-link">依年龄发展路径 →</a>
+  <a href="development-cn.html" class="footer-sub-link">依年龄发展路径 →</a>
 </footer>
 
 <!-- ===== JavaScript ===== -->
@@ -1011,10 +998,6 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 })();
 </script>
 
-<script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
-(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
-</script>
 <script src="site-enhancements.js"></script>
 </body>
 </html>
