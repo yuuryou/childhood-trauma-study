@@ -455,15 +455,15 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 @keyframes navFloatIn {
   0% {
     opacity: 0;
-    transform: translateY(-24px);
+    transform: translateX(-50%) translateY(-24px);
   }
   60% {
     opacity: 1;
-    transform: translateY(4px);
+    transform: translateX(-50%) translateY(4px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -575,6 +575,7 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <a href="#healing-path" class="nav-pill" title="The Healing Path">Healing</a>
   <a href="#toolkit" class="nav-pill" title="Self-Help Toolkit">Toolkit</a>
   <a href="#references" class="nav-pill" title="References">Refs</a>
+  <a href="development-en.html" class="nav-pill" title="Developmental Pathways">Dev</a>
   <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
   <a href="CPTSD childhood trauma.html" class="nav-pill lang-switch" title="中文版">中文</a>
 </nav>
@@ -995,7 +996,8 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </script>
 
 <script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
+(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
 </script>
 </body>
 </html>
