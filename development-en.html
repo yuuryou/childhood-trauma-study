@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developmental Pathways of Childhood Trauma</title>
+<style>
+/* ============================================
+   Liquid Glass — Developmental Timeline
+   Dark Theme + Amber Accent
+   ============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --amber: #f0a040;
+  --amber-light: #ffb84d;
+  --amber-glow: rgba(240, 160, 64, 0.15);
+  --amber-border: rgba(240, 160, 64, 0.3);
+  --text-primary: #ffffff;
+  --text-body: rgba(255, 255, 255, 0.82);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; background: transparent; min-height: 100vh; }
+
+body {
+  font-family: var(--font-sans);
+  background: transparent !important;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== Body background video — lowest layer ===== */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -9999;
+  opacity: 1;
+  filter: brightness(0.45);
+  pointer-events: none;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -9998;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* ===== Nav float-in animation ===== */
+@keyframes navFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Floating Nav — iOS Liquid Glass pill button ===== */
+.floating-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  animation: navFloatIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.2s;
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: 
+    color 0.2s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(240, 160, 64, 0.3);
+  transform: scale(1.05);
+}
+
+.nav-pill:active {
+  transform: scale(0.95);
+}
+
+.nav-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--amber-light);
+  white-space: nowrap;
+  padding: 0 4px;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Main ===== */
+.main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.hero .subtitle {
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: var(--text-body);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.hero .intro {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ===== Timeline ===== */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 7px;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Stage wrapper */
+.timeline-stage {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+/* Dot */
+.timeline-dot {
+  position: absolute;
+  left: calc(-2.5rem + 3px);
+  top: 1.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(240, 160, 64, 0.25);
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 10px rgba(240, 160, 64, 0.2);
+  z-index: 1;
+}
+
+/* Card */
+.timeline-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.timeline-card .stage-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--amber-light);
+  margin-bottom: 0.75rem;
+}
+
+.timeline-card p {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.timeline-card p:last-child { margin-bottom: 0; }
+
+/* ===== Conclusion Card ===== */
+.conclusion {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  margin-top: 3rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.conclusion p {
+  font-size: 1.15rem;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.conclusion .back-link {
+  display: inline-block;
+  color: var(--amber-light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  border: 1px solid var(--amber-border);
+  border-radius: 9999px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.conclusion .back-link:hover {
+  background: rgba(240, 160, 64, 0.1);
+  transform: scale(1.04);
+}
+
+/* ===== Animation ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero { animation: fadeInUp 0.6s ease both; }
+.timeline-stage:nth-child(1) { animation: fadeInUp 0.6s ease both 0.1s; }
+.timeline-stage:nth-child(2) { animation: fadeInUp 0.6s ease both 0.18s; }
+.timeline-stage:nth-child(3) { animation: fadeInUp 0.6s ease both 0.26s; }
+.timeline-stage:nth-child(4) { animation: fadeInUp 0.6s ease both 0.34s; }
+.timeline-stage:nth-child(5) { animation: fadeInUp 0.6s ease both 0.42s; }
+.timeline-stage:nth-child(6) { animation: fadeInUp 0.6s ease both 0.50s; }
+.conclusion { animation: fadeInUp 0.6s ease both 0.58s; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .main { padding: 2.5rem 1rem 4rem 1rem; max-width: 100%; }
+  .hero { margin-bottom: 3rem; }
+  .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .timeline { padding-left: 2rem; }
+  .timeline-dot { left: calc(-2rem + 3px); }
+  .floating-nav { padding: 6px 10px; gap: 2px; }
+  .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
+}
+
+@media (max-width: 480px) {
+  .main { padding: 1.5rem 0.5rem 3rem 0.5rem; }
+  .timeline { padding-left: 1.75rem; }
+  .timeline-dot { left: calc(-1.75rem + 3px); top: 1.1rem; width: 8px; height: 8px; }
+  .timeline-card { padding: 1.25rem; }
+  .conclusion { padding: 1.5rem; }
+  .floating-nav { padding: 5px 8px; gap: 1px; }
+  .nav-pill { font-size: 0.62rem; padding: 5px 8px; }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bg-video { display: none; }
+  .bg-overlay { display: none; }
+  body { background: #0a0e1a; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .timeline-card, .conclusion, .floating-nav {
+    background: rgba(20, 20, 35, 0.95);
+    backdrop-filter: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<video class="bg-video" autoplay loop playsinline>
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+
+<!-- Floating Nav -->
+<nav class="floating-nav" aria-label="Page navigation">
+  <span class="nav-title">Developmental Pathways</span>
+  <a href="cptsd-en.html" class="nav-pill">← Back to Home</a>
+  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">🔊</button>
+  <a href="development.html" class="nav-pill lang-switch" title="中文版">中文</a>
+</nav>
+
+<!-- Main Content -->
+<div class="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Developmental Pathways of Childhood Trauma</h1>
+    <p class="subtitle">From the prenatal period to adulthood — how the nervous system is progressively shaped by trauma, and how it can be progressively restored</p>
+    <p class="intro">
+      Trauma does not simply "happen" at a single moment — it unfolds along the developmental timeline, leaving its imprint at the times when the nervous system is most plastic. Understanding this pathway is not about labeling ourselves or others; it is about seeing that our reactive patterns have an origin, and because of that, they can be understood, accepted, and changed.
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+
+    <!-- Stage 1: Prenatal & Birth -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🌱</span>
+        <h3>Prenatal Period & Birth</h3>
+        <p>Maternal stress affects fetal development through cortisol. When a mother experiences prolonged stress, anxiety, or trauma, stress hormones cross the placenta into the fetal bloodstream, influencing developing brain structures — particularly the hippocampus and amygdala.</p>
+        <p>DNA methylation can let trauma "begin before birth." Methylation of the FKBP5 gene modulates the sensitivity of stress-related proteins — glucocorticoid receptors — potentially rendering offspring more stress-sensitive. Epigenetic research has found that trauma effects can be transmitted across multiple generations: descendants of Holocaust survivors and descendants of the Dutch Hunger Winter both carry measurable signatures in their stress-regulation systems.</p>
+      </div>
+    </div>
+
+    <!-- Stage 2: Infancy 0-2 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">👶</span>
+        <h3>Infancy (0–2 Years)</h3>
+        <p>Core task: establishing the foundational belief of whether the world is safe. Through each instance of feeding, soothing, and eye contact, the infant builds a default model of the world within the nervous system.</p>
+        <p>Secure, avoidant, ambivalent, and disorganized — the four attachment patterns take shape here. Disorganized attachment (simultaneously seeking closeness and feeling fear) emerges when the caregiver is also the source of threat, and is an early predictor of later dissociative symptoms.</p>
+        <p>The infant's nervous system continuously scans the caregiver's face, voice, and heartbeat — what Porges termed "neuroception." This is not a conscious judgment but an ongoing, subcortical safety-versus-danger assessment conducted at the most ancient layers of the nervous system.</p>
+      </div>
+    </div>
+
+    <!-- Stage 3: Toddler 2-6 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🧒</span>
+        <h3>Early Childhood (2–6 Years)</h3>
+        <p>Right-hemisphere dominance period — emotion, bodily sensation, and facial recognition are formed during this stage. This is the primary construction window for the brain's affective and somatic maps.</p>
+        <p>Under excessive stress, the body enters the 4F defense modes: Fight, Flight, Freeze, and Fawn. The three tiers of the autonomic nervous system — ventral safety, sympathetic defense, and dorsal shutdown — establish their baseline during this period.</p>
+        <p>Persistent threat forces the nervous system into a chronic defensive state. A system designed for short-term danger is compelled to operate in the "on" position over the long term — this is the physiological root of the chronic hypervigilance seen in CPTSD.</p>
+      </div>
+    </div>
+
+    <!-- Stage 4: School Age 6-12 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">📚</span>
+        <h3>School Age (6–12 Years)</h3>
+        <p>Exposure to environments beyond the family — school and peers — begins. This is the period when social comparison and self-evaluation start to take shape.</p>
+        <p>The inner critic crystallizes: the child internalizes the caregiver's criticism as their own voice. As Pete Walker noted, in order to preserve attachment to the caregiver (essential for survival), the child chooses to blame themselves rather than the caregiver — "It must be my fault that they treat me this way." This is adaptive in childhood but becomes the root of self-attack in adulthood.</p>
+        <p>The ACE (Adverse Childhood Experiences) study found a direct dose-response relationship between ten categories of traumatic experience and risks of heart disease, cancer, and suicide decades later. However, positive experiences (PACEs) and at least one safe adult can substantially mitigate the impact of trauma — the seeds of healing can be planted even at this stage.</p>
+      </div>
+    </div>
+
+    <!-- Stage 5: Adolescence 12-18 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🧑</span>
+        <h3>Adolescence (12–18 Years)</h3>
+        <p>Hormonal upheaval combined with an immature prefrontal cortex — this is, in itself, a neurological storm. For adolescents with a history of childhood trauma, existing difficulties with regulation are magnified during this period.</p>
+        <p>The DSO symptoms of CPTSD — difficulties in affect regulation, negative self-concept, and interpersonal disturbances — begin to surface prominently. Identity development is disrupted; the question "Who am I?" becomes murky because the sense of self was never clearly mirrored in a safe environment.</p>
+        <p>Yet this is also a period of hope: self-compassion can serve as a protective factor at this stage. Kristin Neff's research shows that the capacity to be gentle with oneself predicts post-traumatic recovery trajectories.</p>
+      </div>
+    </div>
+
+    <!-- Stage 6: Adulthood 18+ -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🌅</span>
+        <h3>Adulthood (18+ Years)</h3>
+        <p>The cumulative effects of childhood trauma manifest fully in adulthood. Emotional flashbacks, dissociation, relational difficulties, somatic symptoms — these are not "new problems" but old wounds that were never truly processed, resurfacing at a different life stage.</p>
+        <p>But this is not the end. Neuroplasticity persists throughout life — the brain retains the capacity to reorganize. The hippocampus can regenerate, the amygdala's overreactivity can be modulated, and prefrontal regulation of the limbic system can be rebuilt.</p>
+        <p>Safe relationships, plus effective therapy, plus self-reparenting — this equals genuine repair. Healing does not require perfection or "full recovery." It simply means: you are no longer held hostage by old patterns; you can choose new ways of responding.</p>
+      </div>
+    </div>
+
+  </div><!-- /.timeline -->
+
+  <!-- Conclusion -->
+  <div class="conclusion">
+    <p>The harm was not your fault; repair is your right.</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary);">The nervous system can be wounded at every developmental stage — and can also be repaired at every stage. Your brain, your body, your self — none of them are static. They have been waiting all along for a safe opportunity to recalibrate, to regrow.</p>
+    <a class="back-link" href="cptsd-en.html">← Back to Home: Understanding and Healing CPTSD</a>
+  </div>
+
+</div><!-- /.main -->
+
+<script>
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';}
+</script>
+</body>
+</html>

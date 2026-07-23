@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>References — CPTSD: Understanding and Healing Childhood Trauma</title>
+<style>
+/* ============================================
+   Apple Liquid Glass — CPTSD References
+   Dark Theme + Amber Accent
+   ============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== Tokens ===== */
+:root {
+  --amber: #f0a040;
+  --amber-light: #ffb84d;
+  --amber-lighter: #ffc973;
+  --amber-glow: rgba(240, 160, 64, 0.12);
+  --amber-glow-strong: rgba(240, 160, 64, 0.2);
+  --amber-border: rgba(240, 160, 64, 0.3);
+  --amber-border-hover: rgba(240, 160, 64, 0.5);
+
+  --text-primary: #ffffff;
+  --text-body: rgba(255, 255, 255, 0.82);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.35);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-normal: rgba(255, 255, 255, 0.12);
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; background: transparent; min-height: 100vh; }
+
+body {
+  font-family: var(--font-sans);
+  background: transparent !important;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== Background video ===== */
+.bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  z-index: -9999;
+  opacity: 1;
+  filter: brightness(0.45);
+  pointer-events: none;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -9998;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+p, li, td, th, blockquote { overflow-wrap: break-word; word-break: break-word; }
+img, iframe, table, pre, code { max-width: 100%; height: auto; }
+
+/* ===== Floating Nav ===== */
+.floating-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  animation: navFloatIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.2s;
+}
+
+.nav-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--amber-light);
+  white-space: nowrap;
+  padding: 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(240, 160, 64, 0.3);
+  transform: scale(1.05);
+}
+
+.nav-pill:active { transform: scale(0.95); }
+
+/* ===== Main ===== */
+.main {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Glass panel ===== */
+.glass-panel-blur {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  animation: fadeInUp 0.6s ease both 0.08s;
+}
+.glass-panel-blur:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* ===== Section headings ===== */
+section { position: relative; z-index: 1; }
+
+section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--amber-light);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--amber-glow-strong);
+}
+
+section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--amber);
+  margin: 1.75rem 0 0.75rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ===== Reference entries ===== */
+.ref-entry {
+  margin-bottom: 0.65rem;
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.65;
+  padding-left: 1.25rem;
+  text-indent: -1.25rem;
+  transition: color 0.2s;
+}
+.ref-entry:hover { color: var(--text-primary); }
+
+.authors { color: var(--text-secondary); }
+.year { color: var(--amber-light); font-weight: 500; }
+.title-text { font-style: italic; color: var(--text-body); }
+
+/* ===== Footer ===== */
+.site-footer {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+.site-footer .footer-sub-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--amber-light);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-full);
+  transition: background 0.2s, transform 0.2s var(--ease-spring);
+}
+.site-footer .footer-sub-link:hover {
+  background: rgba(240, 160, 64, 0.1);
+  transform: scale(1.04);
+}
+
+/* ===== Back to top ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem; right: 1.5rem;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  color: var(--amber-light);
+  font-size: 1.25rem;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  z-index: 85;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  will-change: transform;
+}
+.back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes navFloatIn {
+  0%   { opacity: 0; transform: translateY(-24px); }
+  60%  { opacity: 1; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .main { padding: 1.5rem 1rem 4rem 1rem; }
+  .glass-panel-blur { padding: 1.5rem; }
+  .floating-nav { padding: 6px 10px; gap: 2px; }
+  .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
+  .nav-title { font-size: 0.68rem; }
+  .back-to-top { bottom: 1.5rem; right: 1rem; }
+}
+@media (max-width: 480px) {
+  .glass-panel-blur { padding: 1.25rem; border-radius: var(--radius-md); }
+  section h2 { font-size: 1.4rem; }
+  .floating-nav { padding: 5px 8px; gap: 1px; }
+  .nav-pill { font-size: 0.62rem; padding: 5px 8px; }
+  .nav-title { font-size: 0.62rem; }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bg-video { display: none; }
+  .bg-overlay { display: none; }
+  body { background: #0a0e1a; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-panel-blur, .floating-nav {
+    background: rgba(20, 20, 35, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ===== Print ===== */
+@media print {
+  body::before, .back-to-top, .floating-nav { display: none !important; }
+  body { background: #fff; color: #1a1a2e; }
+  .main { padding-top: 1rem; }
+  .glass-panel-blur {
+    background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
+    border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
+  }
+  section h2 { color: #c87a28; border-bottom-color: #ddd; }
+}
+</style>
+</head>
+<body>
+
+<video class="bg-video" autoplay loop playsinline>
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+
+<!-- Floating Nav -->
+<nav class="floating-nav" aria-label="Page navigation">
+  <span class="nav-title">References</span>
+  <a href="cptsd-en.html" class="nav-pill">← Back to Home</a>
+  <a href="development-en.html" class="nav-pill">Developmental Path</a>
+  <a href="references.html" class="nav-pill lang-switch" title="中文版">中文</a>
+</nav>
+
+<!-- Main Content -->
+<div class="main">
+
+<section id="references" class="glass-panel-blur">
+  <h2>References</h2>
+  <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+    The following literature covers the core research domains of childhood trauma and CPTSD, organized by theme. Over 200 academic papers are included, formatted in APA 7th edition.
+  </p>
+
+    <h4>Foundational Works</h4>
+    <p class="ref-entry"><span class="authors">Walker, P.</span> <span class="year">(2013).</span> <span class="title-text">Complex PTSD: From Surviving to Thriving: A Guide and Map for Recovering from Childhood Trauma.</span> Azure Coyote.</p>
+    <p class="ref-entry"><span class="authors">van der Kolk, B. A.</span> <span class="year">(2014).</span> <span class="title-text">The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma.</span> Viking.</p>
+    <p class="ref-entry"><span class="authors">Herman, J. L.</span> <span class="year">(1992).</span> <span class="title-text">Trauma and Recovery: The Aftermath of Violence — From Domestic Abuse to Political Terror.</span> Basic Books.</p>
+    <p class="ref-entry"><span class="authors">Bowlby, J.</span> <span class="year">(1969/1982).</span> <span class="title-text">Attachment and Loss (Vols. 1–3).</span> Basic Books.</p>
+    <p class="ref-entry"><span class="authors">Porges, S. W.</span> <span class="year">(2011).</span> <span class="title-text">The Polyvagal Theory: Neurophysiological Foundations of Emotions, Attachment, Communication, and Self-Regulation.</span> W. W. Norton.</p>
+    <p class="ref-entry"><span class="authors">Fonagy, P., Gergely, G., Jurist, E. L., &amp; Target, M.</span> <span class="year">(2002).</span> <span class="title-text">Affect Regulation, Mentalization, and the Development of the Self.</span> Other Press.</p>
+    <p class="ref-entry"><span class="authors">Yehuda, R., Schmeidler, J., Giller, E. L., Siever, L. J., &amp; Binder-Brynes, K.</span> <span class="year">(1998).</span> <span class="title-text">Relationship between posttraumatic stress disorder characteristics of Holocaust survivors and their adult offspring.</span> <em>American Journal of Psychiatry, 155</em>(6), 841–843.</p>
+
+    <h4>Polyvagal Theory &amp; Neuroception</h4>
+    <p class="ref-entry"><span class="authors">Porges, S. W.</span> <span class="year">(2007).</span> <span class="title-text">The polyvagal perspective.</span> <em>Biological Psychology, 74</em>(2), 116–143.</p>
+    <p class="ref-entry"><span class="authors">Porges, S. W.</span> <span class="year">(2021).</span> <span class="title-text">Polyvagal theory: A science of safety.</span> <em>Frontiers in Integrative Neuroscience, 16</em>, 871227.</p>
+    <p class="ref-entry"><span class="authors">Dana, D.</span> <span class="year">(2018).</span> <span class="title-text">The Polyvagal Theory in Therapy: Engaging the Rhythm of Regulation.</span> W. W. Norton.</p>
+
+    <h4>Structural Dissociation</h4>
+    <p class="ref-entry"><span class="authors">van der Hart, O., Nijenhuis, E. R. S., &amp; Steele, K.</span> <span class="year">(2006).</span> <span class="title-text">The Haunted Self: Structural Dissociation and the Treatment of Chronic Traumatization.</span> W. W. Norton.</p>
+    <p class="ref-entry"><span class="authors">Nijenhuis, E. R. S.</span> <span class="year">(2015).</span> <span class="title-text">The Trinity of Trauma: Ignorance, Fragility, and Control.</span> Vandenhoeck &amp; Ruprecht.</p>
+
+    <h4>ICD-11 CPTSD</h4>
+    <p class="ref-entry"><span class="authors">World Health Organization.</span> <span class="year">(2022).</span> <span class="title-text">ICD-11: International Classification of Diseases 11th Revision.</span> WHO.</p>
+    <p class="ref-entry"><span class="authors">Cloitre, M., Garvert, D. W., Brewin, C. R., Bryant, R. A., &amp; Maercker, A.</span> <span class="year">(2013).</span> <span class="title-text">Evidence for proposed ICD-11 PTSD and complex PTSD: A latent profile analysis.</span> <em>European Journal of Psychotraumatology, 4</em>, 20706.</p>
+    <p class="ref-entry"><span class="authors">Karatzias, T., Shevlin, M., Fyvie, C., Hyland, P., Efthymiadou, E., Wilson, D., ... &amp; Cloitre, M.</span> <span class="year">(2017).</span> <span class="title-text">Evidence of distinct profiles of posttraumatic stress disorder (PTSD) and complex posttraumatic stress disorder (CPTSD) based on the new ICD-11 trauma questionnaire.</span> <em>Journal of Affective Disorders, 207</em>, 181–187.</p>
+
+    <h4>Attachment Theory</h4>
+    <p class="ref-entry"><span class="authors">Ainsworth, M. D. S., Blehar, M. C., Waters, E., &amp; Wall, S.</span> <span class="year">(1978).</span> <span class="title-text">Patterns of Attachment: A Psychological Study of the Strange Situation.</span> Lawrence Erlbaum.</p>
+    <p class="ref-entry"><span class="authors">Main, M., &amp; Solomon, J.</span> <span class="year">(1986).</span> <span class="title-text">Discovery of an insecure-disorganized/disoriented attachment pattern.</span> In T. B. Brazelton &amp; M. W. Yogman (Eds.), <em>Affective Development in Infancy</em> (pp. 95–124). Ablex.</p>
+    <p class="ref-entry"><span class="authors">Cassidy, J., &amp; Shaver, P. R. (Eds.).</span> <span class="year">(2016).</span> <span class="title-text">Handbook of Attachment: Theory, Research, and Clinical Applications</span> (3rd ed.). Guilford Press.</p>
+
+    <h4>Neuroscience &amp; Epigenetics</h4>
+    <p class="ref-entry"><span class="authors">McEwen, B. S.</span> <span class="year">(2007).</span> <span class="title-text">Physiology and neurobiology of stress and adaptation: Central role of the brain.</span> <em>Physiological Reviews, 87</em>(3), 873–904.</p>
+    <p class="ref-entry"><span class="authors">Teicher, M. H., Samson, J. A., Anderson, C. M., &amp; Ohashi, K.</span> <span class="year">(2016).</span> <span class="title-text">The effects of childhood maltreatment on brain structure, function and connectivity.</span> <em>Nature Reviews Neuroscience, 17</em>(10), 652–666.</p>
+    <p class="ref-entry"><span class="authors">McGowan, P. O., Sasaki, A., D'Alessio, A. C., Dymov, S., Labonté, B., Szyf, M., ... &amp; Meaney, M. J.</span> <span class="year">(2009).</span> <span class="title-text">Epigenetic regulation of the glucocorticoid receptor in human brain associates with childhood abuse.</span> <em>Nature Neuroscience, 12</em>(3), 342–348.</p>
+    <p class="ref-entry"><span class="authors">Finlay S, Suvarna B, Adegboye O, Rudd D, McDermott B, van Eijk L, Sarnyai Z</span> <span class="year">(2026).</span> <span class="title-text">Hair cortisol concentration and adolescent mental health: Insight from the Queensland Twin Adolescent Brain Project.</span> <em>Psychoneuroendocrinology.</em> https://doi.org/10.1016/j.psyneuen.2025.107730</p>
+    <p class="ref-entry"><span class="authors">Ruiz-Fernandez J, Aouidad A, Paillère Martinot ML, Chavanne AV, Banaschewski T, Barker GJ, Becker A, Bokde ALW, Brühl R, Desrivières S, Flor H, Grigis A, Grimmer Y, Garavan H, Gowland P, Heinz A, Insensee C, Nees F, Papadopoulos Orfanos D, Paus T, Penttilä J, Poutska L, Holz N, Baeuchl C, Smolka MN, Stringaris A, Vaidya N, van Noort B, Walter H, Whelan R, Schumann G, Cohen D, Martinot JL, Artiges E</span> <span class="year">(2026).</span> <span class="title-text">Persistent structural alteration of the extended limbic system in adolescents with childhood maltreatment.</span> <em>European psychiatry : the journal of the Association of European Psychiatrists.</em> https://doi.org/10.1192/j.eurpsy.2025.10111</p>
+    <p class="ref-entry"><span class="authors">Bertollo AG, Puntel CF, Rievers HFB, Brunhara EGS, Ignácio ZM</span> <span class="year">(2026).</span> <span class="title-text">Neurobiological and psychosocial mechanisms linking early life stress to the pathogenesis of eating disorders.</span> <em>Neuroscience.</em> https://doi.org/10.1016/j.neuroscience.2026.01.008</p>
+    <p class="ref-entry"><span class="authors">Alkema A, Schalkwijk W, Bohte E, Draisma L, Hoppe A, Koch C, Refuge V, Romberg B, Luykx JJ, Jans JJM, Cahn W, Regeer E, Boks MPM</span> <span class="year">(2026).</span> <span class="title-text">S-adenosylmethionine as an epigenetic treatment of depression in adults with childhood trauma.</span> <em>Epigenomics.</em> https://doi.org/10.1080/17501911.2026.2645001</p>
+    <p class="ref-entry"><span class="authors">Ciciurkaite G, Lee B, Peng S, Fekete M, Mitchell C, Perry BL</span> <span class="year">(2026).</span> <span class="title-text">Psychosocial stressors, accelerated biological aging, and multiple morbidities: Evidence from an age-diverse sample.</span> <em>PloS one.</em> https://doi.org/10.1371/journal.pone.0343987</p>
+    <p class="ref-entry"><span class="authors">Westlin C, Guthrie AJ, Bleier C, Finkelstein SA, Maggio J, Ranford J, MacLean J, Godena E, Millstein D, Freeburn J, Adams C, Stephen CD, Diez I, Perez DL, Katsumi Y</span> <span class="year">(2026).</span> <span class="title-text">Functional Connectivity Gradients Reveal Altered Hierarchical Cortical Organization in Functional Neurological Disorder.</span> <em>Biological psychiatry. Cognitive neuroscience and neuroimaging.</em> https://doi.org/10.1016/j.bpsc.2025.10.010</p>
+    <p class="ref-entry"><span class="authors">Hussain A, Baird CL, Huggins AA, Russell CC, Sun D, Rangel-Jimenez L, Abdallah CG, Angstadt M, May G, Berg H, Blackford JU, Cisler J, Daniels JK, Davenport ND, Davidson RJ, Densmore M, Disner SG, El-Hage W, Etkin A, Fani N, Frijling JL, Gordon EM, Grupe DW, Herringa RA, Herzog JI, Hofmann D, Hudson AR, Jovanovic T, King A, Koch SBJ, Lanius RA, Lazarov A, Li G, Liberzon I, Lissek S, Lu G, Manthey A, Maron-Katz A, McLaughlin KA, Mueller SC, Nawijn L, Nelson SM, Neria Y, Neufeld RWJ, Nitschke JB, Olatunji BO, Olff M, Peverill M, Qi R, Quidé Y, Ravid O, Rektor I, Ressler KJ, Říha P, Ross M, Sambrook K, Schmahl C, Sierk A, Sponheim SR, Stevens JS, Straube T, Suarez-Jimenez B, Théberge J, van der Wee NJA, van der Werff SJA, van Rooij SJH, van Zuiden M, Veltman DJ, Vermeiren RRJM, Walter H, Wang L, Zhu X, Zhu Y, Zilcha-Mano S, Jahanshad N, Thompson PM, Morey RA</span> <span class="year">(2026).</span> <span class="title-text">Lower Gyrification of the Ventromedial Prefrontal Cortex in Posttraumatic Stress Disorder: An ENIGMA-PTSD Study.</span> <em>Biological psychiatry global open science.</em> https://doi.org/10.1016/j.bpsgos.2025.100679</p>
+    <p class="ref-entry"><span class="authors">Panayi P, Varese F, Peters E, Bentall R, Hardy A, Berry K, Sellwood W, Underwood R, Steel C, Mason L, Elliott R</span> <span class="year">(2026).</span> <span class="title-text">Investigating the neuroanatomical underpinnings of complex PTSD in people with psychosis.</span> <em>Psychiatry research. Neuroimaging.</em> https://doi.org/10.1016/j.pscychresns.2026.112182</p>
+    <p class="ref-entry"><span class="authors">Daredia S, Khodasevich D, Bozack AK, de la Rosa R, Kogut KR, Holland N, Eskenazi B, Deardorff J, Cardenas A</span> <span class="year">(2026).</span> <span class="title-text">Long-term molecular embedding of early life adversity: leukocyte DNA methylation and gene expression associations from childhood to young adulthood.</span> <em>Epigenomics.</em> https://doi.org/10.1080/17501911.2026.2694424</p>
+    <p class="ref-entry"><span class="authors">Lipschutz R, Dahlgren K, Santos J, Chambers K, McAfee E, Abrams C, Merrill N, Brennan PA, Rilling JK, Michopoulos V, Powers A, Stevens JS</span> <span class="year">(2026).</span> <span class="title-text">Neural Correlates of Maternal Posttraumatic Stress in the First Postpartum Year: Blunted Salience and Prefrontal Responses to Infant Distress.</span> <em>Biological psychiatry. Cognitive neuroscience and neuroimaging.</em> https://doi.org/10.1016/j.bpsc.2026.04.009</p>
+    <p class="ref-entry"><span class="authors">Ng E, Elias GJB, Germann J, Boutet A, Rizvi S, Lozano AM, Kennedy SH, Giacobbe P</span> <span class="year">(2026).</span> <span class="title-text">Impact of childhood adversity on deep brain stimulation outcomes for treatment resistant depression.</span> <em>Psychiatry research.</em> https://doi.org/10.1016/j.psychres.2026.117007</p>
+    <p class="ref-entry"><span class="authors">Moog NK, Al-Ali K, Rasmussen JM, Miller RK, Barrett ES, Graham AM, Fair DA, Tivarus ME, Entringer S, Wadhwa PD, Simhan HN, O'Connor TG, Styner M, Buss C</span> <span class="year">(2026).</span> <span class="title-text">Maternal depression with and without a history of childhood maltreatment and newborn white matter microstructure.</span> <em>Psychological medicine.</em> https://doi.org/10.1017/S0033291726103468</p>
+    <p class="ref-entry"><span class="authors">Xu J, Valencia Osorio S, Henry MK, Sotardi S, Wood JN, Seidlitz J, Alexander-Bloch A, Catalano J, Chaiyachati BH</span> <span class="year">(2026).</span> <span class="title-text">Subarachnoid space in infancy and early childhood: a systematic review of measurements.</span> <em>Pediatric radiology.</em> https://doi.org/10.1007/s00247-026-06640-z</p>
+    <p class="ref-entry"><span class="authors">Lim TE, Reay WR, Gustin SM, Quidé Y</span> <span class="year">(2026).</span> <span class="title-text">Chronic Pain and Differential Brain Morphology Alterations of Childhood Maltreatment, Trauma Exposure in Adulthood, and Their Cumulative Effects in the UK Biobank.</span> <em>Biological psychiatry. Cognitive neuroscience and neuroimaging.</em> https://doi.org/10.1016/j.bpsc.2026.04.002</p>
+    <p class="ref-entry"><span class="authors">Russell H, Angus G, Singleton S, Bell CG, Hales TG</span> <span class="year">(2026).</span> <span class="title-text">The impact of adverse childhood experiences on DNA methylation age: a systematic review and meta-analysis.</span> <em>Clinical epigenetics.</em> https://doi.org/10.1186/s13148-025-02047-z</p>
+    <p class="ref-entry"><span class="authors">Mayanagi T, Yagi J, Ohmomo H, Akasaka M, Fukumoto K, Chiba S, Komaki S, Shimizu A, Yanbe T, Uchide M, Yoshioka Y, Ogawa K, Ishikawa C, Minabe S, Ito J, Ono K, Kaneko N, Sobue K</span> <span class="year">(2026).</span> <span class="title-text">Inter-individual differentially methylated region-targeted EWAS reveals epigenetic signatures of early childhood adversity.</span> <em>Epigenomics.</em> https://doi.org/10.1080/17501911.2026.2613008</p>
+    <p class="ref-entry"><span class="authors">P. Ramos</span> <span class="year">(2026).</span> <span class="title-text">Transgenerational Epigenetics and Colonial 'Nutritional Trauma': Biology as a Historical Record of Oppression.</span> <em>World Journal of Biology Pharmacy and Health Sciences.</em> https://doi.org/10.30574/wjbphs.2026.25.2.0100</p>
+    <p class="ref-entry"><span class="authors">Wang HR, Liu ZQ, Pozzi E, Hussain A, Sigar P, Abdallah C, Alexander N, Baker J, Bauer J, Blackford JU, Cisler J, Connolly CG, Cotton A, Daniels J, Dannlowski U, Densmore M, deRoon-Cassini T, Dima D, Du Plessis S, Etkin A, Fani N, Fisch L, Fitzgerald J, Frodl T, Fu CHY, Gonul AS, Gordon EM, Gotlib IH, Goya-Maldonado R, Groenewold NA, Grotegerd D, Hahn T, Hamilton JP, Han LKM, Harpaz-Rotem I, Haswell CC, Herringa R, Herzog J, Ipser J, Jahanshad N, Jovanovic T, Kaufman M, Kircher T, Konowski M, Koopowitz SM, Krug A, Krystal J, Lanius R, Larson C, Lazarov A, Lebois L, Leehr E, Levy I, Li M, Manthey A, Maron-Katz A, McIntosh AM, McLaughlin KA, Meinert S, Mwangi B, Nelson SM, Nenadić I, Neria Y, Neufeld R, Ojha A, Olatunji BO, Olson EA, Opel N, Peverill M, Ressler K, Ross M, Rosso I, Sacchet MD, Sambrook K, Schmahl C, Seedat S, Shenton ME, Sicorello M, Sierk A, Soares JC, Stein DJ, Stein F, Stein MB, Suarez-Jimenez B, Théberge J, Thomopoulos SI, Tomas C, Usemann P, van den Heuvel LL, van Rooij SJH, Walter H, Walter M, Wang X, Whalley HC, Winter NR, Wu MJ, Xie H, Yang TT, Zhu X, Zilcha-Mano S, Zunta-Soares GB, Frangou S, Thompson PM, Salminen L, Sun D, Morey R, Stevens JS, Schmaal L, Ho TC</span> <span class="year">(2026).</span> <span class="title-text">Childhood Maltreatment and Deviations From Normative Brain Structure: A Mega-Analysis of 3711 Individuals From the ENIGMA Major Depressive Disorder and ENIGMA Posttraumatic Stress Disorder Working Groups.</span> <em>Biological psychiatry.</em> https://doi.org/10.1016/j.biopsych.2026.02.016</p>
+    <p class="ref-entry"><span class="authors">Vazquez AY, Lamis DA</span> <span class="year">(2026).</span> <span class="title-text">Childhood maltreatment moderates associations between SKA2 DNA methylation and suicidal ideation in african american adults with bipolar disorder.</span> <em>Psychiatry research.</em> https://doi.org/10.1016/j.psychres.2026.117293</p>
+    <p class="ref-entry"><span class="authors">Paolini M, Raffaelli L, Bettonagli V, Lorenzi C, Spadini S, Bravi B, Fortaner-Uyà L, Gulino G, Fabbri C, Serretti A, Zanardi R, Colombo C, Benedetti F, Poletti S</span> <span class="year">(2026).</span> <span class="title-text">Different effect of adverse childhood experiences on white matter microstructure in major depression and bipolar disorder: moderating role of genetic liability.</span> <em>European neuropsychopharmacology : the journal of the European College of Neuropsychopharmacology.</em> https://doi.org/10.1016/j.euroneuro.2025.11.011</p>
+    <p class="ref-entry"><span class="authors">Pipelias P, Kanaka-Gantenbein C, Pervanidou P</span> <span class="year">(2026).</span> <span class="title-text">Early Life Stress and Adversity in Children: Neuroendocrine Mechanisms, Epigenetic Regulation, and Lifespan Developmental Outcomes-A Narrative Review.</span> <em>Children (Basel, Switzerland).</em> https://doi.org/10.3390/children13060802</p>
+    <p class="ref-entry"><span class="authors">Mitchell O, Connaughton M, Kelly JR, Harkin A, Roddy DW, Aas M</span> <span class="year">(2026).</span> <span class="title-text">Depression and aging: insights from brain age prediction models.</span> <em>Psychological medicine.</em> https://doi.org/10.1017/S0033291726104851</p>
+    <p class="ref-entry"><span class="authors">Caudle MM, Simmons AN, Moore RC, Thomas ML, Bomyea J</span> <span class="year">(2026).</span> <span class="title-text">The association between childhood maltreatment and neural functioning during a working memory task in adults with internalizing disorders.</span> <em>Brain imaging and behavior.</em> https://doi.org/10.1007/s11682-026-01120-2</p>
+    <p class="ref-entry"><span class="authors">Shrout MR, Wilson SJ, Renna ME, Madison AA, Leonard MJ, Christian LM, Epel ES, Burd CE, Lin J, Molli SH, Broich K, Brown KC, Swarens A, Kiecolt-Glaser JK</span> <span class="year">(2026).</span> <span class="title-text">The Compounding Risks of Early Life Adversity and Couples' Later Life Conflicts in Biological Aging.</span> <em>Biopsychosocial science and medicine.</em> https://doi.org/10.1097/PSY.0000000000001490</p>
+    <p class="ref-entry"><span class="authors">Pasion R, Amaoui S, Paiva TO, Macedo I, Bourbon-Teles J, Duarte JV, Pinto TM, Costa R, Lamela D, Jongenelen I, Ribeiro J, Banaschewski T, Barker GJ, Bokde ALW, Desrivières S, Flor H, Grigis A, Garavan H, Gowland P, Heinz A, Brühl R, Martinot JL, Martinot MP, Artiges E, Nees F, Orfanos DP, Lemaitre H, Poustka L, Hohmann S, Holz N, Fröhner JH, Smolka MN, Vaidya N, Walter H, Whelan R, Schumann G</span> <span class="year">(2026).</span> <span class="title-text">Do white matter microstructural alterations associated with childhood maltreatment explain psychopathology in early adulthood?-a longitudinal neuroimaging study.</span> <em>European child & adolescent psychiatry.</em> https://doi.org/10.1007/s00787-025-02864-w</p>
+    <p class="ref-entry"><span class="authors">J. Faraji, Nicola A. Schatz, Stephanie E. King, N. Soltanpour, Gerlinde A. S. Metz</span> <span class="year">(2025).</span> <span class="title-text">Sex-dependent biobehavioural responses to transgenerational maternal stress: evidence of stress resilience and vulnerability in the F3 generation.</span> <em>Environmental Epigenetics; volume=11.</em> https://doi.org/10.1093/eep/dvaf031</p>
+    <p class="ref-entry"><span class="authors">Parks KC, Buthmann JL, Teh AL, Chen L, Chen HY, Gotlib IH</span> <span class="year">(2025).</span> <span class="title-text">Maternal history of maltreatment interacts with DNA methylation patterns to predict infant temperament.</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2025.107650</p>
+    <p class="ref-entry"><span class="authors">Luo Q, Xu Q, Liao J, Zhu L, Liang X, Lin X, Xia J, Peng H</span> <span class="year">(2025).</span> <span class="title-text">Regional and interregional brain functional abnormalities in major depressive disorder with childhood maltreatment.</span> <em>BMC psychiatry.</em> https://doi.org/10.1186/s12888-025-07556-y</p>
+    <p class="ref-entry"><span class="authors">Merrill LC, Robinson M, Ortiz-Jimenez A, Francis D, DeMaster D, Barry K, Bick J</span> <span class="year">(2025).</span> <span class="title-text">Maternal Childhood Maltreatment Is Associated With Young Children's White Matter Microstructure; Evidence for Intergenerational Neurobiological Embedding of Early Life Adversity?.</span> <em>Developmental psychobiology.</em> https://doi.org/10.1002/dev.70095</p>
+    <p class="ref-entry"><span class="authors">Tie B, Yao S, Gao Y, Xu YV, Briley DA, Wang Y, He J, Qiu J</span> <span class="year">(2025).</span> <span class="title-text">Connectome-based predictive modeling of longitudinal development of muscularity-oriented disordered eating and links with childhood maltreatment.</span> <em>Body image.</em> https://doi.org/10.1016/j.bodyim.2025.101984</p>
+
+    <h4>ACE Study &amp; Epidemiology</h4>
+    <p class="ref-entry"><span class="authors">Felitti, V. J., Anda, R. F., Nordenberg, D., Williamson, D. F., Spitz, A. M., Edwards, V., ... &amp; Marks, J. S.</span> <span class="year">(1998).</span> <span class="title-text">Relationship of childhood abuse and household dysfunction to many of the leading causes of death in adults: The Adverse Childhood Experiences (ACE) Study.</span> <em>American Journal of Preventive Medicine, 14</em>(4), 245–258.</p>
+    <p class="ref-entry"><span class="authors">Gomis-Pomares A, Cantero-García M, Sarmento-Henrique R, Doval S</span> <span class="year">(2026).</span> <span class="title-text">Is there more to the story? The added predictive value of expanded Adverse Childhood Experiences in maternal mental health during pregnancy.</span> <em>Midwifery.</em> https://doi.org/10.1016/j.midw.2026.104783</p>
+    <p class="ref-entry"><span class="authors">Senich KL, Toure O, Gresko SA, Agwaze R, Sheftall A, Cero I</span> <span class="year">(2026).</span> <span class="title-text">Moderating Effects of Adolescent Social Network on the Relationship Between Adverse Childhood Experiences and Adult Suicidal Thoughts and Behaviors.</span> <em>Archives of suicide research : official journal of the International Academy for Suicide Research.</em> https://doi.org/10.1080/13811118.2026.2698805</p>
+    <p class="ref-entry"><span class="authors">Kessemeier F, Karst M, Meinzer M, Webering C, Gutenbrunner C, Bassler M</span> <span class="year">(2026).</span> <span class="title-text">Past wounds, present pain: Adverse childhood experiences and their associations with clinically relevant pain and mental health among inpatients in an interdisciplinary pain rehabilitation program.</span> <em>Journal of psychosomatic research.</em> https://doi.org/10.1016/j.jpsychores.2026.112860</p>
+    <p class="ref-entry"><span class="authors">Moore CR, Veliz PT, Chen B, Lim C, Stoddard SA</span> <span class="year">(2026).</span> <span class="title-text">Individual Contributions of Adverse Childhood Experiences to Adolescent Substance Use.</span> <em>Substance use & misuse.</em> https://doi.org/10.1080/10826084.2026.2679709</p>
+    <p class="ref-entry"><span class="authors">Paolini M, Raffaelli L, Bettonagli V, Lorenzi C, Spadini S, Bravi B, Fortaner-Uyà L, Gulino G, Fabbri C, Serretti A, Zanardi R, Colombo C, Benedetti F, Poletti S</span> <span class="year">(2026).</span> <span class="title-text">Different effect of adverse childhood experiences on white matter microstructure in major depression and bipolar disorder: moderating role of genetic liability.</span> <em>European neuropsychopharmacology : the journal of the European College of Neuropsychopharmacology.</em> https://doi.org/10.1016/j.euroneuro.2025.11.011</p>
+    <p class="ref-entry"><span class="authors">Jin L, Xia H, Sun L</span> <span class="year">(2026).</span> <span class="title-text">Global research landscape, knowledge structure, and emerging trends in adverse childhood experiences and personality disorders: a bibliometric analysis.</span> <em>Frontiers in psychiatry.</em> https://doi.org/10.3389/fpsyt.2026.1842315</p>
+    <p class="ref-entry"><span class="authors">de Arellano A, Tucker A, de Arellano A, Rother Y, Mann C, Butler L, Albaugh M, Allgaier N, Garavan H, Potter A, Johnson M, Hunt E, Gonçalves P, Flory K</span> <span class="year">(2026).</span> <span class="title-text">Understanding adverse childhood experiences within the first decade of the ABCD study: A systematic review.</span> <em>Developmental cognitive neuroscience.</em> https://doi.org/10.1016/j.dcn.2026.101740</p>
+    <p class="ref-entry"><span class="authors">Xu J, Valencia Osorio S, Henry MK, Sotardi S, Wood JN, Seidlitz J, Alexander-Bloch A, Catalano J, Chaiyachati BH</span> <span class="year">(2026).</span> <span class="title-text">Subarachnoid space in infancy and early childhood: a systematic review of measurements.</span> <em>Pediatric radiology.</em> https://doi.org/10.1007/s00247-026-06640-z</p>
+    <p class="ref-entry"><span class="authors">Xiaowei Zheng, Zidan Zhai, Wenyang Han, Yiqun Li, M. Jiang, X. Ren, Wenyan Wu, Kaixin Zhang</span> <span class="year">(2026).</span> <span class="title-text">The association between adverse childhood experiences and successful aging among older people in China: Evidence from the China Health and Retirement Longitudinal Study (CHARLS).</span> <em>Journal of Health Psychology; pages=3668 - 3678; volume=31.</em> https://doi.org/10.1177/13591053251405162</p>
+    <p class="ref-entry"><span class="authors">Russell H, Angus G, Singleton S, Bell CG, Hales TG</span> <span class="year">(2026).</span> <span class="title-text">The impact of adverse childhood experiences on DNA methylation age: a systematic review and meta-analysis.</span> <em>Clinical epigenetics.</em> https://doi.org/10.1186/s13148-025-02047-z</p>
+    <p class="ref-entry"><span class="authors">Connon E, Park HRP, Turner RM, Williams LM, Gatt JM</span> <span class="year">(2026).</span> <span class="title-text">Strengths-based resilience: the biopsychosocial factors that differentiate 12-year mental well-being trajectories following adverse childhood experiences.</span> <em>Psychological medicine.</em> https://doi.org/10.1017/S0033291726104784</p>
+    <p class="ref-entry"><span class="authors">Wen Y, Liu M, Li Y, Li Y, Yao Y, Weng X, Zhao S, Wang L, Guo N</span> <span class="year">(2026).</span> <span class="title-text">Patterns of adverse and positive childhood experiences on prenatal mental health outcomes in Chinese pregnant women: A latent class analysis.</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2026.108145</p>
+    <p class="ref-entry"><span class="authors">Thurston C, Murray AL, Franchino-Olsen H, Asghar K, Meinck F</span> <span class="year">(2026).</span> <span class="title-text">Patterns of contextually sensitive adverse childhood experiences and associations with adult mental health outcomes in a longitudinal South African community sample: a latent class analysis.</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2026.108121</p>
+    <p class="ref-entry"><span class="authors">Xie H, Davidson L, Hamdan RM, Shih CH, Gao W, Wall JT, McCullumsmith RE, Wang X</span> <span class="year">(2026).</span> <span class="title-text">Pre-trauma hair cortisol moderates adverse childhood experience and hypothalamic volume effects on stress symptoms after adult trauma.</span> <em>Translational psychiatry.</em> https://doi.org/10.1038/s41398-026-03901-1</p>
+    <p class="ref-entry"><span class="authors">Shi-Yu Xie, Siying Yu, Yue Ma, Jing Luo, Yonghui Zhang, Rui Wang, Yafei Wang, Yuling Wang, Xueqiang Wang</span> <span class="year">(2026).</span> <span class="title-text">Association of adverse childhood experiences with health service use and catastrophic health expenditures in China: evidence from the China Health and Retirement Longitudinal Study.</span> <em>Environmental Health and Preventive Medicine; volume=31.</em> https://doi.org/10.1265/ehpm.25-00012</p>
+    <p class="ref-entry"><span class="authors">Yayla İE, Makas S, Dombak K, Bekir S, Çelik E, Arpaci I, Baloglu M</span> <span class="year">(2026).</span> <span class="title-text">Adverse childhood experiences and problematic gambling among young adults: a moderated serial mediation analysis.</span> <em>Scientific reports.</em> https://doi.org/10.1038/s41598-026-59889-7</p>
+    <p class="ref-entry"><span class="authors">Nakanishi M, DeVylder J, Knowles G, Hasegawa M, Richards M, Nishida A</span> <span class="year">(2026).</span> <span class="title-text">Adverse childhood experiences, early menopause, cognition, and dementia in older adults in the United States.</span> <em>Communications health.</em> https://doi.org/10.1038/s44528-026-00003-8</p>
+    <p class="ref-entry"><span class="authors">Martinez-Torteya C, Muzik M, Lee S, Levendosky A, Bogat GA, Lonstein JS, Nuttall AK</span> <span class="year">(2026).</span> <span class="title-text">Adverse Childhood Experiences Increase Vulnerability for Maternal-Infant Bonding Impairment: Examining Psychological and Neuroendocrine Mediational Processes.</span> <em>Psychodynamic psychiatry.</em> https://doi.org/10.1521/pdps.2026.54.2.228</p>
+    <p class="ref-entry"><span class="authors">Martín-Estal I, Rojas DL, Díaz-Gómez JL, Del Rio-Pascual AJ, Rodríguez-de-Ita J, Castorena-Torres F</span> <span class="year">(2026).</span> <span class="title-text">Adverse childhood experiences and neuroendocrine biomarker changes in Mexican preschool children.</span> <em>Psychoneuroendocrinology.</em> https://doi.org/10.1016/j.psyneuen.2025.107685</p>
+    <p class="ref-entry"><span class="authors">Palmer SA, Shyr C, Morley T, Shelley J, Han L, Simmons J, Bejan C, Walsh C, Ruderfer DM</span> <span class="year">(2026).</span> <span class="title-text">Adverse Childhood Experiences and Growth Outcomes in Childhood: A Longitudinal EHR-Based Study.</span> <em>medRxiv : the preprint server for health sciences.</em> https://doi.org/10.64898/2026.06.15.26355527</p>
+    <p class="ref-entry"><span class="authors">Zhang Y, Li C, Wu Z, Cao Y, Shi Z</span> <span class="year">(2026).</span> <span class="title-text">Association of adverse childhood experiences and gastrointestinal and liver diseases among middle-aged and elderly adults in China.</span> <em>Epidemiology and psychiatric sciences.</em> https://doi.org/10.1017/S2045796026100729</p>
+    <p class="ref-entry"><span class="authors">Tran HGN, Morgan J, Major-Smith D</span> <span class="year">(2026).</span> <span class="title-text">A life-course approach to the relationship between adverse childhood experiences and mental health in a longitudinal UK birth cohort (ALSPAC).</span> <em>Longitudinal and life course studies : international journal.</em> https://doi.org/10.1332/17579597Y2026D000000085</p>
+    <p class="ref-entry"><span class="authors">Moore CR, Veliz PT, Miller AL, Pilkauskas NV, Herrenkohl TI, Stoddard SA</span> <span class="year">(2026).</span> <span class="title-text">Individual and Interactive Effects of Adverse Childhood Experiences and Household Income on Adolescent Depression and Anxiety Symptoms.</span> <em>Research in nursing & health.</em> https://doi.org/10.1002/nur.70107</p>
+    <p class="ref-entry"><span class="authors">Woonkaew W, Jongbowonwiwat K, Pitanupong J, Pitanupong T, Saelim N</span> <span class="year">(2026).</span> <span class="title-text">Adverse childhood experiences and depressive symptoms among Thai medical students: a cross-sectional study.</span> <em>BMC psychology.</em> https://doi.org/10.1186/s40359-026-05044-w</p>
+    <p class="ref-entry"><span class="authors">Xiang L, Jian Y, Li JJ, Zhang D, Meng W, Chen J, Xie B, Cai Y, Li L</span> <span class="year">(2026).</span> <span class="title-text">Adverse childhood experiences, family functioning, and duration of untreated illness among adolescents with anxiety and depressive disorders: A nationwide study in China.</span> <em>Psychiatry research.</em> https://doi.org/10.1016/j.psychres.2026.117271</p>
+
+    <h4>ICD-11 CPTSD Diagnosis</h4>
+    <p class="ref-entry"><span class="authors">Kerbage H, Bui E, Revet A, Denis H, Purper-Ouakil D, Rolling J</span> <span class="year">(2026).</span> <span class="title-text">Posttraumatic stress disorder from early childhood to late adolescence: a resilience-oriented approach to prevention, diagnosis, and clinical management.</span> <em>Discover mental health.</em> https://doi.org/10.1007/s44192-026-00488-3</p>
+    <p class="ref-entry"><span class="authors">Panayi P, Varese F, Peters E, Bentall R, Hardy A, Berry K, Sellwood W, Underwood R, Steel C, Mason L, Elliott R</span> <span class="year">(2026).</span> <span class="title-text">Investigating the neuroanatomical underpinnings of complex PTSD in people with psychosis.</span> <em>Psychiatry research. Neuroimaging.</em> https://doi.org/10.1016/j.pscychresns.2026.112182</p>
+    <p class="ref-entry"><span class="authors">Moreira A, Osório F, Pacheco J, Moura A, Henriques MR, Rocha JC</span> <span class="year">(2026).</span> <span class="title-text">The International Trauma Questionnaire Child and Adolescent Version (ITQ-CA) in Portuguese: validation for children at risk.</span> <em>European journal of psychotraumatology.</em> https://doi.org/10.1080/20008066.2026.2638114</p>
+    <p class="ref-entry"><span class="authors">Lay CM, Yuan GF, Lam SKK, Reyes MES, Jaya ES, Mukhtar F, Lian AEZ, Derin G, Bengwasan PD, Kuriala GK, Uludag K, Hartanto S, Dewantary NI, Novrianto R, Leung CSY, Fung HW</span> <span class="year">(2026).</span> <span class="title-text">Psychometric evaluation of the preference to avoid self-experiences (PASE) scale: Cross-cultural validity and associations with complex PTSD and dissociation in an international female sample.</span> <em>Journal of psychiatric research.</em> https://doi.org/10.1016/j.jpsychires.2025.11.023</p>
+    <p class="ref-entry"><span class="authors">Lu W, Wang K, Mueser KT, Jia Y, Robinson M, Rogers K, Siriram A, Yanos PT, Srijeyanthan J, Tong T, Gottlieb J, Silverstein SM</span> <span class="year">(2026).</span> <span class="title-text">Complex PTSD among persons with serious mental illness receiving community mental health services.</span> <em>Journal of mental health (Abingdon, England).</em> https://doi.org/10.1080/09638237.2025.2585203</p>
+    <p class="ref-entry"><span class="authors">Lee D, King D, Kirby JN</span> <span class="year">(2026).</span> <span class="title-text">Compassion Focused Therapy to Address Shame and Guilt: A Case Study of a Client With Complex PTSD.</span> <em>Journal of clinical psychology.</em> https://doi.org/10.1002/jclp.70145</p>
+    <p class="ref-entry"><span class="authors">Pejušković B, Lero M, Pavlović V, Arsenijević M, Ilić M, Pešić D</span> <span class="year">(2026).</span> <span class="title-text">ICD-11 PTSD and CPTSD in Serbia: clinical validation of the International Trauma Questionnaire.</span> <em>European journal of psychotraumatology.</em> https://doi.org/10.1080/20008066.2026.2646128</p>
+    <p class="ref-entry"><span class="authors">Jiaying Xu M, Zhao C, Qin H, Ye H, Wang W, Xu H</span> <span class="year">(2026).</span> <span class="title-text">Diagnostic comparisons of PTSD and complex PTSD in clinical adolescents: Detection rates and ACEs as risk factors.</span> <em>European journal of psychotraumatology.</em> https://doi.org/10.1080/20008066.2026.2685473</p>
+
+    <h4>Clinical Interventions</h4>
+    <p class="ref-entry"><span class="authors">Orovou E, Tzitiridou-Chatzopoulou M, Rigas N, Sarantaki A</span> <span class="year">(2026).</span> <span class="title-text">Mapping the Relationship Between Post-Traumatic Stress and Post-Traumatic Growth and the Mediating Role of Resilience.</span> <em>Clinical psychology & psychotherapy.</em> https://doi.org/10.1002/cpp.70249</p>
+    <p class="ref-entry"><span class="authors">Erdoğan-Yıldırım Z, Karaca S, Demir FC, Deke Z</span> <span class="year">(2026).</span> <span class="title-text">Invisible traces after traffic accidents: Psychological and behavioral consequences of physical Injuries.</span> <em>Injury.</em> https://doi.org/10.1016/j.injury.2026.113277</p>
+    <p class="ref-entry"><span class="authors">Rosner R, Pfeiffer E, Thielemann JFB, Eglinsky J, Garbade M, Kasparik B, Keller J, Müller LRF, Sachser C</span> <span class="year">(2026).</span> <span class="title-text">Mental health care for unaccompanied young refugees in Germany through a stepped care approach versus enhanced usual care: a cluster-randomised hybrid effectiveness-implementation trial.</span> <em>The Lancet. Global health.</em> https://doi.org/10.1016/S2214-109X(26)00055-0</p>
+    <p class="ref-entry"><span class="authors">Fan H, Zhang J, Wang Y, Yang K, Wang Y, Yang X</span> <span class="year">(2026).</span> <span class="title-text">Peer-delivered combined EMD and imagery rescripting for traumatized Chinese university students: a RCT.</span> <em>European journal of psychotraumatology.</em> https://doi.org/10.1080/20008066.2026.2686577</p>
+    <p class="ref-entry"><span class="authors">Gopalan G, Kerns S, Horen MJ, Lowe J</span> <span class="year">(2026).</span> <span class="title-text">Partnering for Success: Provider Perspectives of an Inter-agency Initiative between Child Welfare and Mental Health Systems.</span> <em>Administration and policy in mental health.</em> https://doi.org/10.1007/s10488-026-01489-8</p>
+    <p class="ref-entry"><span class="authors">Mattelin E, Weyler H, Andersson R, Paulsen J, Tielman S, Vikgren A, Bondjers K, Serlachius E, Mataix-Cols D, Bragesjö M</span> <span class="year">(2026).</span> <span class="title-text">Feasibility and acceptability of therapist-guided, asynchronous, internet-delivered trauma-focused CBT for adolescents with PTSD: a single-group feasibility trial in Sweden.</span> <em>BMJ open.</em> https://doi.org/10.1136/bmjopen-2026-117024</p>
+    <p class="ref-entry"><span class="authors">Guerrini Usubini A, Manzoni GM, Pietrabissa G, Nicolazzi C, Caretti A, Merlini C, Villa V, Sartorio A, Castelnuovo G</span> <span class="year">(2026).</span> <span class="title-text">Eye movement desensitization and reprocessing versus cognitive behavioral therapy in the treatment of inpatients with obesity, binge eating disorder, and traumatic experiences: a randomized controlled trial.</span> <em>Research in psychotherapy (Milano).</em> https://doi.org/10.4081/ripppo.2026.886</p>
+    <p class="ref-entry"><span class="authors">Asgari Z</span> <span class="year">(2026).</span> <span class="title-text">Healing the Invisible Wounds: A Narrative Review of Trauma-Focused Interventions for War-Affected Children and Adolescents.</span> <em>Journal of child & adolescent trauma.</em> https://doi.org/10.1007/s40653-025-00802-1</p>
+    <p class="ref-entry"><span class="authors">Davariniamotlaghquchan A, Niazmand Z, Shafiee M, Ostadtaghizadeh A</span> <span class="year">(2026).</span> <span class="title-text">Impacts of climate change on mental health and its underlying mechanisms: an umbrella review.</span> <em>Annals of general psychiatry.</em> https://doi.org/10.1186/s12991-026-00668-z</p>
+    <p class="ref-entry"><span class="authors">Johnson C, Kiche S, Mbwayo A, Okoth DA, Nyaboke OA, Testorf A, Dahiya P, Dorsey S</span> <span class="year">(2026).</span> <span class="title-text">Impact of social risk factors on TF-CBT engagement and strategies to mitigate the impact: A qualitative analysis.</span> <em>PLOS mental health.</em> https://doi.org/10.1371/journal.pmen.0000499</p>
+    <p class="ref-entry"><span class="authors">Braathu N, Birkeland MS, Tveter L, Skar AS, Ormhaug SM, Jensen TK</span> <span class="year">(2026).</span> <span class="title-text">Scaling Up Evidence-Based Treatments: An Analysis of 25,000 Sessions of Trauma-Focused Cognitive Behavioral Therapy (TF-CBT) in Routine Care.</span> <em>Journal of the American Academy of Child and Adolescent Psychiatry.</em> https://doi.org/10.1016/j.jaac.2026.04.012</p>
+    <p class="ref-entry"><span class="authors">Çınaroğlu M, Yılmazer E, Ülker SV, Sayar GH</span> <span class="year">(2026).</span> <span class="title-text">Remote EMDR versus CBT for PTSD after the Kahramanmaraş earthquakes: a randomized trial.</span> <em>Frontiers in psychiatry.</em> https://doi.org/10.3389/fpsyt.2026.1779057</p>
+    <p class="ref-entry"><span class="authors">Garnsey CL, Park CL, Magin ZE, Russell BS, Milan S</span> <span class="year">(2026).</span> <span class="title-text">Self-compassion as a shield? Investigating self-compassion's prospective role in buffering the effects of traumatic and negative life events.</span> <em>Anxiety, stress, and coping.</em> https://doi.org/10.1080/10615806.2025.2539169</p>
+    <p class="ref-entry"><span class="authors">Velu ME, de Roos C, van der Aa N, Jongedijk R, Lindauer R, Mooren T</span> <span class="year">(2026).</span> <span class="title-text">Trauma-focused treatments for refugee children and adolescents with PTSD: a three-arm randomized controlled trial comparing the efficacy of EMDR and KIDNET versus a waitlist control group (the KIEM study).</span> <em>Child and adolescent psychiatry and mental health.</em> https://doi.org/10.1186/s13034-026-01118-0</p>
+    <p class="ref-entry"><span class="authors">McGillivray CJ, Brotto G, Stapleton P, Patching A, Ronken C, Le Sech K</span> <span class="year">(2026).</span> <span class="title-text">The effect of posttraumatic cognitions on PTSD in nonoffending parents of child sexual abuse: The aggravating role of negative self-compassion and emotive regulation.</span> <em>Psychological trauma : theory, research, practice and policy.</em> https://doi.org/10.1037/tra0002155</p>
+    <p class="ref-entry"><span class="authors">Haddad RH, Abuejheisheh AJ, Abuhashish YH, Hamdan-Mansour AM</span> <span class="year">(2026).</span> <span class="title-text">Psychiatric nurse-delivered Eye Movement Desensitization and Reprocessing (EMDR) for adults with moderate to severe post-traumatic stress symptoms in Jordan: a preliminary randomized controlled trial.</span> <em>BMC nursing.</em> https://doi.org/10.1186/s12912-026-05068-y</p>
+    <p class="ref-entry"><span class="authors">Duong LA, Lane E, Woodard G, Phillips D, Casline E, Patel-Syed Z, Tune AC, Adams K, Hollander K, Ramirez V, Jensen-Doss A</span> <span class="year">(2026).</span> <span class="title-text">Predictors of Engagement in Learning Collaboratives for Youth with Trauma: A Replication and Extension.</span> <em>Journal of clinical child and adolescent psychology : the official journal for the Society of Clinical Child and Adolescent Psychology, American Psychological Association, Division 53.</em> https://doi.org/10.1080/15374416.2026.2620391</p>
+    <p class="ref-entry"><span class="authors">Boyd DC, Steadman DW, Marzani GR, Andersen V</span> <span class="year">(2026).</span> <span class="title-text">Recognizing and mitigating the effects of occupational exposure to traumatic death in forensic anthropology.</span> <em>Journal of forensic sciences.</em> https://doi.org/10.1111/1556-4029.70246</p>
+    <p class="ref-entry"><span class="authors">Deblinger E, Pollio E, P Harrison J, Cooper B, L Martelli F, Schuler N, Steer R</span> <span class="year">(2026).</span> <span class="title-text">Refining the PRACTICE Course for Trauma Professionals Across Organizational Roles to Enhance well-being and TF-CBT Competency.</span> <em>Journal of child & adolescent trauma.</em> https://doi.org/10.1007/s40653-025-00787-x</p>
+    <p class="ref-entry"><span class="authors">Cavalera C, Incerti A, Fernandez I, Jarero I, Mainthow N, Pagnini F</span> <span class="year">(2026).</span> <span class="title-text">Reducing trauma-related parental stress in neurodevelopmental disorders: a randomized feasibility study.</span> <em>European journal of pediatrics.</em> https://doi.org/10.1007/s00431-026-06848-z</p>
+    <p class="ref-entry"><span class="authors">Lassen ER, Birkeland MS, Egeland K, Stene LE, Brodersen D, Ekornås B, Reinholdt NP, Kjerstad E, Lamu AN, Aarons GA, Crable EL, Bragesjö M, Bækkelund H</span> <span class="year">(2026).</span> <span class="title-text">Early Support after Exposure to Trauma (EASE): protocol for a hybrid effectiveness-implementation trial of an internet-based intervention for PTSD prevention.</span> <em>Trials.</em> https://doi.org/10.1186/s13063-026-09502-z</p>
+    <p class="ref-entry"><span class="authors">Wallin L, Svedin CG, Dennhag I</span> <span class="year">(2026).</span> <span class="title-text">Blended Trauma-Focused Cognitive Behavioral Therapy With Compassion for Adolescents With Posttraumatic Stress Disorder: Protocol for a Pilot Randomized Controlled Trial in Northern Sweden.</span> <em>JMIR research protocols.</em> https://doi.org/10.2196/92270</p>
+    <p class="ref-entry"><span class="authors">Jackson PL, Saunders P, Mizzi S, Hallam KT</span> <span class="year">(2026).</span> <span class="title-text">Effectiveness of Eye Movement Desensitisation and Reprocessing (EMDR) Therapy in reducing infertility distress in women: a community-based randomised crossover trial protocol.</span> <em>BMJ open.</em> https://doi.org/10.1136/bmjopen-2025-104683</p>
+    <p class="ref-entry"><span class="authors">Çimen F, Seçer İ</span> <span class="year">(2026).</span> <span class="title-text">Effectiveness of a Parent-Child Interaction Therapy-Based Trauma-Focused Interaction Module for Trauma-Exposed Children: A Pilot Randomized Controlled Trial.</span> <em>Clinical psychology & psychotherapy.</em> https://doi.org/10.1002/cpp.70263</p>
+    <p class="ref-entry"><span class="authors">Hatoum AH, Richard K, Burton AL, Rieger E, Touyz S, Abbott MJ</span> <span class="year">(2026).</span> <span class="title-text">A Pilot Randomized Controlled Trial of Eye Movement Desensitization and Reprocessing Therapy for Adults With Binge-Eating Disorder.</span> <em>The International journal of eating disorders.</em> https://doi.org/10.1002/eat.70056</p>
+    <p class="ref-entry"><span class="authors">Habibi N, Basharpoor S, Atadokht A, Narimani M, Hatami Varzaneh A</span> <span class="year">(2026).</span> <span class="title-text">A mixed-methods study of the development and evaluation of an Internal Family Systems (IFS)-based group intervention for post-traumatic cognitions and fear of compassion among trauma-exposed adolescents in Out-of-Home Care (OOHC).</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2026.108140</p>
+    <p class="ref-entry"><span class="authors">Kaplow J, Alvis L, Oosterhoff B</span> <span class="year">(2026).</span> <span class="title-text">Assessing and Treating Childhood Traumatic Loss.</span> <em>Child and adolescent psychiatric clinics of North America.</em> https://doi.org/10.1016/j.chc.2025.11.012</p>
+    <p class="ref-entry"><span class="authors">Khan A, Madihie AB, Haider M, Haider S, Khan R, Bahadar A</span> <span class="year">(2026).</span> <span class="title-text">Adapting and testing of DeprEnd EMDR therapy for major depressive disorder: a study protocol of mixed method randomized controlled trial.</span> <em>Trials.</em> https://doi.org/10.1186/s13063-026-09543-4</p>
+    <p class="ref-entry"><span class="authors">Thellier-Francois J, Binda D, Nicolier M, Haffen E, Maillot MC, Pretalli JB, Martin E, Bennabi D</span> <span class="year">(2026).</span> <span class="title-text">Effectiveness of hypnosis in adults with posttraumatic stress disorder (PTSD).</span> <em>L'Encephale.</em> https://doi.org/10.1016/j.encep.2025.12.002</p>
+    <p class="ref-entry"><span class="authors">Kurtoğlu MB</span> <span class="year">(2026).</span> <span class="title-text">Exploring the relationship between post-earthquake trauma, post-traumatic growth, and self-compassion.</span> <em>Journal of health psychology.</em> https://doi.org/10.1177/13591053261464387</p>
+
+    <h4>Emotion Regulation &amp; Dissociation</h4>
+    <p class="ref-entry"><span class="authors">Legendre M, Garon-Bissonnette J, Lemieux A, Lemieux R, Gamache D, Berthelot N</span> <span class="year">(2026).</span> <span class="title-text">Mentalizing trauma and emotion regulation differentiate resilient and vulnerable profiles in pregnant women exposed to childhood maltreatment.</span> <em>Journal of affective disorders.</em> https://doi.org/10.1016/j.jad.2026.122267</p>
+    <p class="ref-entry"><span class="authors">Geng F, Guo R, Xiong X, Wang J</span> <span class="year">(2026).</span> <span class="title-text">Intergenerational transmission of posttraumatic stress disorder symptoms: Exploring the serial mediating role of parenting styles and early adolescent emotion regulation difficulties.</span> <em>Journal of affective disorders.</em> https://doi.org/10.1016/j.jad.2026.121973</p>
+    <p class="ref-entry"><span class="authors">Liu L, Lin Y</span> <span class="year">(2026).</span> <span class="title-text">Personality traits and cortical structure link childhood maltreatment to impulsivity.</span> <em>European journal of psychotraumatology.</em> https://doi.org/10.1080/20008066.2026.2684215</p>
+    <p class="ref-entry"><span class="authors">Thomson P, Jaque SV</span> <span class="year">(2026).</span> <span class="title-text">Multidimensional Dissociation, Shame, Trauma and Ethnicity.</span> <em>Journal of trauma & dissociation : the official journal of the International Society for the Study of Dissociation (ISSD).</em> https://doi.org/10.1080/15299732.2026.2674552</p>
+    <p class="ref-entry"><span class="authors">Vásquez-Romero A, Pérez-Lara CM</span> <span class="year">(2026).</span> <span class="title-text">Impact of alexithymia as a mediator in the relationship between early traumatic experiences and emotion regulation difficulties in young adults.</span> <em>Frontiers in psychology.</em> https://doi.org/10.3389/fpsyg.2026.1866103</p>
+    <p class="ref-entry"><span class="authors">Jin L, Xia H, Sun L</span> <span class="year">(2026).</span> <span class="title-text">Global research landscape, knowledge structure, and emerging trends in adverse childhood experiences and personality disorders: a bibliometric analysis.</span> <em>Frontiers in psychiatry.</em> https://doi.org/10.3389/fpsyt.2026.1842315</p>
+    <p class="ref-entry"><span class="authors">Moen AB, Hummelen B, Moen E, Dammen T, Melle I, Strand D, Woods D, Grøtte T</span> <span class="year">(2026).</span> <span class="title-text">Trichotillomania and skin-picking disorder: associations with childhood maltreatment and the mediating role of depressive symptoms.</span> <em>BMC psychology.</em> https://doi.org/10.1186/s40359-026-05193-y</p>
+    <p class="ref-entry"><span class="authors">Christiansen SC, Baker DG, Zuraw BL</span> <span class="year">(2026).</span> <span class="title-text">Hereditary angioedema and post traumatic stress disorder: a reciprocal relationship?.</span> <em>Orphanet journal of rare diseases.</em> https://doi.org/10.1186/s13023-026-04403-5</p>
+    <p class="ref-entry"><span class="authors">Asgari Z</span> <span class="year">(2026).</span> <span class="title-text">Healing the Invisible Wounds: A Narrative Review of Trauma-Focused Interventions for War-Affected Children and Adolescents.</span> <em>Journal of child & adolescent trauma.</em> https://doi.org/10.1007/s40653-025-00802-1</p>
+    <p class="ref-entry"><span class="authors">Jenkins D, Pirro T, Giannouli V, Wadji DL, Seedat S, Spies G, Martin-Sölch C</span> <span class="year">(2026).</span> <span class="title-text">The relationship between age of first exposure and posttraumatic symptoms: results from the global psychotrauma screen.</span> <em>European journal of psychotraumatology.</em> https://doi.org/10.1080/20008066.2026.2672797</p>
+    <p class="ref-entry"><span class="authors">Fung HW, Lam SKK, Lay CM, Cheung CTY, Reyes MES, Jaya ES, Mukhtar F, Lian AEZ, Derin G, Bengwasan PD, Kuriala GK, Uludag K, Hartanto S, Dewantary NI, Novrianto R, Li Y, Wong MYC, Huang SY, Zatopek A, Chien WT, Yuan GF</span> <span class="year">(2026).</span> <span class="title-text">The protective role of social support against dissociative symptoms: Longitudinal findings from two international survey projects.</span> <em>Social psychiatry and psychiatric epidemiology.</em> https://doi.org/10.1007/s00127-026-03105-4</p>
+    <p class="ref-entry"><span class="authors">Federica VC, Carolina P, Luciana C, Anna CF, Elena T, Francesco M, Erica P</span> <span class="year">(2026).</span> <span class="title-text">Trauma Symptoms as a Bridge: Linking Early Adversities to Interpersonal Risk Profiles for Victimization and Perpetration in Women.</span> <em>Clinical neuropsychiatry.</em> https://doi.org/10.36131/cnfioritieditore20260306</p>
+    <p class="ref-entry"><span class="authors">Froelich JM, Ringenary HL, Cherry KE, Wamser RA, Gerstein ED</span> <span class="year">(2026).</span> <span class="title-text">The roles of paternal emotion dysregulation and maltreatment history on child emotion socialization.</span> <em>Psychological trauma : theory, research, practice and policy.</em> https://doi.org/10.1037/tra0002227</p>
+    <p class="ref-entry"><span class="authors">Hinchey LM, Abelson JL</span> <span class="year">(2026).</span> <span class="title-text">Sex-specific mechanisms of childhood trauma-related HPA axis dysregulation: Insights across four regulatory probes.</span> <em>Psychoneuroendocrinology.</em> https://doi.org/10.1016/j.psyneuen.2026.107951</p>
+    <p class="ref-entry"><span class="authors">Guthrie SL, Karatzias T, Shevlin M, Bak-Klimek A, Woodrow A</span> <span class="year">(2026).</span> <span class="title-text">Psychological mediators of the associations between adverse and benevolent childhood experiences and posttraumatic stress disorder (PTSD) and complex PTSD: A systematic review and meta-analysis.</span> <em>Journal of traumatic stress.</em> https://doi.org/10.1002/jts.70098</p>
+    <p class="ref-entry"><span class="authors">Oprel DAC, Hoeboer CM, de Kleine RA, Schoorl M, Does WV, Minnen AV</span> <span class="year">(2026).</span> <span class="title-text">Phase-based treatment versus immediate prolonged exposure for childhood abuse-related PTSD: The role of emotion regulation improvement in predicting PTSD symptom reduction.</span> <em>Journal of anxiety disorders.</em> https://doi.org/10.1016/j.janxdis.2026.103174</p>
+    <p class="ref-entry"><span class="authors">Fisher V, Copel LC, Meyers S</span> <span class="year">(2026).</span> <span class="title-text">Repressed Anxiety: A Concept Analysis.</span> <em>Issues in mental health nursing.</em> https://doi.org/10.1080/01612840.2026.2688855</p>
+    <p class="ref-entry"><span class="authors">Lay CM, Yuan GF, Lam SKK, Reyes MES, Jaya ES, Mukhtar F, Lian AEZ, Derin G, Bengwasan PD, Kuriala GK, Uludag K, Hartanto S, Dewantary NI, Novrianto R, Leung CSY, Fung HW</span> <span class="year">(2026).</span> <span class="title-text">Psychometric evaluation of the preference to avoid self-experiences (PASE) scale: Cross-cultural validity and associations with complex PTSD and dissociation in an international female sample.</span> <em>Journal of psychiatric research.</em> https://doi.org/10.1016/j.jpsychires.2025.11.023</p>
+    <p class="ref-entry"><span class="authors">Doba K, Pezard L, Nandrino JL</span> <span class="year">(2026).</span> <span class="title-text">Childhood neglect, abuse, and their combination are differentially associated with specific emotion regulation and mental health issues.</span> <em>Communications psychology.</em> https://doi.org/10.1038/s44271-026-00501-z</p>
+    <p class="ref-entry"><span class="authors">Sebalo I, Sebalo Vňuková M, Anders M</span> <span class="year">(2026).</span> <span class="title-text">Burned aggression: the relationship between burnout and aggressive behaviour among young adults in Czechia.</span> <em>Frontiers in psychiatry.</em> https://doi.org/10.3389/fpsyt.2026.1872129</p>
+    <p class="ref-entry"><span class="authors">Morin E, Demers RM, Hazel L, Martin-Gagnon G, Wais M, Normandin L, Ensink K</span> <span class="year">(2026).</span> <span class="title-text">From Childhood Emotional Abuse to Adolescent Dissociation: The Role of Borderline Personality Features.</span> <em>Journal of trauma & dissociation : the official journal of the International Society for the Study of Dissociation (ISSD).</em> https://doi.org/10.1080/15299732.2026.2701717</p>
+    <p class="ref-entry"><span class="authors">Wei X, Lü W</span> <span class="year">(2026).</span> <span class="title-text">Childhood trauma, emotion regulation, and depressive symptoms in parents and adolescents: Actor-partner interdependence analysis.</span> <em>Journal of family psychology : JFP : journal of the Division of Family Psychology of the American Psychological Association (Division 43).</em> https://doi.org/10.1037/fam0001519</p>
+    <p class="ref-entry"><span class="authors">Kirchhoff C, Riedl D, Kampling H, Nolte T, Kruse J, Eke S, Sachser C, Fegert JM, Clemens V, Brähler E, Grote V, Lampe A</span> <span class="year">(2026).</span> <span class="title-text">Beyond the mind: Depersonalization and derealization as risk factors for physical health in the German general population.</span> <em>Journal of psychosomatic research.</em> https://doi.org/10.1016/j.jpsychores.2026.112850</p>
+    <p class="ref-entry"><span class="authors">Yayla İE, Makas S, Dombak K, Bekir S, Çelik E, Arpaci I, Baloglu M</span> <span class="year">(2026).</span> <span class="title-text">Adverse childhood experiences and problematic gambling among young adults: a moderated serial mediation analysis.</span> <em>Scientific reports.</em> https://doi.org/10.1038/s41598-026-59889-7</p>
+    <p class="ref-entry"><span class="authors">Krause-Utz A, van Dijke A</span> <span class="year">(2026).</span> <span class="title-text">Absorption and Depersonalisation Derealisation Link Childhood Trauma to BPD Severity and Show Strong Independent Predictive Effects for Various BPD Symptom Domains.</span> <em>Journal of trauma & dissociation : the official journal of the International Society for the Study of Dissociation (ISSD).</em> https://doi.org/10.1080/15299732.2026.2695585</p>
+
+    <h4>Recovery, Resilience &amp; Post-Traumatic Growth</h4>
+    <p class="ref-entry"><span class="authors">P. Frewen, Serena P. Wong, T. Bailey, C. Courtois, R. Lanius</span> <span class="year">(2023).</span> <span class="title-text">As simple as possible, but not simpler: Revisiting the International Trauma Questionnaire (ITQ) complex PTSD items omitted in the shortened version.</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2023.106207</p>
+    <p class="ref-entry"><span class="authors">G. Zerach</span> <span class="year">(2023).</span> <span class="title-text">The Contribution of Childhood Adversity and Potentially Traumatic Events During Military Service to PTSD and Complex PTSD Symptoms Among Israeli Women Veterans.</span> <em>European Psychiatry; pages=S179 - S179; volume=66.</em> https://doi.org/10.1192/j.eurpsy.2023.430</p>
+    <p class="ref-entry"><span class="authors">Sujeong Shin</span> <span class="year">(2023).</span> <span class="title-text">A Case Study in Attachment Trauma Counseling: Focusing on the Integrative Applicability of Eye Movement Desensitization Reprocessing(EMDR) and Internal Family Systems(IFS) Therapy.</span> <em>Korean Association of Christian Counseling &amp; Psychology.</em> https://doi.org/10.23909/kjcc.2023.11.34.4.117</p>
+    <p class="ref-entry"><span class="authors">Silvia Wetherell</span> <span class="year">(2022).</span> <span class="title-text">Investigating the impact of eye movement desensitization and reprocessing (EMDR) in reducing birth trauma symptoms.</span> <em>Annals of Psychophysiology.</em> https://doi.org/10.29052/2412-3188.v9.i2.2022.67-75</p>
+    <p class="ref-entry"><span class="authors">Daniela Lempertz, M. Vasileva, Luise Brandstetter, R. Bering, Franka Metzner</span> <span class="year">(2022).</span> <span class="title-text">Short-term eye movement desensitization and reprocessing (EMDR) therapy to treat children with posttraumatic stress symptoms after single trauma: A case series.</span> <em>Clinical Child Psychology and Psychiatry; pages=450 - 464; volume=28.</em> https://doi.org/10.1177/13591045221082395</p>
+    <p class="ref-entry"><span class="authors">A. Aizik-Reebs, Iftach Amir, K. Yuval, Yuval Hadash, Amit Bernstein</span> <span class="year">(2022).</span> <span class="title-text">Candidate mechanisms of action of mindfulness-based trauma recovery for refugees (MBTR-R): Self-compassion and self-criticism.</span> <em>Journal of consulting and clinical psychology.</em> https://doi.org/10.1037/ccp0000716</p>
+    <p class="ref-entry"><span class="authors">D. Murphy, T. Karatzias, W. Busuttil, N. Greenberg, M. Shevlin</span> <span class="year">(2021).</span> <span class="title-text">ICD-11 posttraumatic stress disorder (PTSD) and complex PTSD (CPTSD) in treatment seeking veterans: risk factors and comorbidity.</span> <em>Social Psychiatry and Psychiatric Epidemiology; pages=1289 - 1298; volume=56.</em> https://doi.org/10.1007/s00127-021-02028-6</p>
+    <p class="ref-entry"><span class="authors">C. Ratliff</span> <span class="year">(2021).</span> <span class="title-text">The Neurobiology of the Healing Arts: Expressive Arts Therapy as an Effective Treatment for Adults Diagnosed with Complex PTSD due to Complex Trauma in Childhood: A Literature Review.</span> </p>
+    <p class="ref-entry"><span class="authors">Yuxin Tian, Wenqi Li, Xinchun Wu, Xiaochun Cheng</span> <span class="year">(2021).</span> <span class="title-text">Complex PTSD in Chinese Adolescents Exposed to Childhood Trauma: A Latent Profile Analysis.</span> <em>Journal of Interpersonal Violence; pages=NP20190 - NP20211; volume=37.</em> https://doi.org/10.1177/08862605211050111</p>
+    <p class="ref-entry"><span class="authors">G. Ho, T. Karatzias, F. Vallières, K. Bondjers, M. Shevlin, M. Cloitre, M. Ben-Ezra, J. Bisson, N. Roberts, Laurence Astill Wright, P. Hyland</span> <span class="year">(2021).</span> <span class="title-text">Complex PTSD symptoms mediate the association between childhood trauma and physical health problems.</span> <em>Journal of psychosomatic research.</em> https://doi.org/10.1016/j.jpsychores.2021.110358</p>
+    <p class="ref-entry"><span class="authors">R. Perri, Paola Castelli, Cecilia La Rosa, Teresa Zucchi, Antonio Onofri</span> <span class="year">(2021).</span> <span class="title-text">COVID-19, Isolation, Quarantine: On the Efficacy of Internet-Based Eye Movement Desensitization and Reprocessing (EMDR) and Cognitive-Behavioral Therapy (CBT) for Ongoing Trauma.</span> <em>Brain Sciences; volume=11.</em> https://doi.org/10.3390/brainsci11050579</p>
+    <p class="ref-entry"><span class="authors">T. Karatzias, M. Shevlin, Claire Fyvie, Graeme Grandison, M. Garozi, Emma Latham, M. Sinclair, G. Ho, G. McAnee, F Lavasani, P. Hyland</span> <span class="year">(2020).</span> <span class="title-text">Adverse and benevolent childhood experiences in Posttraumatic Stress Disorder (PTSD) and Complex PTSD (CPTSD): implications for trauma-focused therapies.</span> <em>European Journal of Psychotraumatology; volume=11.</em> https://doi.org/10.1080/20008198.2020.1793599</p>
+    <p class="ref-entry"><span class="authors">T. Karatzias, M. Shevlin, F Lavasani, Claire Fyvie, Graeme Grandison, P. Hyland, M. Cloitre</span> <span class="year">(2020).</span> <span class="title-text">Childhood trauma, attachment orientation, and complex PTSD (CPTSD) symptoms in a clinical sample: Implications for treatment.</span> <em>Development and Psychopathology; pages=1192 - 1197; volume=34.</em> https://doi.org/10.1017/S0954579420001509</p>
+    <p class="ref-entry"><span class="authors">G. Ho, T. Karatzias, M. Cloitre, Athena C. Y. Chan, D. Bressington, W. Chien, P. Hyland, M. Shevlin</span> <span class="year">(2019).</span> <span class="title-text">Translation and validation of the Chinese ICD-11 International Trauma Questionnaire (ITQ) for the Assessment of Posttraumatic Stress Disorder (PTSD) and Complex PTSD (CPTSD).</span> <em>European Journal of Psychotraumatology; volume=10.</em> https://doi.org/10.1080/20008198.2019.1608718</p>
+    <p class="ref-entry"><span class="authors">C. Irons, S. Lad</span> <span class="year">(2017).</span> <span class="title-text">Using Compassion Focused Therapy to Work with Shame and Self-Criticism in Complex Trauma.</span> <em>; pages=1743; volume=3.</em> </p>
+
+</section>
+
+</div><!-- /.main -->
+
+<!-- Back to Top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>Complex Post-Traumatic Stress Disorder (CPTSD): Understanding and Healing Childhood Trauma | Understanding &amp; Healing Childhood Trauma</p>
+  <p>© 2026 For personal learning purposes — reference only, not clinical advice</p>
+  <a href="cptsd-en.html" class="footer-sub-link">← Back to Home</a>
+</footer>
+
+<script>
+function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';}
+</script>
+</body>
+</html>
