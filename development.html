@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="介紹童年創傷從產前至成年可能影響發展的路徑，並以適應與復原為核心。">
+<meta name="theme-color" content="#17120d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CPTSD 指南">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="童年創傷的發展路徑">
+<meta property="og:description" content="創傷可能如何影響發展，以及復原為何仍然可能。">
+<meta property="og:image" content="https://yuuryou.github.io/childhood-trauma-study/og-image.png">
+<link rel="alternate" hreflang="en" href="development-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="development.html">
+<link rel="alternate" hreflang="zh-Hans" href="development-cn.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>童年創傷的發展路徑 | Developmental Pathways of Childhood Trauma</title>
 <style>
 /* ============================================
@@ -15,12 +30,33 @@
 :root {
   --amber: #f0a040;
   --amber-light: #ffb84d;
-  --amber-glow: rgba(240, 160, 64, 0.15);
+  --amber-lighter: #ffc973;
+  --amber-glow: rgba(240, 160, 64, 0.12);
+  --amber-glow-strong: rgba(240, 160, 64, 0.2);
   --amber-border: rgba(240, 160, 64, 0.3);
+  --amber-border-hover: rgba(240, 160, 64, 0.5);
+
   --text-primary: #ffffff;
   --text-body: rgba(255, 255, 255, 0.82);
   --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.35);
+
   --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-normal: rgba(255, 255, 255, 0.12);
+
+  --glass-bg-blur: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  --glass-bg-static: rgba(255, 255, 255, 0.04);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif;
 }
 
@@ -45,7 +81,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   z-index: -9999;
   opacity: 1;
   filter: brightness(0.45);
@@ -78,6 +114,21 @@ body {
     transform: translateX(-50%) translateY(0);
   }
 }
+@keyframes navFloatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 
 /* ===== Floating Nav — iOS Liquid Glass pill button ===== */
 .floating-nav {
@@ -150,7 +201,7 @@ body {
 .main {
   max-width: 48rem;
   margin: 0 auto;
-  padding: 4rem 2rem 6rem 2rem;
+  padding: 4rem 2rem 8rem 2rem;
   position: relative;
   z-index: 1;
 }
@@ -299,6 +350,22 @@ body {
   transform: scale(1.04);
 }
 
+/* ===== Footer ===== */
+.site-footer {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
+}
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
 /* ===== Animation ===== */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -306,17 +373,23 @@ body {
 }
 
 .hero { animation: fadeInUp 0.6s ease both; }
-.timeline-stage:nth-child(1) { animation: fadeInUp 0.6s ease both 0.1s; }
-.timeline-stage:nth-child(2) { animation: fadeInUp 0.6s ease both 0.18s; }
-.timeline-stage:nth-child(3) { animation: fadeInUp 0.6s ease both 0.26s; }
-.timeline-stage:nth-child(4) { animation: fadeInUp 0.6s ease both 0.34s; }
-.timeline-stage:nth-child(5) { animation: fadeInUp 0.6s ease both 0.42s; }
-.timeline-stage:nth-child(6) { animation: fadeInUp 0.6s ease both 0.50s; }
+.timeline-stage:nth-child(1) .timeline-card { animation: fadeInUp 0.6s ease both 0.1s; }
+.timeline-stage:nth-child(2) .timeline-card { animation: fadeInUp 0.6s ease both 0.18s; }
+.timeline-stage:nth-child(3) .timeline-card { animation: fadeInUp 0.6s ease both 0.26s; }
+.timeline-stage:nth-child(4) .timeline-card { animation: fadeInUp 0.6s ease both 0.34s; }
+.timeline-stage:nth-child(5) .timeline-card { animation: fadeInUp 0.6s ease both 0.42s; }
+.timeline-stage:nth-child(6) .timeline-card { animation: fadeInUp 0.6s ease both 0.50s; }
 .conclusion { animation: fadeInUp 0.6s ease both 0.58s; }
 
 /* ===== Responsive ===== */
+@media (min-width: 1400px) {
+  .main { max-width: 82rem; }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main { max-width: 60rem; }
+}
 @media (max-width: 768px) {
-  .main { padding: 2.5rem 1rem 4rem 1rem; max-width: 100%; }
+  .main { padding: 4.5rem 1rem 7rem 1rem; max-width: 100%; }
   .hero { margin-bottom: 3rem; }
   .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   .timeline { padding-left: 2rem; }
@@ -327,7 +400,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .main { padding: 1.5rem 0.5rem 3rem 0.5rem; }
+  .main { padding: 1.5rem 0.5rem 6rem 0.5rem; }
   .timeline { padding-left: 1.75rem; }
   .timeline-dot { left: calc(-1.75rem + 3px); top: 1.1rem; width: 8px; height: 8px; }
   .timeline-card { padding: 1.25rem; }
@@ -349,13 +422,42 @@ body {
   .timeline-card, .conclusion, .floating-nav {
     background: rgba(20, 20, 35, 0.95);
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
+
+/* ===== Print ===== */
+@media print {
+  body::before, .floating-nav, .care-controls { display: none !important; }
+  body { background: #fff; color: #1a1a2e; }
+  .main { padding-top: 3rem; }
+  .timeline-card, .conclusion, .medical-note {
+    background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
+    border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
+  }
+  .timeline-dot { background: #c87a28; border-color: #c87a28; }
+  .site-footer { border-color: #ddd; }
+}
 </style>
+<link rel="preload" href="site-enhancements.css" as="style">
+<link rel="preload" href="site-enhancements.js" as="script">
+<link rel="preload" href="background-poster.jpg" as="image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "童年創傷的發展路徑",
+  "description": "介紹童年創傷從產前至成年可能影響發展的路徑，並以適應與復原為核心。",
+  "url": "https://yuuryou.github.io/childhood-trauma-study/development.html",
+  "inLanguage": "zh-Hant",
+  "about": { "@type": "MedicalCondition", "name": "Complex Post-Traumatic Stress Disorder", "alternateName": "CPTSD" },
+  "isPartOf": { "@type": "WebSite", "name": "CPTSD — 理解童年創傷", "url": "https://yuuryou.github.io/childhood-trauma-study/" }
+}
+</script>
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -364,8 +466,9 @@ body {
 <nav class="floating-nav" aria-label="頁面導航">
   <span class="nav-title">童年創傷的發展路徑</span>
   <a href="CPTSD childhood trauma.html" class="nav-pill">← 返回主頁</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已靜音" aria-pressed="false" title="背景音效已靜音">&#x1F507;</button>
   <a href="development-en.html" class="nav-pill lang-switch" title="English version">EN</a>
+  <a href="development-cn.html" class="nav-pill lang-switch" title="简体版">简</a>
 </nav>
 
 <!-- Main Content -->
@@ -465,9 +568,12 @@ body {
 
 </div><!-- /.main -->
 
-<script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
-(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
-</script>
+<!-- Footer -->
+<footer class="site-footer">
+  <p>童年創傷的發展路徑</p>
+  <p>&copy; 2026 Personal Educational Use &mdash; For reference only; not a substitute for clinical advice</p>
+</footer>
+
+<script src="site-enhancements.js"></script>
 </body>
 </html>

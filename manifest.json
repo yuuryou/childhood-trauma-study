@@ -1,0 +1,36 @@
+{
+  "name": "CPTSD — Understanding Childhood Trauma",
+  "short_name": "CPTSD Guide",
+  "description": "A trauma-informed educational guide to complex PTSD, childhood trauma, and healing pathways.",
+  "start_url": "/childhood-trauma-study/index.html",
+  "display": "standalone",
+  "background_color": "#17120d",
+  "theme_color": "#17120d",
+  "orientation": "portrait-primary",
+  "scope": "/childhood-trauma-study/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "education", "medical"],
+  "screenshots": [
+    {
+      "src": "og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "CPTSD Guide Overview"
+    }
+  ]
+}

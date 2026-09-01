@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="介绍童年创伤从产前至成年可能影响发展的路径，并以适应与复原为核心。">
+<meta name="theme-color" content="#17120d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CPTSD 指南">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="童年创伤的发展路径">
+<meta property="og:description" content="创伤可能如何影响发展，以及复原为何仍然可能。">
+<meta property="og:image" content="https://yuuryou.github.io/childhood-trauma-study/og-image.png">
+<link rel="alternate" hreflang="en" href="development-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="development.html">
+<link rel="alternate" hreflang="zh-Hans" href="development-cn.html">
+<link rel="stylesheet" href="site-enhancements.css">
+<title>童年创伤的发展路径 | Developmental Pathways of Childhood Trauma</title>
+<style>
+/* ============================================
+   Liquid Glass — Developmental Timeline
+   Dark Theme + Amber Accent
+   ============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --amber: #f0a040;
+  --amber-light: #ffb84d;
+  --amber-glow: rgba(240, 160, 64, 0.15);
+  --amber-border: rgba(240, 160, 64, 0.3);
+  --text-primary: #ffffff;
+  --text-body: rgba(255, 255, 255, 0.82);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; background: transparent; min-height: 100vh; }
+
+body {
+  font-family: var(--font-sans);
+  background: transparent !important;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== Body background video — lowest layer ===== */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  z-index: -9999;
+  opacity: 1;
+  filter: brightness(0.45);
+  pointer-events: none;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -9998;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* ===== Nav float-in animation ===== */
+@keyframes navFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+@keyframes navFloatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+/* ===== Floating Nav — iOS Liquid Glass pill button ===== */
+.floating-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  animation: navFloatIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.2s;
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: 
+    color 0.2s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(240, 160, 64, 0.3);
+  transform: scale(1.05);
+}
+
+.nav-pill:active {
+  transform: scale(0.95);
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--amber-light);
+  white-space: nowrap;
+  padding: 8px 16px;
+  background: rgba(240, 160, 64, 0.12);
+  border: 1px solid rgba(240, 160, 64, 0.2);
+  border-radius: 9999px;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Main ===== */
+.main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 4rem 2rem 8rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.hero .subtitle {
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: var(--text-body);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.hero .intro {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ===== Timeline ===== */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 7px;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Stage wrapper */
+.timeline-stage {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+/* Dot */
+.timeline-dot {
+  position: absolute;
+  left: calc(-2.5rem + 3px);
+  top: 1.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(240, 160, 64, 0.25);
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 10px rgba(240, 160, 64, 0.2);
+  z-index: 1;
+}
+
+/* Card */
+.timeline-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.timeline-card .stage-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--amber-light);
+  margin-bottom: 0.75rem;
+}
+
+.timeline-card p {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.timeline-card p:last-child { margin-bottom: 0; }
+
+/* ===== Conclusion Card ===== */
+.conclusion {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  margin-top: 3rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.conclusion p {
+  font-size: 1.15rem;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.conclusion .back-link {
+  display: inline-block;
+  color: var(--amber-light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  border: 1px solid var(--amber-border);
+  border-radius: 9999px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.conclusion .back-link:hover {
+  background: rgba(240, 160, 64, 0.1);
+  transform: scale(1.04);
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
+}
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero { animation: fadeInUp 0.6s ease both; }
+.timeline-stage:nth-child(1) .timeline-card { animation: fadeInUp 0.6s ease both 0.1s; }
+.timeline-stage:nth-child(2) .timeline-card { animation: fadeInUp 0.6s ease both 0.18s; }
+.timeline-stage:nth-child(3) .timeline-card { animation: fadeInUp 0.6s ease both 0.26s; }
+.timeline-stage:nth-child(4) .timeline-card { animation: fadeInUp 0.6s ease both 0.34s; }
+.timeline-stage:nth-child(5) .timeline-card { animation: fadeInUp 0.6s ease both 0.42s; }
+.timeline-stage:nth-child(6) .timeline-card { animation: fadeInUp 0.6s ease both 0.50s; }
+.conclusion { animation: fadeInUp 0.6s ease both 0.58s; }
+
+/* ===== Responsive ===== */
+@media (min-width: 1400px) {
+  .main { max-width: 82rem; }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main { max-width: 60rem; }
+}
+@media (max-width: 768px) {
+  .main { padding: 4.5rem 1rem 7rem 1rem; max-width: 100%; }
+  .hero { margin-bottom: 3rem; }
+  .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .timeline { padding-left: 2rem; }
+  .timeline-dot { left: calc(-2rem + 3px); }
+  .floating-nav { padding: 6px 10px; gap: 2px; }
+  .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
+  .nav-title { font-size: 0.68rem; padding: 6px 10px; }
+}
+
+@media (max-width: 480px) {
+  .main { padding: 1.5rem 0.5rem 6rem 0.5rem; }
+  .timeline { padding-left: 1.75rem; }
+  .timeline-dot { left: calc(-1.75rem + 3px); top: 1.1rem; width: 8px; height: 8px; }
+  .timeline-card { padding: 1.25rem; }
+  .conclusion { padding: 1.5rem; }
+  .floating-nav { padding: 5px 8px; gap: 1px; }
+  .nav-pill { font-size: 0.62rem; padding: 5px 8px; }
+  .nav-title { font-size: 0.62rem; padding: 5px 8px; }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bg-video { display: none; }
+  .bg-overlay { display: none; }
+  body { background: #0a0e1a; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .timeline-card, .conclusion, .floating-nav {
+    background: rgba(20, 20, 35, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ===== Print ===== */
+@media print {
+  body::before, .floating-nav, .care-controls { display: none !important; }
+  body { background: #fff; color: #1a1a2e; }
+  .main { padding-top: 3rem; }
+  .timeline-card, .conclusion, .medical-note {
+    background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
+    border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
+  }
+  .timeline-dot { background: #c87a28; border-color: #c87a28; }
+  .site-footer { border-color: #ddd; }
+}
+</style>
+<link rel="preload" href="site-enhancements.css" as="style">
+<link rel="preload" href="site-enhancements.js" as="script">
+<link rel="preload" href="background-poster.jpg" as="image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "童年创伤的发展路径",
+  "description": "介绍童年创伤从产前至成年可能影响发展的路径，并以适应与复原为核心。",
+  "url": "https://yuuryou.github.io/childhood-trauma-study/development-cn.html",
+  "inLanguage": "zh-Hans",
+  "about": { "@type": "MedicalCondition", "name": "Complex Post-Traumatic Stress Disorder", "alternateName": "CPTSD" },
+  "isPartOf": { "@type": "WebSite", "name": "CPTSD — 理解童年创伤", "url": "https://yuuryou.github.io/childhood-trauma-study/" }
+}
+</script>
+</head>
+<body>
+
+<video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+
+<!-- Floating Nav -->
+<nav class="floating-nav" aria-label="页面导航">
+  <span class="nav-title">童年创伤的发展路径</span>
+  <a href="CPTSD childhood trauma-cn.html" class="nav-pill">← 返回主页</a>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已静音" aria-pressed="false" title="背景音效已静音">&#x1F507;</button>
+  <a href="development-en.html" class="nav-pill lang-switch" title="English version">EN</a>
+  <a href="development.html" class="nav-pill lang-switch" title="繁体版">繁</a>
+</nav>
+
+<!-- Main Content -->
+<div class="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>童年创伤的发展路径</h1>
+    <p class="subtitle">从胎儿期到成年，神经系统如何被创伤一步步塑造——以及如何被一步步修复</p>
+    <p class="intro">
+      创伤并非在某一刻突然「发生」——它沿著发展的时间轴，在神经系统最可塑的时刻留下印记。理解这个路径，不是为了标签化自己或他人，而是为了看见：那些曾经的反应模式有其来处，也因此可以被理解、被接纳、被改变。
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+
+    <!-- Stage 1: Prenatal & Birth -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🌱</span>
+        <h3>产前与出生</h3>
+        <p>母亲的压力会透过皮质醇影响胎儿发育。当母亲经历长期的压力、焦虑或创伤，压力荷尔蒙经由胎盘进入胎儿体内，影响发育中的大脑结构——特别是海马回和杏仁核。</p>
+        <p>DNA 甲基化可以让创伤「在出生前就开始」。FKBP5 基因的甲基化调控压力相关蛋白——糖皮质激素受体的敏感度——可能使后代对压力更敏感。表观遗传学研究发现，创伤效应可以传递多代：大屠杀幸存者的后代、荷兰饥荒冬季的后代，都在压力调节系统中留下了可量测的印记。</p>
+      </div>
+    </div>
+
+    <!-- Stage 2: Infancy 0-2 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">👶</span>
+        <h3>婴儿期 0–2 岁</h3>
+        <p>主要任务：建立「这个世界是否安全」的核心信念。婴儿透过每一次的喂养、安抚、眼神接触，在神经系统中建立对世界的预设模式。</p>
+        <p>安全型、回避型、矛盾型、紊乱型——四种依恋模式在此形成。紊乱型依恋（既想靠近又害怕）发生在照顾者本身是威胁来源时，是日后解离症状的早期预测因子。</p>
+        <p>婴儿的神经系统即时扫描照顾者的脸孔、声音、心跳——Porges 称此为「神经觉」（Neuroception）。这不是意识层面的判断，而是神经系统在古老层次上持续进行的安全/危险评估。</p>
+      </div>
+    </div>
+
+    <!-- Stage 3: Toddler 2-6 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🧒</span>
+        <h3>幼儿期 2–6 岁</h3>
+        <p>右脑优先发展期——情绪、身体感觉、面孔辨识在此刻形成。这是大脑中情感和身体地图的主要建构时期。</p>
+        <p>压力过高时，身体进入 4F 防御模式：战（Fight）、逃（Flight）、冻结（Freeze）、讨好（Fawn）。自律神经系统的三个层级——腹侧安全、交感防御、背侧关闭——在此期间建立基线。</p>
+        <p>持续的威胁会让神经系统长期停留在防御状态。一个原本应该用来应对短期危险的系统，被迫长期在「开」的状态下运转——这是 CPTSD 中慢性过度警觉的生理根源。</p>
+      </div>
+    </div>
+
+    <!-- Stage 4: School Age 6-12 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">📚</span>
+        <h3>学龄期 6–12 岁</h3>
+        <p>开始接触家庭外的环境——学校、同侪。这是社会比较和自我评价开始形成的时期。</p>
+        <p>内在批判者成形：孩子将照顾者的批评内化为自己的声音。Pete Walker 指出，为了维持对照顾者的依恋（生存所必需），孩子选择责怪自己而非照顾者——「是我不好，所以他们才这样对我。」这在童年是适应性的，但在成年后成为自我攻击的根源。</p>
+        <p>ACE 童年不良经历研究发现，10 类创伤性经历与数十年后心脏病、癌症、自杀风险有直接的剂量效应关系。但正向经验（PACEs）和至少一个安全成年人可以大幅减缓创伤影响——疗愈的种子在此时就可以种下。</p>
+      </div>
+    </div>
+
+    <!-- Stage 5: Adolescence 12-18 -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🧑</span>
+        <h3>青春期 12–18 岁</h3>
+        <p>荷尔蒙剧变加上前额叶尚未成熟——这本身就是一场神经系统的风暴。对童年有创伤的青少年来说，原有的调节困难在此时被放大。</p>
+        <p>CPTSD 的 DSO 症状——情感调节困难、负面自我概念、人际困扰——开始明显浮现。身份认同发展受阻，「我是谁」变得模糊，因为自我感从未在安全的环境中被清晰镜映。</p>
+        <p>但这也是希望的时期：自我关怀（Self-Compassion）可在这个时期成为保护因子。Kristin Neff 的研究显示，对自己温和的能力可以预测创伤后的复原轨迹。</p>
+      </div>
+    </div>
+
+    <!-- Stage 6: Adulthood 18+ -->
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="stage-icon">🌅</span>
+        <h3>成年期 18 岁以上</h3>
+        <p>童年创伤的累积效应在成年后全面呈现。情绪闪回、解离、关系困难、身体症状——这些不是「新的问题」，而是从未真正被处理的旧伤在不同的生命阶段重新浮现。</p>
+        <p>但这不是终点。神经可塑性终生存在——大脑有能力重组。海马回可以再生，杏仁核的过度反应可以被调节，前额叶对边缘系统的调控可以被重建。</p>
+        <p>安全关系加上有效治疗加上自我再抚育——等于真正的修复。疗愈不需要完美，不需要「完全复原」。它只是意味著：你不再被过去的模式绑架，你可以选择新的回应方式。</p>
+      </div>
+    </div>
+
+  </div><!-- /.timeline -->
+
+  <!-- Conclusion -->
+  <div class="conclusion">
+    <p>伤害不是你的错，修复是你的权利。</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary);">神经系统在每一个发展阶段都可能受伤，也在每一个阶段都可能修复。你的大脑、你的身体、你的自我——都不是静止的。它们一直在等待一个安全的机会，重新校准，重新生长。</p>
+    <a class="back-link" href="CPTSD childhood trauma-cn.html">← 返回主页：CPTSD 的理解与疗愈</a>
+  </div>
+
+</div><!-- /.main -->
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>童年创伤的发展路径</p>
+  <p>&copy; 2026 Personal Educational Use &mdash; For reference only; not a substitute for clinical advice</p>
+</footer>
+
+<script src="site-enhancements.js"></script>
+</body>
+</html>

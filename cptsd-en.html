@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A trauma-informed educational guide to complex PTSD, childhood trauma, nervous-system responses, relationships, healing approaches, and self-help tools.">
+<meta name="theme-color" content="#17120d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CPTSD Guide">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Understanding and Healing Childhood Trauma">
+<meta property="og:description" content="An educational, trauma-informed guide to CPTSD and paths toward healing.">
+<meta property="og:image" content="https://yuuryou.github.io/childhood-trauma-study/og-image.png">
+<link rel="alternate" hreflang="en" href="cptsd-en.html">
+<link rel="alternate" hreflang="zh-Hant" href="CPTSD childhood trauma.html">
+<link rel="alternate" hreflang="zh-Hans" href="CPTSD childhood trauma-cn.html">
+<link rel="alternate" hreflang="x-default" href="index.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>Complex Post-Traumatic Stress Disorder (CPTSD): Understanding &amp; Healing Childhood Trauma</title>
 <style>
 /* ============================================
@@ -70,7 +86,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   z-index: -9999;
   opacity: 1;
   filter: brightness(0.45);
@@ -173,31 +189,36 @@ img, iframe, table, pre, code { max-width: 100%; height: auto; }
 /* ===== Hero (no backdrop-filter) ===== */
 .hero {
   text-align: center;
-  padding: 3rem 0 5rem 0;
+  padding: 12rem 0 6rem 0;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   animation: fadeInUp 0.6s ease both;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   line-height: 1.12;
 }
 
 .hero .hero-sub {
-  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-size: clamp(1.15rem, 3.5vw, 1.5rem);
   color: var(--text-body);
   font-weight: 400;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .hero .hero-intro {
   font-size: 1.0625rem;
   color: var(--text-secondary);
-  max-width: 38rem;
-  margin: 0 auto 2rem;
+  max-width: 44rem;
+  margin: 0 auto 2.5rem;
   line-height: 1.8;
 }
 
@@ -466,6 +487,21 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
     transform: translateX(-50%) translateY(0);
   }
 }
+@keyframes navFloatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 
 .hero                         { animation: fadeInUp 0.6s ease both; }
 #what-is-cptsd               { animation: fadeInUp 0.6s ease both 0.08s; }
@@ -477,44 +513,25 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 #toolkit                     { animation: fadeInUp 0.6s ease both 0.56s; }
 #references                  { animation: fadeInUp 0.6s ease both 0.64s; }
 
-/* ===== Back to top ===== */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 1.5rem;
-  width: 44px; height: 44px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  color: var(--amber-light);
-  font-size: 1.25rem;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  z-index: 85;
-  cursor: pointer;
-  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
-  will-change: transform;
-}
-.back-to-top:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-
 /* ===== Responsive ===== */
+@media (min-width: 1400px) {
+  .main { max-width: 90rem; }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main { max-width: 68rem; }
+}
 @media (max-width: 1024px) {
   .main { max-width: 100%; padding: 2rem 1.5rem 5rem 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 4px; }
 }
 @media (max-width: 768px) {
   .main { max-width: 100%; padding: 1.5rem 1rem 4rem 1rem; }
-  .hero { padding: 2rem 0 3.5rem 0; }
+  .hero { padding: 6rem 0 3.5rem 0; }
   .hero h1 { font-size: clamp(1.8rem, 8vw, 3rem); }
   .glass-panel-blur, .glass-panel-static { padding: 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 2px; }
   .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
   .toolkit-grid { grid-template-columns: 1fr; }
-  .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
   .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
@@ -545,9 +562,9 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
 /* ===== Print ===== */
 @media print {
-  body::before, .back-to-top, .floating-nav { display: none !important; }
+  body::before, .care-controls, .floating-nav { display: none !important; }
   body { background: #fff; color: #1a1a2e; }
-  .main { padding-top: 1rem; }
+  .main { padding-top: 3rem; }
   .glass-panel-blur, .glass-panel-static, .toolkit-card {
     background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
     border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
@@ -555,10 +572,44 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   section h2 { color: #c87a28; border-bottom-color: #ddd; }
 }
 </style>
+<link rel="preload" href="site-enhancements.css" as="style">
+<link rel="preload" href="site-enhancements.js" as="script">
+<link rel="preload" href="background-poster.jpg" as="image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Complex Post-Traumatic Stress Disorder (CPTSD): Understanding & Healing Childhood Trauma",
+  "description": "A trauma-informed educational guide to complex PTSD, childhood trauma, nervous-system responses, relationships, healing approaches, and self-help tools.",
+  "url": "https://yuuryou.github.io/childhood-trauma-study/cptsd-en.html",
+  "inLanguage": "en",
+  "about": {
+    "@type": "MedicalCondition",
+    "name": "Complex Post-Traumatic Stress Disorder",
+    "alternateName": "CPTSD"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Survivors of childhood trauma, clinicians, researchers, and allies"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "CPTSD — Understanding Childhood Trauma",
+    "url": "https://yuuryou.github.io/childhood-trauma-study/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yuuryou.github.io/childhood-trauma-study/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "CPTSD Guide", "item": "https://yuuryou.github.io/childhood-trauma-study/cptsd-en.html" }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -576,8 +627,9 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <a href="#toolkit" class="nav-pill" title="Self-Help Toolkit">Toolkit</a>
   <a href="#references" class="nav-pill" title="References">Refs</a>
   <a href="development-en.html" class="nav-pill" title="Developmental Pathways">Dev</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
-  <a href="CPTSD childhood trauma.html" class="nav-pill lang-switch" title="中文版">中文</a>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="Background audio is muted" aria-pressed="false" title="Background audio is muted">&#x1F507;</button>
+  <a href="CPTSD childhood trauma.html" class="nav-pill lang-switch" title="Traditional Chinese">繁</a>
+  <a href="CPTSD childhood trauma-cn.html" class="nav-pill lang-switch" title="Simplified Chinese">简</a>
 </nav>
 
 <!-- ===== Main Content ===== -->
@@ -632,7 +684,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <div class="concept-box highlight-box">
     <p>Your hypervigilance is not &ldquo;overthinking&rdquo;&mdash;it is the sophisticated early-warning system that the past you developed to predict danger and escape ahead of time. Your emotional numbness is not &ldquo;coldness&rdquo;&mdash;it is the safety gate your brain closed when you could no longer bear what was happening. Your inner critic is not &ldquo;an accurate evaluation&rdquo;&mdash;it is the echo of those who hurt you. Trauma responses are <strong>survival strategies</strong> that your nervous system evolved under the harshest conditions. The question is not &ldquo;What is wrong with you?&rdquo; but &ldquo;What happened to you?&rdquo;</p>
   </div>
-</section>
+
+        <h3>Co-occurring CPTSD and BPD: Diagnoses That Should Not Be Swapped</h3>
+  <div class="concept-box">
+    <p>A meta-analysis of 15 studies (N=5,657) provides the first systematic estimate of co-occurring CPTSD and borderline personality disorder (BPD): a pooled prevalence of <strong>17%</strong> (range 1%–57%, with very high heterogeneity). Co-occurrence is a minority pattern in the general population (15.3%) and general clinical services (18.6%), but reaches <strong>56.2%</strong> in specialist trauma or personality disorder services.</p>
+    <p><strong>Clinical takeaway</strong>: Co-occurrence is real but does not support treating CPTSD as a mere alternative label for BPD. Both conditions should be assessed separately—especially in trauma-specialist settings, where BPD comorbidity may be substantially underestimated.</p>
+  </div>
+    
+        <h3>Two Faces of Affective Dysregulation: Hyperactivation and Numbing</h3>
+  <div class="concept-box">
+    <p>ICD-11 captures the affective symptoms of CPTSD with a single "affective dysregulation" domain, operationalised by just two items—one tapping difficulty calming down (hyperactivation), one tapping emotional numbing (hypoactivation)—either of which satisfies the criterion. However, a meta-analytic confirmatory factor analysis pooling <strong>57 studies and 43,066 participants</strong> found that a <strong>seven-factor correlated model</strong>, which separates hyperactivation and hypoactivation into distinct factors, fits the data better than the two-factor (PTSD/DSO) structure underlying the current ICD-11 algorithm.</p>
+    <p><strong>Clinical takeaway</strong>: Emotional numbing and emotional flooding may be driven by different mechanisms and require different interventions—"cooling" techniques for the over-activated, and reconnecting with bodily sensation for the numbed.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;2 How Trauma Lives in the Body (static) ========== -->
 <section id="trauma-in-body" class="glass-panel-blur">
@@ -670,7 +734,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <div class="concept-box">
     <p>Rachel Yehuda&rsquo;s research shows that trauma may be transmitted not only psychologically but also at the level of <strong>DNA methylation</strong>. In the descendants of Holocaust survivors, she found methylation changes in the FKBP5 and NR3C1 genes&mdash;genes that regulate the sensitivity of stress hormone receptors. Even more striking: these epigenetic marks are not irreversible&mdash;Weaver et al. (2004) demonstrated in animal studies that enriched environments and positive caregiving can reverse methylation patterns. Furthermore, research on the Dutch Hunger Winter found that offspring exposed to prenatal famine had higher risks of metabolic disease and mental health problems in adulthood&mdash;transgenerational effects impact not only psychology but the entire physiological system.</p>
   </div>
-</section>
+
+        <h3>The Body Keeps the Score: A Threat-System Model of POTS</h3>
+  <div class="concept-box">
+    <p>Postural tachycardia syndrome (POTS)—a common, often disabling autonomic disorder—has lacked a unifying etiological account. This month, a hypothesis-generating synthesis of multidisciplinary data proposes that, in some individuals, <strong>POTS may involve threat-induced, centrally maintained disruption of brain–body communication</strong>. A key candidate is the periaqueductal gray (PAG), a midbrain hub for autonomic, cardiovascular, and pain responses to threat, which may fail to reset after trauma, leaving the nervous system in a sustained escape mode (fight/flight/freeze) that raises POTS risk.</p>
+    <p><strong>Clinical takeaway</strong>: If this model holds, trauma-informed care and autonomic-targeting interventions—such as heart-rate-variability biofeedback and neuroplasticity-oriented psychotherapy—deserve a place alongside standard medical care for POTS.</p>
+  </div>
+    
+        <h3>CPTSD and Physiological Ageing: How Stress Gets Into the Body</h3>
+  <div class="concept-box">
+    <p>An evidence-informed narrative review maps candidate pathways linking CPTSD to physiological ageing: altered HPA-axis regulation, autonomic dysregulation, immune-inflammatory activity, disrupted sleep and pain processing, and persistent embodied threat responses. In later life, reduced physiological reserve, multimorbidity, dependency, bereavement, and social isolation may reveal or intensify these adaptations.</p>
+    <p><strong>Clinical takeaway</strong>: The authors are careful to note that CPTSD does not directly "cause" dementia or physical illness—rather, trauma-related stress is one pathway through which adversity may become biologically relevant across the lifespan. Later-life care should integrate psychological and medical assessment, relational safety, sleep and pain support, appropriate movement, and cardiometabolic monitoring.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;3 The Self Reshaped by Trauma (static) ========== -->
 <section id="reshaped-self" class="glass-panel-blur">
@@ -719,7 +795,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
       <li><strong>Disturbances in Relationships</strong>: Difficulty sustaining relationships, feeling disconnected from others, or repeatedly falling into harmful relational patterns&mdash;because you grew up in an unsafe interpersonal environment and never experienced the feeling of secure attachment.</li>
     </ol>
   </div>
-</section>
+
+        <h3>Five-Year Trajectories of Adolescent CPTSD: Why Early Recognition Matters</h3>
+  <div class="concept-box">
+    <p>In a five-year, three-wave longitudinal study of 156 trauma-exposed adolescents, <strong>46.8% met diagnostic criteria for PTSD or CPTSD at least at one wave</strong>, yet meeting criteria at all three waves was rare (CPTSD 2.6%; PTSD 0.6%). Among adolescents with CPTSD at the final wave, all symptom clusters remained elevated across the five years, with <strong>affective dysregulation and disturbed relationships the most stable</strong>.</p>
+    <p><strong>Clinical takeaway</strong>: Adolescent CPTSD trajectories are fluid, but once affective and relational symptoms crystallise they tend to persist. This underscores the window for early recognition—providing trauma care before symptoms become entrenched.</p>
+  </div>
+    
+        <h3>Self-Compassion: Distress and Growth Can Coexist</h3>
+  <div class="concept-box">
+    <p>A regression mixture analysis in young adults with adverse childhood experiences shows that CPTSD symptoms and posttraumatic growth (PTG) co-occur in <strong>distinct patterns</strong>—some people show high symptoms with low growth, others low symptoms with high growth, and some high on both. The key differentiating variable is <strong>self-compassion</strong>: higher self-compassion predicted membership in the "low symptoms, high growth" trajectory.</p>
+    <p><strong>Clinical takeaway</strong>: Self-compassion is a cultivable stance, not a fixed trait. Systematically fostering it in therapy may simultaneously ease CPTSD symptoms and open space for posttraumatic growth—distress and growth need not be an either/or.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;4 Relationships in Trauma (static) ========== -->
 <section id="trauma-relationships" class="glass-panel-blur">
@@ -762,7 +850,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
   <div class="concept-box">
     <p>Trauma does not only occur within the family. Poverty, racial discrimination, institutional violence, war, forced displacement&mdash;these <strong>structural traumas</strong> produce effects as profound as childhood trauma. The Philadelphia ACE Expanded Study incorporated community violence, experiences of racial discrimination, foster care system involvement, and neighborhood insecurity into trauma assessment&mdash;because trauma cannot be understood in isolation from its social context. A child growing up in an impoverished neighborhood, even with adequate family functioning, is still exposed to more toxic stress. Understanding this is crucial: <strong>healing is not only an individual responsibility; it also requires structural social change.</strong></p>
   </div>
-</section>
+
+        <h3>Parental CPTSD and the Family: Symptoms Are Shared, Not Isolated</h3>
+  <div class="concept-box">
+    <p>This systematic review and qualitative synthesis on parental CPTSD and family life identifies two overarching themes: <strong>(1) role strain and emotional burden</strong>—shifts in caregiving, living with the unpredictable, and parental hypervigilance toward the child; and <strong>(2) adaptation and resilience</strong>—disruption of daily family functioning alongside coping strategies.</p>
+    <p><strong>Clinical takeaway</strong>: CPTSD symptoms are not merely an individual problem—they are <strong>experienced by the family as a whole</strong>. The authors recommend family therapy and psychoeducation, keeping children and the family system in view when treating a parent.</p>
+  </div>
+    
+        <h3>Fatherhood: Reactivation of Trauma and a Chance for Change</h3>
+  <div class="concept-box">
+    <p>A phenomenological study of 17 Turkish fathers with childhood trauma histories reveals the double-edged nature of fatherhood: <strong>it reactivates unresolved childhood experiences</strong>—especially during stressful interactions with children—while traditional masculinity norms limit emotional expression and help-seeking. At the same time, many men strongly desire to parent differently from their own fathers and experience fatherhood as a <strong>turning point for self-reflection and emotional growth</strong>.</p>
+    <p><strong>Clinical takeaway</strong>: Fathers are both a node of intergenerational transmission and a lever for breaking the cycle. Therapy should address how masculine norms block help-seeking, and channel the motivation to "be a different father" into a resource for change.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;5 The Traumatized Brain and Nervous System (static) ========== -->
 <section id="trauma-brain" class="glass-panel-blur">
@@ -807,7 +907,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
       <li><strong>Physical Exercise</strong>: Aerobic exercise promotes BDNF (Brain-Derived Neurotrophic Factor) secretion, which supports hippocampal neurogenesis; yoga and body-oriented therapies can improve HRV (Heart Rate Variability), reflecting improved autonomic regulation.</li>
     </ul>
   </div>
-</section>
+
+        <h3>From Childhood Trauma to Bipolar Disorder: A Brain-Morphology Pathway</h3>
+  <div class="concept-box">
+    <p>A high-dimensional mediation analysis pooling 19 international cohorts (ENIGMA Bipolar Disorder Working Group; N=3,252) traces the brain-morphology pathway from childhood trauma to bipolar disorder. Trauma severity was directly associated with bipolar diagnosis, with <strong>smaller hippocampal volume, thinner medial orbitofrontal cortex, and thinner superior frontal gyrus</strong> emerging as statistically significant mediators.</p>
+    <p><strong>Clinical takeaway</strong>: Although brain morphology mediated less than 1% of the association, this mechanistic pathway helps build the biological bridge from trauma to bipolar disorder and may inform risk identification and novel interventions. Brain differences in bipolar patients with childhood trauma histories deserve dedicated consideration in research.</p>
+  </div>
+    
+        <h3>Brainwave Signatures of Trauma—Even Without a PTSD Diagnosis</h3>
+  <div class="concept-box">
+    <p>A qEEG study comparing 30 young adults with and without severe childhood trauma—none with a formal PTSD diagnosis—found significant resting-state differences in the trauma group across <strong>Alpha, low Beta, Beta, high Beta, and Gamma bands</strong>, most prominent over frontal, central, temporal, and parietal regions.</p>
+    <p><strong>Clinical takeaway</strong>: The impact of childhood trauma is not confined to people with a diagnosis—even without PTSD, resting-state brain activity already differs. This supports making trauma history a routine consideration in neurophysiological assessment and personalised care.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;6 The Healing Path (blur #3) ========== -->
 <section id="healing-path" class="glass-panel-blur">
@@ -876,7 +988,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
       <li><strong>Meaning-Making</strong>: The capacity to find personal meaning in experience&mdash;not rationalizing trauma, but finding one&rsquo;s own framework for understanding amid the pain.</li>
     </ul>
   </div>
-</section>
+
+        <h3>The STAR Trial: No Longer Excluding People With Psychosis and PTSD</h3>
+  <div class="concept-box">
+    <p>The STAR trial—the largest randomised controlled trial of treatment for co-occurring PTSD and psychosis (five UK sites; N=305)—tested a 9-month trauma-focused therapy integrated with cognitive behavioural therapy for psychosis (CBTp). At the primary endpoint (9 months), PTSD symptoms fell significantly (CAPS-5 difference −8.67; d = −0.73), with <strong>PTSD remission in 50% vs 22% (NNT = 4)</strong>; delusions, paranoia, suicidal ideation, depression, and anxiety also improved, with no unexpected serious adverse events related to trial procedures.</p>
+    <p><strong>Clinical takeaway</strong>: People with psychosis have long been excluded from trauma treatment. This trial shows that <strong>they should no longer be denied access to psychological interventions for their trauma sequelae</strong>.</p>
+  </div>
+    
+        <h3>Five Sessions of Written Exposure: A Scalable Option for Adolescents</h3>
+  <div class="concept-box">
+    <p>A pilot randomised controlled trial tested group-delivered brief guided written exposure therapy (GWE) for adolescent PTSD and CPTSD: 53 adolescents (13–17 years) were randomised to five sessions of group GWE or a waitlist. Post-treatment effect sizes were <strong>d = −1.15 for PTSD and d = −0.97 for CPTSD symptoms</strong>, with gains maintained at 3-month follow-up; retention was 92.6% with no adverse events.</p>
+    <p><strong>Clinical takeaway</strong>: GWE is a non-phased, low-cost, scalable trauma-focused treatment. For low-resource settings—and for adolescents who avoid face-to-face exposure—it offers a pragmatic new pathway.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;7 Self-Help Toolkit (static) ========== -->
 <section id="toolkit" class="glass-panel-blur">
@@ -942,7 +1066,19 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
     </div>
 
   </div>
-</section>
+
+        <h3>A Lived-Experience-Informed Toolkit for CPTSD</h3>
+  <div class="concept-box">
+    <p>A practice-based study on developing a CPTSD mental health toolkit with lived-experience involvement shows how trauma-informed principles can function as a <strong>design methodology</strong>: modular, non-linear navigation (recovery is not a straight line), simplified language, grounding cues, and visual scaffolding to reduce cognitive load—responding to the identity disruption, emotional overwhelm, and fear of destabilisation specific to CPTSD.</p>
+    <p><strong>Clinical takeaway</strong>: Psychoeducational resources should not be written by clinicians alone. Lived-experience-informed tools are more usable, emotionally safer, and better support early stabilisation—a replicable framework worth extending to other mental health resources.</p>
+  </div>
+    
+        <h3>Modifiable Targets: Executive Function, Impulsivity, and Rumination</h3>
+  <div class="concept-box">
+    <p>A pre-registered umbrella review (22 systematic reviews/meta-analyses covering 639 unique primary studies) confirms that childhood trauma has an enduring impact on <strong>executive function—especially working memory and processing speed—as well as impulsivity, rumination, and worry</strong>, independent of clinical status: these differences persist even without a psychiatric diagnosis.</p>
+    <p><strong>Clinical takeaway</strong>: Executive function and rumination are <strong>modifiable</strong> targets. Alongside trauma therapy, interventions that directly train working memory or reduce rumination (e.g., cognitive reappraisal, attentional training) may interrupt the downstream pathway from childhood trauma to psychopathology.</p>
+  </div>
+    </section>
 
 <!-- ========== &sect;8 References (static) ========== -->
 <section id="references" class="glass-panel-blur">
@@ -965,9 +1101,6 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </section>
 
 </div><!-- /.main -->
-
-<!-- Back to Top -->
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
 <!-- Footer -->
 <footer class="site-footer">
@@ -995,9 +1128,6 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 })();
 </script>
 
-<script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
-(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
-</script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>

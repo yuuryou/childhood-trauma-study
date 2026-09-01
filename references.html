@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="支援 CPTSD 與童年創傷教育指南的可搜尋學術參考文獻。">
+<meta name="theme-color" content="#17120d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CPTSD 指南">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPTSD 與童年創傷參考文獻">
+<meta property="og:description" content="依研究主題整理的可搜尋學術參考文獻。">
+<meta property="og:image" content="https://yuuryou.github.io/childhood-trauma-study/og-image.png">
+<link rel="alternate" hreflang="en" href="references-en.html">
+<link rel="alternate" hreflang="zh-Hans" href="references-cn.html">
+<link rel="alternate" hreflang="zh-Hant" href="references.html">
+<link rel="stylesheet" href="site-enhancements.css">
 <title>參考文獻 — CPTSD：童年創傷的理解與療癒</title>
 <style>
 /* ============================================
@@ -62,7 +77,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   z-index: -9999;
   opacity: 1;
   filter: brightness(0.45);
@@ -151,7 +166,7 @@ img, iframe, table, pre, code { max-width: 100%; height: auto; }
 .main {
   max-width: 56rem;
   margin: 0 auto;
-  padding: 3rem 2rem 6rem 2rem;
+  padding: 4.5rem 2rem 6rem 2rem;
   position: relative;
   z-index: 1;
 }
@@ -248,29 +263,6 @@ section h4 {
   transform: scale(1.04);
 }
 
-/* ===== Back to top ===== */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem; right: 1.5rem;
-  width: 44px; height: 44px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  color: var(--amber-light);
-  font-size: 1.25rem;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  z-index: 85;
-  cursor: pointer;
-  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
-  will-change: transform;
-}
-.back-to-top:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-
 /* ===== Animations ===== */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -282,15 +274,35 @@ section h4 {
   60%  { opacity: 1; transform: translateX(-50%) translateY(4px); }
   100% { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
+@keyframes navFloatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 
 /* ===== Responsive ===== */
+@media (min-width: 1400px) {
+  .main { max-width: 82rem; }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main { max-width: 60rem; }
+}
 @media (max-width: 768px) {
   .main { max-width: 100%; padding: 1.5rem 1rem 4rem 1rem; }
   .glass-panel-blur { padding: 1.5rem; }
   .floating-nav { padding: 6px 10px; gap: 2px; }
   .nav-pill { font-size: 0.68rem; padding: 6px 10px; }
   .nav-title { font-size: 0.68rem; padding: 6px 10px; }
-  .back-to-top { bottom: 1.5rem; right: 1rem; }
 }
 @media (max-width: 480px) {
   .main { max-width: 100%; padding: 1.5rem 0.75rem 3rem 0.75rem; }
@@ -322,9 +334,9 @@ section h4 {
 
 /* ===== Print ===== */
 @media print {
-  body::before, .back-to-top, .floating-nav { display: none !important; }
+  body::before, .care-controls, .floating-nav { display: none !important; }
   body { background: #fff; color: #1a1a2e; }
-  .main { padding-top: 1rem; }
+  .main { padding-top: 3rem; }
   .glass-panel-blur {
     background: #f8f8fa; backdrop-filter: none; -webkit-backdrop-filter: none;
     border: 1px solid #ddd; box-shadow: none; break-inside: avoid;
@@ -332,10 +344,25 @@ section h4 {
   section h2 { color: #c87a28; border-bottom-color: #ddd; }
 }
 </style>
+<link rel="preload" href="site-enhancements.css" as="style">
+<link rel="preload" href="site-enhancements.js" as="script">
+<link rel="preload" href="background-poster.jpg" as="image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "參考文獻 — CPTSD：童年創傷的理解與療癒",
+  "description": "支援 CPTSD 與童年創傷教育指南的可搜尋學術參考文獻。",
+  "url": "https://yuuryou.github.io/childhood-trauma-study/references.html",
+  "inLanguage": "zh-Hant",
+  "about": { "@type": "MedicalCondition", "name": "Complex Post-Traumatic Stress Disorder", "alternateName": "CPTSD" },
+  "isPartOf": { "@type": "WebSite", "name": "CPTSD — 理解童年創傷", "url": "https://yuuryou.github.io/childhood-trauma-study/" }
+}
+</script>
 </head>
 <body>
 
-<video class="bg-video" autoplay loop playsinline>
+<video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
@@ -345,17 +372,18 @@ section h4 {
   <span class="nav-title">參考文獻</span>
   <a href="CPTSD childhood trauma.html" class="nav-pill">← 返回主頁</a>
   <a href="development.html" class="nav-pill">發展路徑</a>
-  <button class="nav-pill mute-btn" onclick="toggleMute()" aria-label="Toggle audio" title="Toggle audio">&#x1F50A;</button>
+  <button class="nav-pill mute-btn" type="button" onclick="toggleMute()" aria-label="背景音效已靜音" aria-pressed="false" title="背景音效已靜音">&#x1F507;</button>
   <a href="references-en.html" class="nav-pill lang-switch" title="English version">EN</a>
+  <a href="references-cn.html" class="nav-pill lang-switch" title="简体版">简</a>
 </nav>
 
 <!-- Main Content -->
 <div class="main">
 
 <section id="references" class="glass-panel-blur">
-  <h2>參考文獻</h2>
+  <h1 class="reference-page-title">參考文獻</h1>
   <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-    以下文獻涵蓋童年創傷與 CPTSD 的核心研究領域，按主題分類整理。共收錄 200+ 筆學術論文，格式為 APA 第 7 版。
+    以下文獻涵蓋童年創傷與 CPTSD 的核心研究領域，並按主題分類整理。本頁目前收錄 155 筆參考資料，採接近 APA 格式呈現。
   </p>
 
     <h4>Foundational Works</h4>
@@ -519,7 +547,7 @@ section h4 {
     <p class="ref-entry"><span class="authors">Krause-Utz A, van Dijke A</span> <span class="year">(2026).</span> <span class="title-text">Absorption and Depersonalisation Derealisation Link Childhood Trauma to BPD Severity and Show Strong Independent Predictive Effects for Various BPD Symptom Domains.</span> <em>Journal of trauma & dissociation : the official journal of the International Society for the Study of Dissociation (ISSD).</em> https://doi.org/10.1080/15299732.2026.2695585</p>
 
     <h4>Recovery, Resilience &amp; Post-Traumatic Growth</h4>
-    <p class="ref-entry"><span class="authors">P. Frewen, Serena P. Wong, T. Bailey, C. Courtois, R. Lanius</span> <span class="year">(2023).</span> <span class="title-text">As简单 as possible, but not simpler: Revisiting the International Trauma Questionnaire (ITQ) complex PTSD items omitted in the shortened version.</span> <em>Child abuse & neglect.</em> https://doi.org/10.1016/j.chiabu.2023.106207</p>
+    <p class="ref-entry"><span class="authors">P. Frewen, Serena P. Wong, T. Bailey, C. Courtois, R. Lanius</span> <span class="year">(2023).</span> <span class="title-text">As simple as possible, but not simpler: Revisiting the International Trauma Questionnaire (ITQ) complex PTSD items omitted in the shortened version.</span> <em>Child abuse &amp; neglect.</em> https://doi.org/10.1016/j.chiabu.2023.106207</p>
     <p class="ref-entry"><span class="authors">G. Zerach</span> <span class="year">(2023).</span> <span class="title-text">The Contribution of Childhood Adversity and Potentially Traumatic Events During Military Service to PTSD and Complex PTSD Symptoms Among Israeli Women Veterans.</span> <em>European Psychiatry; pages=S179 - S179; volume=66.</em> https://doi.org/10.1192/j.eurpsy.2023.430</p>
     <p class="ref-entry"><span class="authors">Sujeong Shin</span> <span class="year">(2023).</span> <span class="title-text">A Case Study in Attachment Trauma Counseling: Focusing on the Integrative Applicability of Eye Movement Desensitization Reprocessing(EMDR) and Internal Family Systems(IFS) Therapy.</span> <em>Korean Association of Christian Counseling &amp; Psychology.</em> https://doi.org/10.23909/kjcc.2023.11.34.4.117</p>
     <p class="ref-entry"><span class="authors">Silvia Wetherell</span> <span class="year">(2022).</span> <span class="title-text">Investigating the impact of eye movement desensitization and reprocessing (EMDR) in reducing birth trauma symptoms.</span> <em>Annals of Psychophysiology.</em> https://doi.org/10.29052/2412-3188.v9.i2.2022.67-75</p>
@@ -539,9 +567,6 @@ section h4 {
 
 </div><!-- /.main -->
 
-<!-- Back to Top -->
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
-
 <!-- Footer -->
 <footer class="site-footer">
   <p>複雜性創傷後壓力症（CPTSD）：童年創傷的理解與療癒 | Understanding &amp; Healing Childhood Trauma</p>
@@ -549,9 +574,6 @@ section h4 {
   <a href="CPTSD childhood trauma.html" class="footer-sub-link">← 返回主頁</a>
 </footer>
 
-<script>
-function toggleMute(){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=!v.muted;b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';localStorage.setItem('bgMuted',v.muted);}
-(function(){var m=localStorage.getItem('bgMuted');if(m!==null){var v=document.querySelector('.bg-video');var b=document.querySelector('.mute-btn');v.muted=m==='true';b.innerHTML=v.muted?'&#x1F507;':'&#x1F50A;';}})();
-</script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>

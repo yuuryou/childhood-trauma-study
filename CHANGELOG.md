@@ -51,3 +51,47 @@ E:\projects\childhood_trauma\website\
   index.html                  (入口→英文版, 新建)
   background.mp4              (本地影片)
 *（内容由AI生成，仅供参考）*
+
+## 2026-07-23 - UI/UX Enhancements
+
+### PWA & Offline Support
+- Created `manifest.json` — web app manifest for installability
+- Created `sw.js` — service worker with cache-first strategy
+- All core pages and assets are now cached for offline reading
+- Added `apple-mobile-web-app-*` meta tags for iOS full-screen support
+
+### Reading Progress Bar
+- Added thin amber gradient progress bar at top of viewport
+- Updates smoothly as user scrolls through content
+- Hidden when printing
+
+### Header Anchor Links
+- Hover over section headings reveals a `#` link
+- Click copies the deep-link URL to clipboard
+- Toast notification confirms the copy action
+- Enables sharing specific sections directly
+
+### Structured Data (JSON-LD)
+- Added Schema.org `MedicalWebPage` structured data to all 10 pages
+- Includes title, description, language, breadcrumbs, site hierarchy
+- Helps search engines understand content and display rich snippets
+
+### Resource Hints
+- Added `preload` hints for CSS, JS, and background poster image
+- Browsers fetch critical resources earlier, improving load time
+
+### Enhanced Print Styles
+- Print output uses light background with dark text
+- Glass panels render as clean bordered boxes
+- Amber accents preserved as warm tones
+- Floating UI hidden, content sections avoid awkward page breaks
+
+### Files Changed
+- New: `manifest.json`, `sw.js`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png`, `og-image.png`
+- Modified: `site-enhancements.css`, `site-enhancements.js`, all 10 HTML pages
+
+### Follow-up — COMPLETED
+- `icon-192.png` and `icon-512.png` generated programmatically (dark rounded square with amber circle motif)
+- `apple-touch-icon.png` generated at 180x180 for iOS
+- `og-image.png` generated at 1200x630 for social sharing previews
+- `og:image` meta tag added to all 10 pages
