@@ -3,7 +3,7 @@
    Cache-first strategy for offline access
    ============================================ */
 
-const CACHE_NAME = 'cptsd-guide-v1';
+const CACHE_NAME = 'cptsd-guide-v2';
 const PRECACHE_ASSETS = [
   '/index.html',
   '/cptsd-en.html',
@@ -17,7 +17,8 @@ const PRECACHE_ASSETS = [
   '/references-cn.html',
   '/site-enhancements.css',
   '/site-enhancements.js',
-  '/background-poster.jpg'
+  '/background-poster.jpg',
+  '/forest-ambience.mp3'
 ];
 
 /* ----- Install: precache core assets ----- */
