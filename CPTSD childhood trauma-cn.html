@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="以创伤知情方式介绍复杂性创伤后压力症、童年创伤、神经系统反应、人际关系、疗愈方法与自助工具。">
 <meta name="theme-color" content="#17120d">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -79,29 +79,80 @@ body {
   min-height: 100vh;
 }
 
-/* ===== Body background video — lowest layer ===== */
-.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
-  z-index: -9999;
-  opacity: 1;
-  filter: brightness(0.45);
-  pointer-events: none;
-}
-
+/* ===== Background layers — full-bleed on every viewport ===== */
+.bg-image,
+.bg-video,
 .bg-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  /* Mobile browsers shrink the layout viewport while the URL bar is
+     visible; the vh minimum keeps the layer at least as tall as the
+     largest viewport state, so it can never fall short of the screen. */
+  min-height: 100vh;
+  pointer-events: none;
+}
+
+/* Static poster layer. Always painted, and the fallback whenever the
+   video cannot be shown (unsupported codec, data saver, reduced motion,
+   blocked autoplay, hidden by the motion toggle). */
+.bg-image {
+  z-index: -10000;
+  background: #0a0e1a url("background-poster.jpg") center center / cover no-repeat;
+}
+
+/* Purely visual, permanently muted video layer. `contain` letterboxed the
+   frame on small screens, so the frame now covers the layer instead. */
+.bg-video {
+  z-index: -9999;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 1;
+  filter: brightness(0.45);
+  background: transparent;
+}
+
+.bg-overlay {
   z-index: -9998;
   background: rgba(0, 0, 0, 0.35);
+}
+
+/* Seamless looping forest ambience (wind, leaves, brook, birdsong).
+   The video keeps no sound of its own — all audio lives here. */
+.bg-audio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
   pointer-events: none;
+  z-index: -10001;
+}
+
+/* Notch / home-indicator safe areas: `viewport-fit=cover` lets the page
+   reach the physical edges, and these insets stretch the background stack
+   across the areas it would otherwise leave bare. */
+@supports (top: env(safe-area-inset-top, 0px)) {
+  .bg-image,
+  .bg-video,
+  .bg-overlay {
+    top: calc(0px - env(safe-area-inset-top, 0px));
+    left: calc(0px - env(safe-area-inset-left, 0px));
+    width: calc(100% + env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px));
+    height: calc(100% + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Dynamic viewport height (mobile URL bar collapse / expand). */
+@supports (height: 100dvh) {
+  .bg-image,
+  .bg-video,
+  .bg-overlay {
+    min-height: 100dvh;
+  }
 }
 
 /* ===== Overflow protection ===== */
@@ -590,9 +641,13 @@ tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </head>
 <body>
 
+<div class="bg-image" aria-hidden="true"></div>
 <video class="bg-video" autoplay loop playsinline muted preload="auto" poster="background-poster.jpg" aria-hidden="true">
   <source src="background.mp4" type="video/mp4">
 </video>
+<audio class="bg-audio" autoplay loop muted preload="auto" aria-hidden="true">
+  <source src="forest-ambience.mp3" type="audio/mpeg">
+</audio>
 <div class="bg-overlay"></div>
 
 <a href="#main-content" class="skip-to-content">跳至主要内容</a>

@@ -46,18 +46,31 @@
   };
 
   const video = document.querySelector('.bg-video');
+  const audio = document.querySelector('.bg-audio');
   const muteButton = document.querySelector('.mute-btn');
   let videoPlaybackPromise = null;
   let userSelectedAudio = false;
+  let audioUnlockBound = false;
 
+  /* The ambience plays by default, exactly like the site's original
+     background sound did. It stays silent only after the visitor has
+     explicitly muted it - that choice is remembered across pages in
+     localStorage under the same 'bgMuted' key as before. */
+  function wantsSound() {
+    return userSelectedAudio || localStorage.getItem('bgMuted') !== 'true';
+  }
+
+  /* The video is a purely visual layer: permanently muted, never able to
+     make noise. Muted autoplay is permitted everywhere, so the motion can
+     start without a gesture. */
   function startBackgroundVideo() {
-    if (!video || document.body.classList.contains('motion-paused')) return;
-    if (!userSelectedAudio) video.muted = true;
+    if (!video) return;
+    video.muted = true;
     video.defaultMuted = true;
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
-    renderMuteState();
+    if (document.body.classList.contains('motion-paused')) return;
 
     videoPlaybackPromise = video.play();
     if (videoPlaybackPromise && typeof videoPlaybackPromise.catch === 'function') {
@@ -67,9 +80,54 @@
     }
   }
 
+  /* Seamless forest ambience (wind, leaves, brook, birdsong). The muted
+     autoplay starts the loop on every browser; audible playback needs a
+     user gesture, so the first interaction restores the stored choice. */
+  function startBackgroundAudio() {
+    if (!audio) return;
+    audio.loop = true;
+    audio.muted = true;
+    const playAttempt = audio.play();
+    if (playAttempt && typeof playAttempt.catch === 'function') {
+      playAttempt.catch(function () {
+        bindAudioUnlock();
+      });
+    }
+    if (wantsSound()) {
+      audio.muted = false;
+      bindAudioUnlock();
+    }
+    renderMuteState();
+  }
+
+  /* One-shot listeners: browsers only allow audible playback after a real
+     user gesture, so the remembered "sound on" choice is applied to the
+     first tap, key press or click on the page. */
+  function bindAudioUnlock() {
+    if (audioUnlockBound || !audio) return;
+    audioUnlockBound = true;
+    const events = ['pointerdown', 'touchstart', 'touchend', 'keydown', 'click'];
+    const unlock = function () {
+      audioUnlockBound = false;
+      events.forEach(function (type) {
+        window.removeEventListener(type, unlock);
+      });
+      audio.muted = !wantsSound();
+      const retry = audio.play();
+      if (retry && typeof retry.catch === 'function') retry.catch(function () {});
+      renderMuteState();
+    };
+    events.forEach(function (type) {
+      window.addEventListener(type, unlock, { passive: true, once: true });
+    });
+  }
+
+  /* The mute button reflects the ambience track, not the silent video. */
   function renderMuteState() {
-    if (!video || !muteButton) return;
-    const muted = video.muted;
+    if (!muteButton) return;
+    const source = audio || video;
+    if (!source) return;
+    const muted = source.muted;
     muteButton.innerHTML = muted ? '&#x1F507;' : '&#x1F50A;';
     muteButton.setAttribute('aria-pressed', String(!muted));
     muteButton.setAttribute('aria-label', muted ? text.muted : text.unmuted);
@@ -77,33 +135,41 @@
   }
 
   window.toggleMute = function () {
-    if (!video) return;
-    userSelectedAudio = true;
-    video.muted = !video.muted;
-    localStorage.setItem('bgMuted', String(video.muted));
-    renderMuteState();
-    if (video.paused) {
-      const playAttempt = video.play();
+    if (!audio) return;
+    audio.muted = !audio.muted;
+    userSelectedAudio = !audio.muted;
+    localStorage.setItem('bgMuted', String(audio.muted));
+    if (audio.paused) {
+      const playAttempt = audio.play();
       if (playAttempt && typeof playAttempt.catch === 'function') {
         playAttempt.catch(function () {
-          video.muted = true;
+          audio.muted = true;
           renderMuteState();
-          startBackgroundVideo();
+          bindAudioUnlock();
         });
       }
     }
+    renderMuteState();
   };
 
+  /* Only an explicit "muted" choice is carried over between pages. */
+  const storedPreference = localStorage.getItem('bgMuted');
+  userSelectedAudio = storedPreference === 'false';
+
+  if (audio) {
+    audio.loop = true;
+    audio.muted = !wantsSound();
+    audio.addEventListener('playing', function () {
+      renderMuteState();
+    });
+    window.addEventListener('pageshow', startBackgroundAudio);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && audio.paused) startBackgroundAudio();
+    });
+    startBackgroundAudio();
+  }
+
   if (video) {
-    const storedMuted = localStorage.getItem('bgMuted');
-    if (storedMuted === 'false') {
-      video.muted = false;
-      userSelectedAudio = true;
-    } else {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute('muted', '');
-    }
     renderMuteState();
     video.addEventListener('playing', function () {
       document.body.classList.remove('video-fallback-active');
@@ -111,7 +177,8 @@
     video.addEventListener('canplay', startBackgroundVideo, { once: true });
     window.addEventListener('pageshow', startBackgroundVideo);
     document.addEventListener('visibilitychange', function () {
-      if (!document.hidden) startBackgroundVideo();
+      if (!document.hidden && video.paused &&
+          !document.body.classList.contains('motion-paused')) startBackgroundVideo();
     });
     startBackgroundVideo();
   }
@@ -159,12 +226,22 @@
   motionButton.addEventListener('click', function () {
     const paused = document.body.classList.toggle('motion-paused');
     if (video) paused ? video.pause() : video.play().catch(function () {});
+    if (audio) {
+      if (paused) {
+        audio.pause();
+      } else {
+        audio.muted = !wantsSound();
+        const audioRetry = audio.play();
+        if (audioRetry && typeof audioRetry.catch === 'function') audioRetry.catch(function () {});
+      }
+    }
     motionButton.textContent = paused ? text.resume : text.pause;
     motionButton.setAttribute('aria-pressed', String(paused));
   });
 
   controls.querySelector('.quick-exit').addEventListener('click', function () {
     if (video) video.pause();
+    if (audio) audio.pause();
     location.replace('https://www.google.com/');
   });
 
